@@ -72,7 +72,7 @@ Install `ttf-ibm-plex`.
 Again copy config over and look at the stuff. I did this over like a week haha it's easier to read and understand than start from scratch.
  Low key I'll set up a git repo with this and you can do pull requests and we can have an epic gruvbox setup.
 
-### gtk themes
+### GTK Themes
 Go ahead and do `yay gruvbox`. Select 7. Then install `lxappearance-gtk3` and set your gtk theme to gruvbox. Thank me later.
 
 ## Step 4: Notifications
@@ -84,3 +84,8 @@ Install `dunst`
 Note that it's added in the `bspwmrc`. This is because we need to start notifications when we start up our window manager.
 
 I like my notifications and system stuff with Jost, which can be yayed.
+
+## Step 0: Other stuff
+### Lowercase Directory Names
+I prefer them because it makes it easier to go through stuff on the command line. You have a couple of "default" directories like Downloads, Desktop, etc. You can rename those by installing `xdg-user-dirs`. You can see my `users-dirs.dirs` file and see what I've changed. You'll then want to run `xdg-user-dirs-update
+`
