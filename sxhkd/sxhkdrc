@@ -10,6 +10,10 @@ alt + shift + c
 alt + {h,j,k,l}
     bspc node --focus {west,south,north,east}
 
+# focus neighbor nodes while in monocle mode
+alt + shift + {j,k}
+    bspc node --focus {prev,next}.local
+
 # launch rofi
 alt + n
     rofi -show drun
@@ -25,6 +29,11 @@ alt + Tab
 # send node to desktop
 alt + shift + {a,s,d,f,u,i,o,p}
     bspc node focused --to-desktop {a,s,d,f,u,i,o,p}
+
+# change mode to monocle, full screen, tiled
+# switches to "next" mode
+alt + {m}
+    bspc desktop --layout next
 
 # reload config
 alt + Escape
