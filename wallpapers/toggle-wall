@@ -1,0 +1,21 @@
+#!/bin/bash
+
+nodes=( $(bspc query --tree --desktop | jq | awk '/className/ {print $2}' | cut -d '"' -f 2) )
+pid="$(ps aux | grep -i live-chooser | grep -v grep | awk '{print $2}')"
+
+if [[ $nodes == "" ]]
+then
+    kill -CONT $pid
+    exit
+fi
+
+for node in ${nodes[@]}
+do 
+    if [[ $node == "kitty" ]]
+    then
+        kill -CONT $pid
+        exit
+    fi
+done
+
+kill -STOP $pid

@@ -1,0 +1,92 @@
+* {
+    /* Default background color */
+    background-color:   transparent;
+    text-color:         white;
+    bg:                 #282828;
+    fg:                 #EBDBB2;
+    accent:             #98971A;
+}
+
+window {
+    padding:            1em;
+    border-color:       @accent;
+    border:             5px;
+    border-radius:      10px;
+    background-color:   @bg;
+}
+
+mainbox {
+    spacing:            0px;
+    children:           [ inputbar,listview ];
+}
+
+element {
+    background:         transparent;
+    children:           [ element-icon, element-text ];
+}
+
+element,element-text,element-icon, button {
+    cursor:             pointer;
+}
+
+inputbar {
+    margin:             0px 0px 0.5em 0em;
+    spacing:            0.4em;
+    children:           [ entry,overlay,case-indicator ];
+}
+
+listview {
+    padding:            0.5em;  
+    border-color:       @accent;
+    border:             3px;
+    border-radius:      10px;
+    background-color:   @bg;
+    columns:            4;
+    lines:              4;
+}
+
+listview {
+    border:             0px 0px 0px 0px;
+}
+
+
+element {
+    padding:            10px;
+    font:               "Mono 8";
+    orientation:        vertical;
+    border-radius:      10px;
+
+}
+element-icon {
+    size:               6em;
+}
+
+element  selected {
+    border-color:       @fg;
+    border:             3px;
+}
+
+element-text, element-icon {
+    font:               inherit; 
+    horizontal-align:   0.5;
+}
+
+button {
+    text-color:         white;
+    border:             0px 0px 5px ;
+    border-color:       @accent;
+    border-radius:      10px 10px 0 0;
+    background-image:   linear-gradient(to bottom, darkgreen/50%, black/70%);
+    horizontal-align:   0.5;
+}
+
+button selected.normal {
+    text-color:         white;
+    margin:             0px;
+    padding:            0px;
+    border:             5px 5px 0px ;
+    border-color:       @accent;
+    border-radius:      10px 10px 0 0;
+    background-image:   linear-gradient(to bottom, darkgreen, black/70%);
+}
+

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+sxhkd & 
+
+# create desktops a, s, d, f, u, i, o, p
+bspc monitor -d a s d f u i o p
+
+# add gaps
+bspc config window_gap 10

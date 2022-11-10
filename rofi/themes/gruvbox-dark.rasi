@@ -1,0 +1,54 @@
+* {
+    bg:             #282828;
+    red:            #CC241D;
+    green:          #98971A;
+    yellow:         #D79921;
+    blue:           #458588;
+    purple:         #B16286;
+    aqua:           #689D6A;
+    gray:           #A89984;
+    fg:             #EBDBB2;
+}
+
+mainbox {
+    border:             0;
+    padding:            0;
+}
+
+window {
+    border:             3;
+    border-color:       @green;
+}
+
+element {
+    padding:            8;
+    border:             0;
+    background-color:   @bg;
+}
+
+element-text {
+    text-color:         @fg; 
+    background-color:   @bg;
+    border:             0;
+}
+
+listview {
+    border:             2;
+    border-color:       @bg;
+    background-color:   @bg;
+}
+
+inputbar {
+    text-color:         @fg;
+    background-color:   @bg;
+}
+
+entry {
+    text-color:         @green;
+    background-color:   @bg;
+}
+
+element.selected {
+    border:             2;
+    border-color:       @fg;
+}

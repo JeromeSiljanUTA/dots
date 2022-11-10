@@ -1,0 +1,8 @@
+configuration {
+    show-icons:true;
+    drun-display-format: "{icon} {name}";
+    font: "Jost 12";
+    matching: "fuzzy";
+}
+
+@theme "gruvbox-green"

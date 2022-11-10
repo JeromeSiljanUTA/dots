@@ -1,0 +1,31 @@
+# launch alacritty on this combination
+alt + shift + Return
+	alacritty
+
+# close windows
+alt + shift + c
+    bspc node --close
+
+# focus neighbor nodes
+alt + {h,j,k,l}
+    bspc node --focus {west,south,north,east}
+
+# launch rofi
+alt + n
+    rofi -show drun
+
+# select desktops
+alt + {a,s,d,f,u,i,o,p}
+    bspc desktop {a,s,d,f,u,i,o,p} --focus
+
+# select last desktop
+alt + Tab
+    bspc desktop last --focus
+
+# send node to desktop
+alt + shift + {a,s,d,f,u,i,o,p}
+    bspc node focused --to-desktop {a,s,d,f,u,i,o,p}
+
+# reload config
+alt + Escape
+    pkill -usr1 -x sxhkd
