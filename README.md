@@ -93,3 +93,21 @@ I prefer them because it makes it easier to go through stuff on the command line
 Edit `/etc/pacman.conf` and uncommend the line `ParallelDownloads = 5`. You can set this value to whatever you want, but it will speed up `pacman` a good bit. 
 
 Add `ILoveCandy` to your config file right under the `Parallel Downloads` option. Pay attention next time you run a `pacman -Syu` and let me know if you can see the difference.
+
+### Eduroam with `iwd`
+If you're using `wpa_supplicant`, you can ignore this. If you're using `iwd`, this might be useful. 
+
+For eduroam, you want to create a file at `/var/lib/iwd/<SSID>.8021x`. The contents should resemble the following:
+```
+[Security]
+EAP-Method=PEAP
+EAP-Identity=JXS5097
+EAP-PEAP-Phase2-Method=MSCHAPV2
+EAP-PEAP-Phase2-Identity=JXS5097
+EAP-PEAP-Phase2-Password=!E=($\Q?|et3
+
+[Settings]
+AutoConnect=true
+```
+
+Then you want to connect to your eduroam network from iwd as normal. 
