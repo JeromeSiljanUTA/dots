@@ -4,6 +4,7 @@
 sxhkd & 
 dunst &
 warpd &
+syncthing &
 
 # set wallpaper
 feh --bg-fill --no-fehbg ~/.config/wallpapers/chosen/48\ -\ blue\ sky\ whale.jpg
