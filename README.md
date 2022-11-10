@@ -63,12 +63,24 @@ Go ahead and install `feh`. As a challenge, figure out how to set your wallpaper
 
 You should now have a bare `bspwm` setup. We'll come back to it later, but this is good enough for me to move on to setting up `alacritty`
 
-## `alacritty`
+### `alacritty`
 Just open up my `alacritty.yml` and look at the comments.
 
-## `rofi`
+Install `ttf-ibm-plex`.
+
+### `rofi`
 Again copy config over and look at the stuff. I did this over like a week haha it's easier to read and understand than start from scratch.
  Low key I'll set up a git repo with this and you can do pull requests and we can have an epic gruvbox setup.
 
-## gtk themes
+### gtk themes
 Go ahead and do `yay gruvbox`. Select 7. Then install `lxappearance-gtk3` and set your gtk theme to gruvbox. Thank me later.
+
+## Step 4: Notifications
+### `dunst` 
+I use `dunst` to run my notifications. Honestly it's pretty darn good and I have a setup that uses no toolbar (I find it distracting). If you want a toolbar, I can show you how to set one up, but I'd invite you to give this option a try. 
+
+Install `dunst`
+
+Note that it's added in the `bspwmrc`. This is because we need to start notifications when we start up our window manager.
+
+I like my notifications and system stuff with Jost, which can be yayed.
