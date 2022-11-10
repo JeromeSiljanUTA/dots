@@ -35,6 +35,10 @@ alt + shift + {a,s,d,f,u,i,o,p}
 alt + {m}
     bspc desktop --layout next
 
+# enters warpd normal mode
+Print
+    warpd --normal
+
 # reload config
 alt + Escape
     pkill -usr1 -x sxhkd
