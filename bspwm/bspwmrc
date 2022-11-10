@@ -3,6 +3,11 @@
 # start daemons
 sxhkd & 
 dunst &
+warpd &
+
+# set wallpaper
+feh --bg-fill --no-fehbg ~/.config/wallpapers/chosen/48\ -\ blu│ 10 #!/bin/bash
+e\ sky\ whale.jpg
 
 # create desktops a, s, d, f, u, i, o, p
 bspc monitor -d a s d f u i o p
@@ -10,6 +15,3 @@ bspc monitor -d a s d f u i o p
 # add gaps
 bspc config window_gap 20
 
-# set wallpaper
-feh --bg-fill --no-fehbg ~/.config/wallpapers/chosen/48\ -\ blu│ 10 #!/bin/bash
-e\ sky\ whale.jpg
