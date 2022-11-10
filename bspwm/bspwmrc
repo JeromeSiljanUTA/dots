@@ -15,3 +15,5 @@ bspc monitor -d a s d f u i o p
 # add gaps
 bspc config window_gap 20
 
+# selected node border width
+bspc config border_width 2
