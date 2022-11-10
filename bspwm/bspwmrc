@@ -17,3 +17,8 @@ bspc config window_gap 20
 
 # selected node border width
 bspc config border_width 2
+
+# set wacom shortcuts
+xsetwacom --set "Wacom Intuos BT S Pad pad" Button 1 'key +ctrl z'
+xsetwacom --set "Wacom Intuos BT S Pad pad" Button 2 'key +ctrl y'
+xsetwacom --set "Wacom Intuos BT S Pad pad" Button 3 'key +alt tab'
