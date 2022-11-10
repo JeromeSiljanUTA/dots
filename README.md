@@ -87,5 +87,5 @@ I like my notifications and system stuff with Jost, which can be yayed.
 
 ## Step 0: Other stuff
 ### Lowercase Directory Names
-I prefer them because it makes it easier to go through stuff on the command line. You have a couple of "default" directories like Downloads, Desktop, etc. You can rename those by installing `xdg-user-dirs`. You can see my `users-dirs.dirs` file and see what I've changed. You'll then want to run `xdg-user-dirs-update
+I prefer them because it makes it easier to go through stuff on the command line. You have a couple of "default" directories like Downloads, Desktop, etc. You can rename those by installing `xdg-user-dirs`. You can see my `user-dirs.dirs` file and see what I've changed. You'll then want to create the directories you want (eg. desktop, downloads, etc.) and run `xdg-user-dirs-update
 `
