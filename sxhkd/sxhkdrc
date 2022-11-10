@@ -12,7 +12,7 @@ alt + {h,j,k,l}
 
 # focus neighbor nodes while in monocle mode
 alt + shift + {j,k}
-    bspc node --focus {prev,next}.local
+    bspc node --focus {prev,next}.local.!hidden.window.!locked
 
 # launch rofi
 alt + n
