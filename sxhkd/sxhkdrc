@@ -20,7 +20,7 @@ alt + n
 
 # select desktops
 alt + {a,s,d,f,u,i,o,p}
-    bspc desktop {a,s,d,f,u,i,o,p} --focus
+    bspc desktop {"Terminal","Xournal++","Misc","Firefox","Comms","IDE","Files","Media"} --focus
 
 # select last desktop
 alt + Tab
@@ -28,7 +28,7 @@ alt + Tab
 
 # send node to desktop
 alt + shift + {a,s,d,f,u,i,o,p}
-    bspc node focused --to-desktop {a,s,d,f,u,i,o,p}
+    bspc node focused --to-desktop {"Terminal","Xournal++","Misc","Firefox","Comms","IDE","Files","Media"}
 
 # change mode to monocle, full screen, tiled
 # switches to "next" mode
