@@ -49,6 +49,9 @@ For the rest of the config stuff, I'll refer you to `man bspwm` and the Arch wik
 ### `bspc` 
 This is a program that interacts with `bspwm`. You can give it commands in real time and it'll update your window manager. It does everything. `man bspc` to find out the details.
 
+#### Example `bspc` program
+One advangage of using `bspwm` is that you can interface `bspc` with other programs, even (especially) ones that you write on your own. I did this to get notifications when you go to a new workspace. Go ahead and look at both the relevant line in the `bspwmrc` and under `~/.config/bspwm/scripts`.
+
 ### Multi Monitors
 Might need to consult the wiki on this, I can't do it now because I'm going to be mainly on campus for the next couple days. I'll show you set up for your laptop first. 
 
