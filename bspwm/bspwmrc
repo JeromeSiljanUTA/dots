@@ -11,7 +11,7 @@ feh --bg-fill --no-fehbg ~/.config/wallpapers/chosen/48\ -\ blue\ sky\ whale.jpg
 e\ sky\ whale.jpg
 
 # create desktops a, s, d, f, u, i, o, p
-bspc monitor -d a s d f u i o p
+bspc monitor -d "Terminal" "Xournal++" "Misc" "Firefox" "Comms" "IDE" "Files" "Media"
 
 # add gaps
 bspc config window_gap 20
@@ -23,3 +23,6 @@ bspc config border_width 2
 xsetwacom --set "Wacom Intuos BT S Pad pad" Button 1 'key +ctrl z'
 xsetwacom --set "Wacom Intuos BT S Pad pad" Button 2 'key +ctrl y'
 xsetwacom --set "Wacom Intuos BT S Pad pad" Button 3 'key +alt tab'
+
+# start desktop notifier
+bspc subscribe desktop | ~/.config/bspwm/scripts/desktop-notifier &
