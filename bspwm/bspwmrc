@@ -7,8 +7,7 @@ warpd &
 syncthing &
 
 # set wallpaper
-feh --bg-fill --no-fehbg ~/.config/wallpapers/chosen/48\ -\ blue\ sky\ whale.jpg
-e\ sky\ whale.jpg
+feh --bg-fill --no-fehbg ~/.config/wallpapers/chosen/55*
 
 # create desktops a, s, d, f, u, i, o, p
 bspc monitor -d "Terminal" "Xournal++" "Misc" "Firefox" "Comms" "IDE" "Files" "Media"
