@@ -10,8 +10,12 @@ alt + shift + c
 alt + {h,j,k,l}
     bspc node --focus {west,south,north,east}
 
+# swap neighbor nodes
+alt + shift + {h,j,k,l}
+    bspc node --swap {west,south,north,east}
+
 # focus neighbor nodes while in monocle mode
-alt + shift + {j,k}
+alt + ctrl + {j,k}
     bspc node --focus {prev,next}.local.!hidden.window.!locked
 
 # launch rofi
@@ -42,6 +46,14 @@ Print
 # monitor scripts
 alt + {1,2}
     ~/.config/bspwm/scripts/{laptop.sh,ext_mono.sh}
+
+# screenshot
+super + Print
+    flameshot gui
+
+# dump status
+super + d
+    ~/dump.sh
 
 # reload config
 alt + Escape
