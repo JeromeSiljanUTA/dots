@@ -18,6 +18,10 @@ alt + shift + {h,j,k,l}
 alt + ctrl + {j,k}
     bspc node --focus {prev,next}.local.!hidden.window.!locked
 
+# toggle floating
+alt + shift + space
+    bspc node --state ~floating
+
 # launch rofi
 alt + n
     rofi -show drun
@@ -46,6 +50,10 @@ Print
 # monitor scripts
 alt + {1,2}
     ~/.config/bspwm/scripts/{laptop.sh,ext_mono.sh}
+
+# clear notifications
+alt + 0
+    dunstctl close-all
 
 # screenshot
 super + Print
