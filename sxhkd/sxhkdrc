@@ -39,6 +39,9 @@ alt + shift + {a,s,d,f,u,i,o,p}
     bspc node focused --to-desktop {"Terminal","Xournal++","Misc","Firefox","Comms","IDE","Files","Media"}
 
 # change mode to monocle, full screen, tiled
+super + {f}
+    bspc node --state ~fullscreen
+
 # switches to "next" mode
 alt + {m}
     bspc desktop --layout next
