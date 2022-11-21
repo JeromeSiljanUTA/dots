@@ -66,6 +66,16 @@ super + Print
 super + d
     ~/dump.sh
 
+# play/pause media
+XF86AudioPlay
+    playerctl play-pause
+super + i
+    playerctl play-pause
+
+# volume control
+XF86Audio{LowerVolume,RaiseVolume,Mute}
+    pactl set-sink-{volume @DEFAULT_SINK@ -2%,volume @DEFAULT_SINK@ +2%,mute @DEFAULT_SINK@ toggle}
+
 # reload config
 alt + Escape
     pkill -usr1 -x sxhkd
