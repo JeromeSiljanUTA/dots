@@ -16,7 +16,7 @@ alt + shift + {h,j,k,l}
 
 # focus neighbor nodes while in monocle mode
 alt + ctrl + {j,k}
-    bspc node --focus {prev,next}.local.!hidden.window.!locked
+    bspc node --focus {next,prev}.local.!hidden.window.!locked
 
 # toggle floating
 alt + shift + space
