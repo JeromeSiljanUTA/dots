@@ -114,3 +114,8 @@ AutoConnect=true
 ```
 
 Then you want to connect to your eduroam network from iwd as normal. 
+
+### `xob`
+I've never used it before, but here's the repo: https://github.com/florentc/xob
+
+The whole point is that it'll give a visual status update on anything, but I'm going to use it for brightness now (and volume later).
