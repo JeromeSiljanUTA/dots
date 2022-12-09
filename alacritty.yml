@@ -47,3 +47,6 @@ font:
     style: Bold Italic
 
   size: 8
+
+window:
+  opacity: 0.85
