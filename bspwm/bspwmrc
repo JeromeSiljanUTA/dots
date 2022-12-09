@@ -5,6 +5,7 @@ sxhkd &
 dunst &
 warpd &
 syncthing &
+picom -b
 
 # set wallpaper
 feh --bg-fill --no-fehbg ~/.config/wallpapers/chosen/55*
@@ -25,3 +26,6 @@ xsetwacom --set "Wacom Intuos BT S Pad pad" Button 3 'key +alt tab'
 
 # start desktop notifier
 bspc subscribe desktop | ~/.config/bspwm/scripts/desktop-notifier &
+
+# start xob for brightness
+#~/.config/bspwm/scripts/brightness-watcher | xob
