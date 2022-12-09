@@ -69,7 +69,7 @@ super + d
 # play/pause media
 XF86AudioPlay
     playerctl play-pause
-super + i
+Pause
     playerctl play-pause
 
 # volume control
