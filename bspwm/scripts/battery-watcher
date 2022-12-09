@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+from notify import notification
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler, FileModifiedEvent
+import sys
+import time
+
+battery_file = "/sys/class/power_supply/BAT0/energy_now"
+max_battery_file = "/sys/class/power_supply/BAT0/energy_full"
+charging_file = "/sys/class/power_supply/BAT0/status"
+with open(max_battery_file, "r") as f:
+    maxvalue = int(f.read())
+    status = open(charging_file, "r")
+    charging = status.read()
+
+    def notify(file_path):
+        with open(file_path, "r") as f:
+            value = int(int(f.read()) / maxvalue * 100)
+            if value < 25 and charging == "Charging":
+                notification("Battery Low", message=f"{value}$")
+
+    class Handler(FileSystemEventHandler):
+        def on_modified(self, event):
+            if isinstance(event, FileModifiedEvent):
+                notify(event.src_path)
+
+
+handler = Handler()
+observer = Observer()
+observer.schedule(handler, path=battery_file)
+observer.start()
+try:
+    while True:
+        sys.stdout.flush()
+except KeyboardInterrupt:
+    observer.stop()
+observer.join()
