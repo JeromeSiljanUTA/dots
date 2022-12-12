@@ -37,6 +37,7 @@ set nowrap
 set scrolloff=8
 set mouse=
 set foldmethod=manual
+set visualbell
 
 "   Normal Maps
 nmap Y y$
