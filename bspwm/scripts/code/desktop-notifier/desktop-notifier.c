@@ -59,7 +59,7 @@ void get_desktop_name_array() {
 void send_message() {
   for (int i = 0; i < NUM_DESKTOPS; i++) {
     if (strcmp(desktop_id, desktop_id_array[i]) == 0) {
-      char message[100] = "dunstify -r 3 ";
+      char message[100] = "dunstify -r 3 -t 1500";
       strcat(message, desktop_name_array[i]);
       popen(message, "r");
     }
