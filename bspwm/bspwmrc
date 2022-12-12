@@ -8,7 +8,7 @@ syncthing &
 picom -b
 
 # set wallpaper
-feh --bg-fill --no-fehbg ~/.config/wallpapers/chosen/55*
+feh --bg-fill --no-fehbg ~/.config/wallpapers/chosen/51*
 
 # create desktops a, s, d, f, u, i, o, p
 bspc monitor -d "Terminal" "Xournal++" "Misc" "Firefox" "Comms" "IDE" "Files" "Media"
