@@ -6,16 +6,16 @@
   <property name="pressureMultiplier" value="1.00000000"/>
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Notes"/>
-  <property name="lastSavePath" value="/home/jerome/learning/school/course planning"/>
-  <property name="lastOpenPath" value="/home/jerome/learning/school/course planning"/>
-  <property name="lastImagePath" value="/home/jerome/learning/school/PROBABILITY IE3301/notes/chapter 06/media"/>
+  <property name="lastSavePath" value="/home/jerome/learning/school/OPERATING SYSTEMS CSE3320"/>
+  <property name="lastOpenPath" value="/home/jerome/learning/school/OPERATING SYSTEMS CSE3320"/>
+  <property name="lastImagePath" value="/home/jerome/learning/school/OPERATING SYSTEMS CSE3320/final"/>
   <property name="edgePanSpeed" value="20.00000000"/>
   <property name="edgePanMaxMult" value="5.00000000"/>
   <property name="zoomStep" value="10.00000000"/>
   <property name="zoomStepScroll" value="2.00000000"/>
   <property name="displayDpi" value="72"/>
   <property name="mainWndWidth" value="1876"/>
-  <property name="mainWndHeight" value="1005"/>
+  <property name="mainWndHeight" value="1036"/>
   <property name="maximized" value="true"/>
   <property name="showToolbar" value="true"/>
   <property name="showSidebar" value="false"/>
@@ -61,7 +61,7 @@
   <property name="drawDirModsRadius" value="50"/>
   <property name="snapRotation" value="true"/>
   <property name="snapRotationTolerance" value="0.30000000"/>
-  <property name="snapGrid" value="true"/>
+  <property name="snapGrid" value="false"/>
   <property name="snapGridTolerance" value="0.50000000"/>
   <property name="snapGridSize" value="14.17000000"/>
   <property name="touchDrawing" value="false"/>
@@ -165,6 +165,10 @@
     <data name="TPPS/2 Elan TrackPoint">
       <attribute name="deviceClass" type="int" value="1"/>
       <attribute name="deviceSource" type="int" value="7"/>
+    </data>
+    <data name="Virtual core XTEST pointer">
+      <attribute name="deviceClass" type="int" value="1"/>
+      <attribute name="deviceSource" type="int" value="0"/>
     </data>
     <data name="Wacom Intuos BT S Pad">
       <attribute name="deviceClass" type="int" value="0"/>
@@ -271,7 +275,7 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="pen">
-      <attribute name="color" type="hex" value="458588"/>
+      <attribute name="color" type="hex" value="a89984"/>
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
