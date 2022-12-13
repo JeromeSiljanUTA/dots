@@ -29,3 +29,6 @@ bspc subscribe desktop | ~/.config/bspwm/scripts/desktop-notifier &
 
 # start xob for brightness
 ~/.config/bspwm/scripts/brightness-watcher.py | xob
+
+# start xob for volume
+~/.config/bspwm/scripts/volume-watcher.py | xob
