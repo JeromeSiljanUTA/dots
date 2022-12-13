@@ -1,5 +1,4 @@
 [global]
-    corner_radius=13
     hide_duplicate_count=true
 
     font = "Jost-500-Medium 12"
