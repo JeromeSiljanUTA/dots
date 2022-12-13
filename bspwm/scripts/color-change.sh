@@ -27,3 +27,6 @@ sed -i "0,/accent.*/{s/accent.*/accent:             $accent_color;/}" ~/.config/
 
 # tmux color change
 sed -i "s/status-style bg=.*/status-style bg=$accent_color/" ~/.config/tmux/tmux.conf
+
+# xob color change
+sed -i "s/bg     =.*/bg     = \"$accent_color\"\;/" ~/.config/xob/styles.cfg
