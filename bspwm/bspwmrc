@@ -28,4 +28,4 @@ xsetwacom --set "Wacom Intuos BT S Pad pad" Button 3 'key +alt tab'
 bspc subscribe desktop | ~/.config/bspwm/scripts/desktop-notifier &
 
 # start xob for brightness
-#~/.config/bspwm/scripts/brightness-watcher | xob
+~/.config/bspwm/scripts/brightness-watcher.py | xob
