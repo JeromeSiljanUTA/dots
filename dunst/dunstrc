@@ -1,5 +1,5 @@
 [global]
-    hide_duplicate_count=true
+    hide_duplicate_count = true
 
     font = "Jost-500-Medium 12"
 
