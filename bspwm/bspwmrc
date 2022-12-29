@@ -19,6 +19,11 @@ bspc config window_gap 20
 # selected node border width
 bspc config border_width 2
 
+# don't clean up monitor desktops and geometries
+bspc config remove_unplugged_monitors true
+bspc config remove_disabled_monitors true
+bspc config merge_overlapping_monitors true
+
 # set wacom shortcuts
 xsetwacom --set "Wacom Intuos BT S Pad pad" Button 1 'key +ctrl z'
 xsetwacom --set "Wacom Intuos BT S Pad pad" Button 2 'key +ctrl y'
@@ -28,7 +33,7 @@ xsetwacom --set "Wacom Intuos BT S Pad pad" Button 3 'key +alt tab'
 bspc subscribe desktop | ~/.config/bspwm/scripts/desktop-notifier &
 
 # start xob for brightness
-~/.config/bspwm/scripts/brightness-watcher.py | xob
+~/.config/bspwm/scripts/brightness-watcher.py | xob &
 
 # start xob for volume
-~/.config/bspwm/scripts/volume-watcher.py | xob
+~/.config/bspwm/scripts/volume-watcher.py | xob &
