@@ -1,0 +1,4 @@
+--write-auto-subs
+--write-subs
+--sub-langs en
+-o %(playlist_index)s.-%(title)s.%(ext)s
