@@ -18,7 +18,6 @@ BC_ENV_ARGS=$HOME/.config/bcrc
 if [ -z $DISPLAY ] && [ "$(tty)" == "/dev/tty1" ];
 then
     startx
-    echo "Ready to go"
 fi
 
 
