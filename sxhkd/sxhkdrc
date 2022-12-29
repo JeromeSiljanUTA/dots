@@ -50,6 +50,9 @@ alt + {m}
 Print
     warpd --normal
 
+ctrl + Return 
+    warpd --normal
+
 # monitor scripts
 alt + {1,2}
     ~/.config/bspwm/scripts/{laptop.sh,ext_mono.sh}
