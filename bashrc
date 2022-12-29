@@ -3,11 +3,10 @@
 #
 
 # If not running interactively, don't do anything
+neofetch
 
 
 [[ $- != *i* ]] && return
-
-paleofetch
 
 alias ls='ls --color=auto'
 
@@ -15,8 +14,8 @@ alias au='arduino-cli compile --fqbn esp8266:esp8266:nodemcuv2 && arduino-cli up
 alias am='stty -F /dev/ttyUSB0 raw 115200 && cat /dev/ttyUSB0'
 alias aum='au && am'
 
-alias n='clear && fastfetch'
-alias N='cd && clear && fastfetch'
+alias n='clear && neofetch'
+alias N='cd && clear && neofetch'
 
 alias B='vim ~/notes/books/Bible/Daily\ Log.md'
 alias Q='vim ~/notes/QuickNote.md'
@@ -53,7 +52,7 @@ alias dd='dd status=progress'
 
 alias dis='~/misc/linux/gentoo/kill_discord.sh'
 
-alias youtube-dl='youtube-dl --write-auto-subs'
+#alias youtube-dl='youtube-dl --write-auto-subs'
 
 alias sus='N && sleep 2s && loginctl suspend'
 alias hib='N && sleep 2s && loginctl hibernate'
@@ -75,13 +74,17 @@ alias activate='source venv/bin/activate'
 #alias U='update && N'
 alias cf='cd "$(cat ~/.config/fzf/dir | fzf)"'
 alias zf='zathura --fork "$(cat ~/.config/fzf/zath | fzf)"'
+alias python='python3'
 
 alias ptt='putty -load default'
 
 alias cc='cz c'
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash > /dev/null
 
 export PATH="$PATH:/home/jerome/.local/bin"
 source "/home/jerome/.pam_environment"
 #update & 
+
+eval "$(direnv hook bash)"
+
