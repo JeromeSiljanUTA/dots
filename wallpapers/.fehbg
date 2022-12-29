@@ -1,3 +1,0 @@
-#!/bin/sh
-#feh --no-fehbg --bg-fill '/home/jerome/.config/sway/wallpapers/gruvboxspaceman.png'
-feh --no-fehbg --bg-fill '/home/jerome/.config/sway/wallpapers/chosen/22 - acropolis.png'
