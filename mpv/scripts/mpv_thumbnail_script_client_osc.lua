@@ -746,7 +746,7 @@ local thumbnailer_options = {
     offset_by_pad = true,
 
     -- Background color in BBGGRR
-    background_color = "000000",
+    background_color = "B16286",
     -- Alpha: 0 - fully opaque, 255 - transparent
     background_alpha = 80,
 
