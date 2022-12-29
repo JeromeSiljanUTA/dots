@@ -54,8 +54,9 @@ nmap \s :Files <CR>
 nmap \r :Rg <CR>
 
 "   Space Maps
-nmap <space>d :set background=dark <CR>
-nmap <space>l :set background=light <CR>
+nmap <space>d :Docstring <CR>
+"nmap <space>d :set background=dark <CR>
+"nmap <space>l :set background=light <CR>
 nmap <space>m :set wrap! spell spelllang=en_us<CR>
 nmap <space>p :MarkdownPreview <CR>
 nmap <space>g :Goyo <CR>
@@ -134,6 +135,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'sainnhe/gruvbox-material'
     Plug 'yuttie/comfortable-motion.vim'
     Plug 'dpelle/vim-LanguageTool'
+    Plug 'kien/ctrlp.vim'
+    Plug 'tpope/vim-fugitive'
+    Plug 'jupyter-vim/jupyter-vim'
 call plug#end()
 
 "Markdown Plugin Stuff
@@ -232,9 +236,9 @@ let g:python_indent = '    '
 let g:python_style = 'google'
 
 " ale
-"let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
-"let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_fixers = {
 \   'python': ['black', 'isort'],
 \   'c': ['clang-format'],
