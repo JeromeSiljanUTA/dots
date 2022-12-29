@@ -14,13 +14,6 @@ sed -i "s/frame.*/frame_color = \"$accent_color\"/" ~/.config/dunst/dunstrc
 killall dunst
 dunst &
 
-for proc in $(ps aux | grep "subscribe desktop" | awk '{print $2}')
-do 
-    kill $proc
-done
-
-bspc subscribe desktop | ~/.config/bspwm/scripts/desktop-notifier &
- 
 # rofi color change
 # change accent color in rofi
 sed -i "0,/accent.*/{s/accent.*/accent:             $accent_color;/}" ~/.config/rofi/themes/gruvbox-green.rasi
@@ -29,4 +22,5 @@ sed -i "0,/accent.*/{s/accent.*/accent:             $accent_color;/}" ~/.config/
 sed -i "s/status-style bg=.*/status-style bg=$accent_color/" ~/.config/tmux/tmux.conf
 
 # xob color change
-sed -i "s/bg     =.*/bg     = \"$accent_color\"\;/" ~/.config/xob/styles.cfg
+sed -i "s/fg     =.*/fg     = \"$accent_color\"\;/" ~/.config/xob/styles.cfg
+sed -i "s/border =.*/border = \"$accent_color\"\;/" ~/.config/xob/styles.cfg
