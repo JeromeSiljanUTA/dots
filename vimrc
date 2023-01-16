@@ -18,6 +18,12 @@ if (empty($TMUX))
   endif
 endif
 
+if has('nvim')
+    let g:python3_host_prog = '/path/to/python/bin/python3'
+else
+    set pyxversion=3
+endif
+
 "   Generic Settings
 syntax on
 syntax enable
@@ -137,7 +143,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'dpelle/vim-LanguageTool'
     Plug 'kien/ctrlp.vim'
     Plug 'tpope/vim-fugitive'
-    Plug 'jupyter-vim/jupyter-vim'
 call plug#end()
 
 "Markdown Plugin Stuff
@@ -238,7 +243,7 @@ let g:python_style = 'google'
 " ale
 let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
-let g:ale_lint_on_text_changed = 'never'
+"let g:ale_lint_on_text_changed = 'never'
 let g:ale_fixers = {
 \   'python': ['black', 'isort'],
 \   'c': ['clang-format'],
