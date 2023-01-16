@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-from pulsectl import Pulse, PulseLoopStop
 import sys
+
+from pulsectl import Pulse, PulseLoopStop
 
 with Pulse() as pulse:
 
     def callback(ev):
-        if ev.index == sink_index:
-            raise PulseLoopStop
+        raise PulseLoopStop
 
     def current_status(sink):
         return round(sink.volume.value_flat * 100), sink.mute == 1
@@ -37,7 +37,11 @@ with Pulse() as pulse:
         while True:
             pulse.event_listen()
             sinks = {s.index: s for s in pulse.sink_list()}
+            sink_index = next(
+                index for index, sink in sinks.items() if sink.name == default_sink_name
+            )
             value, mute = current_status(sinks[sink_index])
+            default_sink_name = pulse.server_info().default_sink_name
             if value != last_value or mute != last_mute:
                 print(str(value) + ("!" if mute else ""))
                 last_value, last_mute = value, mute
