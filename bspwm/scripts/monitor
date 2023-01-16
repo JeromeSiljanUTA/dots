@@ -1,0 +1,143 @@
+#!/usr/bin/env python3
+"""
+Python application to deal with monitor events so I don't have to
+"""
+
+import subprocess
+import sys
+
+
+def update_monitors():
+    """
+    Parses output of xrandr -q for monitors
+    Running `xrandr -q` makes the parsing more obvious
+    Returns:
+    Monitor dictionary
+
+    """
+    proc_state = subprocess.run(
+        ["xrandr", "-q"], shell=True, check=True, capture_output=True
+    )
+
+    # clean output and set lines to be iterated over
+    proc_out = proc_state.stdout.decode("UTF-8").splitlines()
+
+    return {
+        line.split()[0]: {
+            "status": line.split()[1],
+            "resolution": (  # add resolution if next line shows it
+                proc_out[index + 1].split()[0]
+                if index + 1 in range(len(proc_out))
+                and "+" in proc_out[index + 1]
+                and "connected" not in proc_out[index + 1]
+                else ""
+            ),
+        }
+        for index, line in enumerate(proc_out)
+        if "connected" in line
+    }
+
+
+def set_eDP():
+    """
+    Finds name of eDP monitor
+    Returns:
+    Name of eDP monitor, -1 on failure
+
+    """
+    for monitor in monitors:
+        if "eDP" in monitor:
+            return monitor
+
+    return -1
+
+
+def set_ext():
+    """
+    Finds name of external (non eDP) monitor
+    Returns:
+    Name of external monitor, -1 on failure
+
+    """
+    for monitor, properties in monitors.items():
+        if "eDP" not in monitor and properties.get("status") == "connected":
+            return monitor
+
+    return -1
+
+
+def single_monitor(target_monitor):
+    if -1 == target_monitor:
+        raise Exception("Monitor doesn't exist/isn't plugged in")
+    subprocess.run(["xrandr", "--output", target_monitor, "--auto"], check=True)
+    for monitor in monitors:
+        if monitor != target_monitor:
+            subprocess.run(["xrandr", "--output", monitor, "--off"], check=True)
+
+
+def to_right():
+    if -1 in [eDP, ext]:
+        raise Exception("Monitor doesn't exist/isn't plugged in")
+    subprocess.run(["xrandr", "--output", eDP, "--auto"], check=True)
+    subprocess.run(["xrandr", "--output", ext, "--auto", "--pos", "1920x0"], check=True)
+    for monitor in monitors:
+        if monitor not in [eDP, ext]:
+            subprocess.run(["xrandr", "--output", monitor, "--off"], check=True)
+
+    move_desktops()
+
+
+def remove_dummy():
+    """
+    Removes dummy desktops named "Desktop"
+    Returns:
+    -1 on failure
+
+    """
+    while True:
+        try:
+            subprocess.run(
+                ["bspc", "desktop", "Desktop", "--remove"],
+                check=True,
+                capture_output=True,
+            )
+        except subprocess.CalledProcessError:
+            return -1
+
+
+def set_desktops():
+    remove_dummy()
+    proc_state = subprocess.run(
+        ["bspc", "query", "--desktops", "--names"], check=True, capture_output=True
+    )
+    # set output to list
+    return proc_state.stdout.decode("UTF-8").splitlines()
+
+
+def move_desktops():
+    print("reply 'y' to move desktop to external monitor")
+
+    for desktop in set_desktops():
+        if input(f"Move {desktop} to {ext}? ").lower() == "y":
+            subprocess.run(
+                ["bspc", "desktop", desktop, "--to-monitor", ext], check=True
+            )
+
+
+monitors = update_monitors()
+
+# subprocess.run(f"xrandr --output {monitor} --auto".split(), check=True)
+eDP = set_eDP()
+ext = set_ext()
+# to_right()
+# single_monitor(eDP)
+
+match sys.argv[1]:
+    case "mono":
+        single_monitor(eDP)
+    case "ext":
+        single_monitor(ext)
+    case "right":
+        to_right()
+    case _:
+        pass
