@@ -5,6 +5,6 @@
 
     background = "#282828"
     foreground = "#FBF1C7"
-    highlight = "#B16286"
-    frame_color = "#B16286"
+    highlight = "#458588"
+    frame_color = "#458588"
 
