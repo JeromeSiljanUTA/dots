@@ -8,7 +8,7 @@ syncthing &
 picom -b
 
 # set wallpaper
-feh --bg-fill --no-fehbg ~/.config/wallpapers/chosen/51*
+~/.fehbg
 
 # create desktops a, s, d, f, u, i, o, p
 bspc monitor -d "Terminal" "Xournal++" "Misc" "Firefox" "Comms" "IDE" "Files" "Media"
@@ -23,6 +23,7 @@ bspc config border_width 2
 bspc config remove_unplugged_monitors true
 bspc config remove_disabled_monitors true
 bspc config merge_overlapping_monitors true
+bspc config pointer_follows_focus true
 
 # set wacom shortcuts
 xsetwacom --set "Wacom Intuos BT S Pad pad" Button 1 'key +ctrl z'
