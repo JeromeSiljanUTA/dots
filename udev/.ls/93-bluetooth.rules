@@ -1,0 +1,3 @@
+ACTION=="add", SUBSYSTEM=="input", RUN+="/home/jerome/.config/udev/scripts/93-input.sh %E{NAME} connected"
+
+ACTION=="remove", SUBSYSTEM=="input", RUN+="/home/jerome/.config/udev/scripts/93-input.sh %E{NAME} disconnected"

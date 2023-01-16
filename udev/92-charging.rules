@@ -1,0 +1,1 @@
+ACTION=="change", SUBSYSTEM=="power_supply", RUN+="/home/jerome/.config/udev/scripts/92-charging.sh disconnected"

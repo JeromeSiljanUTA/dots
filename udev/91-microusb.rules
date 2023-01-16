@@ -1,0 +1,3 @@
+ACTION=="remove", SUBSYSTEM=="block", RUN+="/home/jerome/.config/udev/scripts/91-microusb.sh removed"
+
+ACTION=="add", SUBSYSTEM=="block", RUN+="/home/jerome/.config/udev/scripts/91-microusb.sh added"
