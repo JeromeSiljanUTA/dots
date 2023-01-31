@@ -24,26 +24,28 @@ else
     set pyxversion=3
 endif
 
+
 "   Generic Settings
 syntax on
 syntax enable
 filetype plugin on
 filetype indent on
-set tabstop=4 softtabstop=4
+set autoread
 set encoding=utf-8
-set shiftwidth=4
 set expandtab
-set wildmenu
-set smartindent
-set relativenumber
-set smartcase
+set foldmethod=manual
 set ignorecase
 set incsearch
-set nowrap
-set scrolloff=8
 set mouse=
-set foldmethod=manual
+set nowrap
+set relativenumber
+set scrolloff=8
+set shiftwidth=4
+set smartcase
+set smartindent
+set tabstop=4 softtabstop=4
 set visualbell
+set wildmenu
 
 "   Normal Maps
 nmap Y y$
@@ -61,8 +63,6 @@ nmap \r :Rg <CR>
 
 "   Space Maps
 nmap <space>d :Docstring <CR>
-"nmap <space>d :set background=dark <CR>
-"nmap <space>l :set background=light <CR>
 nmap <space>m :set wrap! spell spelllang=en_us<CR>
 nmap <space>p :MarkdownPreview <CR>
 nmap <space>g :Goyo <CR>
@@ -71,7 +71,6 @@ nmap <space>s :split <CR>
 nmap <space>x <C-w>x
 nmap <space>z :wqa <CR>
 nmap <space>w :wa <CR>
-"nmap <space>c :w<CR>:!gcc "%"<CR><CR>:!clear && ./a.out<CR>
 nmap <space>c :ClangFormat<CR>
 nmap <space>b :call bible#insert_quote()<CR>
 nmap <space>L :w<CR>:!pdflatex "%" && rm "%":r.log && rm "%":r.aux<CR><CR>
@@ -137,12 +136,12 @@ call plug#begin('~/.vim/plugged')
     Plug 'fadein/vim-FIGlet'
     Plug 'morhetz/gruvbox'
     Plug 'lervag/vimtex'
-    Plug 'sirver/ultisnips'
     Plug 'sainnhe/gruvbox-material'
     Plug 'yuttie/comfortable-motion.vim'
     Plug 'dpelle/vim-LanguageTool'
     Plug 'kien/ctrlp.vim'
     Plug 'tpope/vim-fugitive'
+    Plug 'direnv/direnv.vim'
 call plug#end()
 
 "Markdown Plugin Stuff
@@ -217,12 +216,6 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
-"   UltiSnips Plugin
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab'
-let g:UltiSnipsSnippetDirectories=["custom_snippets"]
-
 "   Gruvbox Plugin
 "let g:gruvbox_guisp_fallback = "bg"
 let g:gruvbox_italic=1
@@ -260,3 +253,6 @@ let g:ale_c_clangformat_options = "IndentWidth: 4"
 colorscheme gruvbox
 
 set term=xterm-256color
+
+" fixes background disappearing when scrolling
+let &t_ut=''
