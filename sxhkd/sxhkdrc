@@ -1,6 +1,6 @@
 # launch alacritty on this combination
 alt + shift + Return
-	alacritty
+    alacritty
 
 # close windows
 alt + shift + c
@@ -34,6 +34,9 @@ alt + {a,s,d,f,u,i,o,p}
 alt + Tab
     bspc desktop last --focus
 
+Insert
+    bspc desktop last --focus
+
 # send node to desktop
 alt + shift + {a,s,d,f,u,i,o,p}
     bspc node focused --to-desktop {"Terminal","Xournal++","Misc","Firefox","Comms","IDE","Files","Media"}
@@ -57,9 +60,13 @@ ctrl + Return
 alt + {1,2}
     ~/.config/bspwm/scripts/{laptop.sh,ext_mono.sh}
 
-# clear notifications
-alt + 0
-    dunstctl close-all
+# clear, pop notifications
+alt + {0,9}
+    dunstctl {close-all,history-pop}
+
+# notification shortcuts
+alt + 8
+    ~/.config/bspwm/scripts/notif-battery.sh
 
 # screenshot
 super + Print
