@@ -26,65 +26,48 @@ alias graph='python ~/misc/projects/python/Bible\ graph/Bible_graph.py'
 alias pls='sudo $(history -p !!)'
 
 alias zathura='zathura --fork'
-
 alias sqlite3='sqlite3 -column'
-
 alias bc='bc -l'
 
-alias vf='vim "$(fzf)"'
-
 alias mpvf='mpv "$(find /home/jerome -not -path "*/.*" -type d | fzf)"'
+alias vid='mpv "$(find /home/jerome/media/video -type d -not -path "*/.*"| fzf)"'
 
-#alias zf='zathura --fork "$(find ~/ -not -path "*/.*" -type f -name "*.pdf" | fzf)"'
-#alias ef='"$(find ~/ -not -path "*/.*" -type f -name "*.sh" | fzf)"'
-#alias vf='vim "$(find ~/ -not -path "*/.*" -type f -name "*.*" | fzf)"'
-#alias cf='cd "$(find . -not -path "*/.*" -type d | fzf)"'
+alias zf='zathura --fork "$(find ~/ -type f -path "*.pdf" | fzf)"'
+alias vf='vim "$(find ~/ -type f -not -path "*/.*" | fzf)"'
+alias cf='cd "$(find ~/ -type d | fzf)"'
 
-alias zf='zathura --fork "$(find ~/ | grep -i ".pdf" | fzf)"'
-alias ef='"$(find ~/ | grep -i ".pdf" | fzf)"'
-alias vf='vim "$(find ~/ | fzf)"'
-alias cf='cd "$(find ~/ | fzf)"'
-
-alias ssh='ssh -F ~/.config/ssh/'
 alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 alias wget='wget --hsts-file=~/.config/wget-hsts'
 alias dd='dd status=progress'
 
 alias dis='~/misc/linux/gentoo/kill_discord.sh'
 
-#alias youtube-dl='youtube-dl --write-auto-subs'
-
-alias sus='N && sleep 2s && loginctl suspend'
-alias hib='N && sleep 2s && loginctl hibernate'
-
-#alias ch='~/.config/sway/wallpapers/changer.sh && n'
 alias ch='~/.config/bspwm/notif/changer.sh && n'
 
 alias record='ffmpeg -video_size 1920x1080 -framerate 25 -f x11grab -i :0.0 output.mp4'
 
-alias ssh='kitty +kitten ssh'
-
-alias moo='emerge --moo'
-
 alias lofi='mpv https://www.youtube.com/watch?v=jfKfPfyJRdk --no-resume-playback'
 
-alias activate='source venv/bin/activate'
-
-#alias upd='update && n'
-#alias U='update && N'
-alias cf='cd "$(cat ~/.config/fzf/dir | fzf)"'
-alias zf='zathura --fork "$(cat ~/.config/fzf/zath | fzf)"'
 alias python='python3'
 
 alias ptt='putty -load default'
+
+alias cnf='command-not-found'
+
+alias pdb='python -m pdb'
 
 alias cc='cz c'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash > /dev/null
 
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
 export PATH="$PATH:/home/jerome/.local/bin"
 source "/home/jerome/.pam_environment"
-#update & 
-
 eval "$(direnv hook bash)"
+
+
 
