@@ -84,6 +84,8 @@ nmap <C-k> i$$<ESC>ha
 imap <C-k> $$<ESC>ha
 map <C-s> :!sleep 2s && grim -g "$(slurp)" -t jpeg<CR>
 nmap 'g G
+nnoremap <C-c> "+y
+vnoremap <C-c> "+y
 
 "   Markdown Settings/Autocmd
 autocmd BufWinLeave *.md | :! killall qutebrowser
@@ -142,6 +144,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'kien/ctrlp.vim'
     Plug 'tpope/vim-fugitive'
     Plug 'direnv/direnv.vim'
+    Plug 'stevearc/vim-arduino'
 call plug#end()
 
 "Markdown Plugin Stuff
