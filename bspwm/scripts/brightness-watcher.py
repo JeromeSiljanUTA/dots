@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-import inotify.adapters
 import sys
 import time
+
+import inotify.adapters
 
 brightness_file = "/sys/class/backlight/intel_backlight/brightness"
 max_brightness_file = "/sys/class/backlight/intel_backlight/max_brightness"
@@ -28,5 +29,9 @@ def _main():
             sys.stdout.flush()
 
 
-if __name__ == "__main__":
-    _main()
+while True:
+    try:
+        if __name__ == "__main__":
+            _main()
+    except:
+        pass
