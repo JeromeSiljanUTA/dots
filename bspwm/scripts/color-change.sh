@@ -1,9 +1,11 @@
 #!/bin/bash
 
 # purple
-accent_color="#B16286"
-#green
+#accent_color="#B16286"
+# green
 #accent_color="#98971A"
+# blue
+accent_color="#458588"
 
 # dunst color change
 # change highlight color in dunst
