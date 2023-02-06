@@ -6,8 +6,8 @@
   <property name="pressureMultiplier" value="1.00000000"/>
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Notes"/>
-  <property name="lastSavePath" value="/home/jerome/learning/self taught/islr"/>
-  <property name="lastOpenPath" value="/home/jerome/learning/self taught/islr"/>
+  <property name="lastSavePath" value="/home/jerome/learning/school/ELECTRONICS CSE3323/lectures"/>
+  <property name="lastOpenPath" value="/home/jerome"/>
   <property name="lastImagePath" value="/home/jerome"/>
   <property name="edgePanSpeed" value="20.00000000"/>
   <property name="edgePanMaxMult" value="5.00000000"/>
@@ -86,7 +86,7 @@
   <property name="audioSampleRate" value="44100.00000000"/>
   <property name="audioGain" value="1.00000000"/>
   <property name="defaultSeekTime" value="5"/>
-  <property name="pluginEnabled" value=""/>
+  <property name="pluginEnabled" value="ToggleGrid,ColorCycle"/>
   <property name="pluginDisabled" value=""/>
   <property name="strokeFilterIgnoreTime" value="150"/>
   <property name="strokeFilterIgnoreLength" value="1.00000000"/>
@@ -275,8 +275,8 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="pen">
-      <attribute name="color" type="hex" value="458588"/>
-      <attribute name="drawingType" type="string" value="strokeRecognizer"/>
+      <attribute name="color" type="hex" value="d79921"/>
+      <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
       <attribute name="size" type="string" value="BIG"/>
