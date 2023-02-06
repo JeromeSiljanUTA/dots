@@ -9,4 +9,4 @@ else
     status="connected"
 fi
 
-sudo -u jerome DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus DISPLAY=:0 dunstify "Power Supply $status"
+sudo -u jerome DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus DISPLAY=:0 dunstify -r 4 "Power Supply $status"
