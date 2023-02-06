@@ -7,6 +7,18 @@ import subprocess
 import sys
 
 
+def set_wallpaper():
+    """
+    sets wallpaper using fehbg script
+    """
+    try:
+        proc_state = subprocess.run(
+            ["/home/jerome/.fehbg"], shell=True, check=True, capture_output=True
+        )
+    except:
+        raise Exception("No fehbg script found")
+
+
 def update_monitors():
     """
     Parses output of xrandr -q for monitors
@@ -73,6 +85,7 @@ def single_monitor(target_monitor):
     for monitor in monitors:
         if monitor != target_monitor:
             subprocess.run(["xrandr", "--output", monitor, "--off"], check=True)
+    set_wallpaper()
 
 
 def to_right():
@@ -85,6 +98,8 @@ def to_right():
             subprocess.run(["xrandr", "--output", monitor, "--off"], check=True)
 
     move_desktops()
+    set_wallpaper()
+
 
 
 def remove_dummy():
@@ -132,12 +147,9 @@ ext = set_ext()
 # to_right()
 # single_monitor(eDP)
 
-match sys.argv[1]:
-    case "mono":
-        single_monitor(eDP)
-    case "ext":
-        single_monitor(ext)
-    case "right":
-        to_right()
-    case _:
-        pass
+if sys.argv[1] == "mono":
+    single_monitor(eDP)
+elif sys.argv[1] == "ext":
+    single_monitor(ext)
+elif sys.argv[1] == "right":
+    to_right()
