@@ -57,7 +57,8 @@ nmap te :Texplore<CR>
 
 "   Leader Maps
 nmap \q za
-nmap \f :Fern . -drawer -reveal=% -toggle<CR>
+" nmap \f :Fern . -drawer -reveal=% -toggle<CR>
+nmap \f :NERDTreeToggle<CR>
 nmap \s :Files <CR>
 nmap \r :Rg <CR>
 
@@ -127,6 +128,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     Plug 'junegunn/goyo.vim'
     Plug 'lambdalisue/fern.vim'
+    Plug 'preservim/nerdtree'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'dbeniamine/todo.txt-vim'
