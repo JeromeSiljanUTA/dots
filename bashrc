@@ -54,6 +54,10 @@ alias ptt='putty -load default'
 
 alias cnf='command-not-found'
 
+alias cppng='xclip -selection clipboard -t image/png -i '
+alias cpjpg='xclip -selection clipboard -t image/jpg -i '
+alias cpjpeg='xclip -selection clipboard -t image/jpeg -i '
+
 alias pdb='python -m pdb'
 
 alias cc='cz c'
@@ -68,6 +72,3 @@ fi
 export PATH="$PATH:/home/jerome/.local/bin"
 source "/home/jerome/.pam_environment"
 eval "$(direnv hook bash)"
-
-
-
