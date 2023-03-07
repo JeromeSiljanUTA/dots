@@ -1,71 +1,71 @@
 # launch alacritty on this combination
-alt + shift + Return
+super + shift + Return
     alacritty
 
 # close windows
-alt + shift + c
+super + shift + c
     bspc node --close
 
 # focus neighbor nodes
-alt + {h,j,k,l}
+super + {h,j,k,l}
     bspc node --focus {west,south,north,east}
 
 # swap neighbor nodes
-alt + shift + {h,j,k,l}
+super + shift + {h,j,k,l}
     bspc node --swap {west,south,north,east}
 
 # focus neighbor nodes while in monocle mode
-alt + ctrl + {j,k}
+super + ctrl + {j,k}
     bspc node --focus {next,prev}.local.!hidden.window.!locked
 
 # toggle floating
-alt + shift + space
+super + shift + space
     bspc node --state ~floating
 
 # launch rofi
-alt + n
+super + n
     rofi -show drun
 
 # select desktops
-alt + {a,s,d,f,u,i,o,p}
+super + {a,s,d,f,u,i,o,p}
     bspc desktop {"Terminal","Xournal++","Misc","Firefox","Comms","IDE","Files","Media"} --focus
 
 # select last desktop
-alt + Tab
+super + Tab
     bspc desktop last --focus
 
 Insert
     bspc desktop last --focus
 
 # send node to desktop
-alt + shift + {a,s,d,f,u,i,o,p}
+super + shift + {a,s,d,f,u,i,o,p}
     bspc node focused --to-desktop {"Terminal","Xournal++","Misc","Firefox","Comms","IDE","Files","Media"}
 
 # change mode to monocle, full screen, tiled
-super + {f}
-    bspc node --state ~fullscreen
+#super + {f}
+    #bspc node --state ~fullscreen
 
 # switches to "next" mode
-alt + {m}
+super + {m}
     bspc desktop --layout next
 
 # enters warpd normal mode
 Print
     warpd --normal
 
-ctrl + Return 
-    warpd --normal
+#ctrl + Return 
+    #warpd --normal
 
 # monitor scripts
-alt + {1,2}
+super + {1,2}
     ~/.config/bspwm/scripts/{laptop.sh,ext_mono.sh}
 
 # clear, pop notifications
-alt + {0,9}
+super + {0,9}
     dunstctl {close-all,history-pop}
 
 # notification shortcuts
-alt + 8
+super + 8
     ~/.config/bspwm/scripts/notif-battery.sh
 
 # screenshot
@@ -73,8 +73,8 @@ super + Print
     flameshot gui
 
 # dump status
-super + d
-    ~/dump.sh
+#super + d
+    #~/dump.sh
 
 # play/pause media
 XF86AudioPlay
@@ -93,5 +93,5 @@ XF86MonBrightness{Down,Up}
     xbacklight -{dec,inc} 5
 
 # reload config
-alt + Escape
+super + Escape
     pkill -usr1 -x sxhkd
