@@ -14,7 +14,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-																		     
+
 
 ;; use-package refresher:
 ;; :config runs stuff after package loaded
@@ -56,7 +56,7 @@
   :config
   (yas-global-mode 1)
   (setq yas-snippet-dirs '("~/.config/emacs/snippets")))
-  
+
 
 ;; https://github.com/millejoh/emacs-ipython-notebook
 (use-package ein
@@ -99,9 +99,8 @@
 
 ;; https://github.com/lassik/emacs-format-all-the-code
 (use-package format-all
-  :ensure t
-  :hook (prog-mode-hook . format-all-mode))
-
+  :ensure t)
+(add-hook 'prog-mode-hook 'format-all-mode)
 (add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
 
 (provide 'init)
