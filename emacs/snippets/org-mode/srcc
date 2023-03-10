@@ -1,0 +1,4 @@
+#+NAME: ${1:NAME}
+#+BEGIN_SRC c
+$0
+#+END_SRC
