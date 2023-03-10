@@ -16,11 +16,11 @@
  )
 																		     
 
-;; use-package refresher:			      
-;; :config runs stuff after package loaded	      
-;; :mode does before				      
+;; use-package refresher:
+;; :config runs stuff after package loaded
+;; :mode does before
 ;; :ensure makes sure packages are correctly installed
-;; :hook run this when in that mode (that . this)     
+;; :hook run this when in that mode (that . this)
 
 ;; First change the theme so I'm not blinded on startup
 ;; https://github.com/greduan/emacs-theme-gruvbox
@@ -51,33 +51,45 @@
 
 ;; https://github.com/joaotavora/yasnippet
 (use-package yasnippet
+  :defines
+  yas-snippet-dirs
   :config
   (yas-global-mode 1)
-  :define
   (setq yas-snippet-dirs '("~/.config/emacs/snippets")))
+  
 
 ;; https://github.com/millejoh/emacs-ipython-notebook
 (use-package ein
-  :define
+  :defines
+  ein:output-area-inlined-images
+  :config
   (setq ein:output-area-inlined-images t))
 
 (global-set-key "\C-cd" 'kill-whole-line)
 
 ;; https://orgmode.org/
 (use-package org
-  :define
+  :defines
+  org-agenda-files
+  org-deadline-warning-days
+  :config
   (setq org-agenda-files '("~/misc/gtd/main.org"
                            "~/misc/gtd/in.org"))
   (setq org-deadline-warning-days 0))
 
 ;; https://www.gnu.org/software/emms/
 (use-package emms
+  :defines
+  emms-browser-covers
+  emms-player-list
+  emms-player-mpv
+  emms-source-file-directory-tree-function
+  emms-source-file-default-directory
   :config
-  (emms-all)
-  :define
   (setq emms-source-file-default-directory "~/media/music/")
+  (emms-all)
   (setq emms-player-list (list emms-player-mpv)
-        emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find
+        emms-source-file-directory-tree-function 'emms-sourpce-file-directory-tree-find
         emms-browser-covers 'emms-browser-cache-thumbnail))
 
 ;; https://www.flycheck.org/en/
@@ -89,6 +101,8 @@
 (use-package format-all
   :ensure t
   :hook (prog-mode-hook . format-all-mode))
+
+(add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
 
 (provide 'init)
 ;;; init.el ends here
