@@ -53,18 +53,19 @@
 (use-package yasnippet
   :config
   (yas-global-mode 1)
+  :define
   (setq yas-snippet-dirs '("~/.config/emacs/snippets")))
 
 ;; https://github.com/millejoh/emacs-ipython-notebook
 (use-package ein
-  :config
+  :define
   (setq ein:output-area-inlined-images t))
 
 (global-set-key "\C-cd" 'kill-whole-line)
 
 ;; https://orgmode.org/
 (use-package org
-  :config
+  :define
   (setq org-agenda-files '("~/misc/gtd/main.org"
                            "~/misc/gtd/in.org"))
   (setq org-deadline-warning-days 0))
@@ -73,6 +74,7 @@
 (use-package emms
   :config
   (emms-all)
+  :define
   (setq emms-source-file-default-directory "~/media/music/")
   (setq emms-player-list (list emms-player-mpv)
         emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find
