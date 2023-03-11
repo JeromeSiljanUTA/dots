@@ -113,13 +113,13 @@
   :ensure t
   :defines sphinx-doc-include-types
   :config
-  (setq sphinx-doc-include-types t))
-
-(add-hook 'python-mode-hook (lambda ()
-			      (require 'sphinx-doc)
-			      (sphinx-doc-mode t)))
+  (setq sphinx-doc-include-types t)
+  :init (add-hook 'python-mode-hook (lambda ()
+				      (require 'sphinx-doc)
+				      (sphinx-doc-mode t))))
 
 (require 'python)
+;; C-c C-c respects __init__
 (define-key python-mode-map (kbd "C-c C-c")
   (lambda () (interactive) (python-shell-send-buffer t)))
 
