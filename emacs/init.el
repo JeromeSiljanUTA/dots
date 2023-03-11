@@ -7,7 +7,7 @@
    '("3e374bb5eb46eb59dbd92578cae54b16de138bc2e8a31a2451bf6fdb0f3fd81b" "d80952c58cf1b06d936b1392c38230b74ae1a2a6729594770762dc0779ac66b7" "72ed8b6bffe0bfa8d097810649fd57d2b598deef47c992920aef8b5d9599eefe" default))
  '(org-export-preserve-breaks nil)
  '(package-selected-packages
-   '(flycheck format-all pdf-tools company yasnippet use-package tablist reformatter python-mode magit gruvbox-theme expand-region evil emms ein direnv blacken auto-complete)))
+   '(sphinx-doc avy flycheck format-all pdf-tools company yasnippet use-package tablist reformatter python-mode magit gruvbox-theme expand-region evil emms ein direnv blacken auto-complete)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -102,6 +102,26 @@
   :ensure t)
 (add-hook 'prog-mode-hook 'format-all-mode)
 (add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
+
+;; https://github.com/abo-abo/avy
+(use-package avy
+  :ensure t)
+(global-set-key (kbd "C-:") 'avy-goto-char)
+
+;; https://github.com/naiquevin/sphinx-doc.el
+(use-package sphinx-doc
+  :ensure t
+  :defines sphinx-doc-include-types
+  :config
+  (setq sphinx-doc-include-types t))
+
+(add-hook 'python-mode-hook (lambda ()
+			      (require 'sphinx-doc)
+			      (sphinx-doc-mode t)))
+
+(require 'python)
+(define-key python-mode-map (kbd "C-c C-c")
+  (lambda () (interactive) (python-shell-send-buffer t)))
 
 (provide 'init)
 ;;; init.el ends here
