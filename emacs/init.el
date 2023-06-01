@@ -3,12 +3,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(calendar-mark-holidays-flag t)
  '(custom-safe-themes
    '("19a2c0b92a6aa1580f1be2deb7b8a8e3a4857b6c6ccf522d00547878837267e7" "fa49766f2acb82e0097e7512ae4a1d6f4af4d6f4655a48170d0a00bcb7183970" "21055a064d6d673f666baaed35a69519841134829982cbbb76960575f43424db" "9ab9441566f7c3b059a205a7c5fad32a58422c2695815436d8cc087860b8c2e5" "1781e8bccbd8869472c09b744899ff4174d23e4f7517b8a6c721100288311fa5" "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" "3e374bb5eb46eb59dbd92578cae54b16de138bc2e8a31a2451bf6fdb0f3fd81b" "d80952c58cf1b06d936b1392c38230b74ae1a2a6729594770762dc0779ac66b7" "72ed8b6bffe0bfa8d097810649fd57d2b598deef47c992920aef8b5d9599eefe" default))
+ '(holiday-bahai-holidays nil)
+ '(holiday-islamic-holidays nil)
+ '(holiday-oriental-holidays nil)
  '(org-agenda-files '("/home/jerome/misc/gtd/main.org"))
  '(org-export-preserve-breaks nil)
  '(package-selected-packages
-   '(codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package tablist reformatter python-mode magit gruvbox-theme expand-region evil emms ein direnv blacken auto-complete)))
+   '(docker-compose-mode docker-tramp debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package tablist reformatter python-mode magit gruvbox-theme expand-region evil emms ein direnv blacken auto-complete)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -25,8 +29,14 @@
 
 ;; First change the theme so I'm not blinded on startup
 ;; https://github.com/greduan/emacs-theme-gruvbox
+
 (use-package gruvbox-theme
   :config (load-theme 'gruvbox-light-medium))
+
+;; Hide scroll bar, menu bar, tool bar
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 
 ;; Install use-package if not installed
 (package-refresh-contents)
@@ -77,6 +87,9 @@
   :config
   (setq org-agenda-files '("~/misc/gtd/main.org"))
   (setq org-deadline-warning-days 0))
+(setq org-refile-targets
+      '(("~/misc/gtd/main.org" :maxlevel . 1)
+        ("~/misc/gtd/phone_in.org" :maxlevel . 1)))
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
@@ -144,5 +157,11 @@
 (define-key python-mode-map (kbd "C-c C-c")
   (lambda () (interactive) (python-shell-send-buffer t)))
 
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
+(set-frame-font "IBM Plex Mono Medium 12" nil t)
+
 (provide 'init)
 ;;; init.el ends here
+(put 'dired-find-alternate-file 'disabled nil)
