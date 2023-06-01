@@ -3,10 +3,14 @@
 status="$(awk -F '=' '/ONLINE/ {print $2}' /sys/class/power_supply/AC/uevent)"
 
 if [[ "$status" == "0" ]]
-then 
+then
+    powerprofilesctl set power-saver
     status="disconnected"
 else
+    powerprofilesctl set performance
     status="connected"
 fi
 
-sudo -u jerome DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus DISPLAY=:0 dunstify -r 4 "Power Supply $status"
+#sudo -u jerome DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus DISPLAY=:0 /home/jerome/.config/bspwm/scripts/notif-battery.sh $status
+
+sudo -u jerome "/home/jerome/.config/bspwm/scripts/notif-battery.sh"

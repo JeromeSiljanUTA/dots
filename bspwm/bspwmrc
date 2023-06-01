@@ -1,20 +1,25 @@
 #!/bin/bash
 
 # start daemons
-sxhkd & 
+#kitty #&
+#emacs --daemon &
+sxhkd &
 dunst &
-warpd &
-syncthing &
+#warpd &
+#syncthing --allow-newer-config &
+#/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 picom -b
+#pulseaudio -D
 
 # set wallpaper
 ~/.fehbg
 
 # create desktops a, s, d, f, u, i, o, p
-bspc monitor -d "Terminal" "Xournal++" "Misc" "Firefox" "Comms" "IDE" "Files" "Media"
+bspc monitor -d "Terminal" "Notes" "Emacs" "Firefox" "Comms" "IDE" "Files" "Media"
 
 # add gaps
-bspc config window_gap 20
+# bspc config window_gap 20
+bspc config window_gap 0
 
 # selected node border width
 bspc config border_width 2
@@ -23,7 +28,7 @@ bspc config border_width 2
 bspc config remove_unplugged_monitors true
 bspc config remove_disabled_monitors true
 bspc config merge_overlapping_monitors true
-bspc config pointer_follows_focus true
+#bspc config pointer_follows_focus true
 
 # set wacom shortcuts
 xsetwacom --set "Wacom Intuos BT S Pad pad" Button 1 'key +ctrl z'
@@ -31,10 +36,11 @@ xsetwacom --set "Wacom Intuos BT S Pad pad" Button 2 'key +ctrl y'
 xsetwacom --set "Wacom Intuos BT S Pad pad" Button 3 'key +alt tab'
 
 # start desktop notifier
-bspc subscribe desktop | ~/.config/bspwm/scripts/desktop-notifier &
+#bspc subscribe desktop | ~/.config/bspwm/scripts/desktop-notifier &
+~/.config/bspwm/scripts/desktop-notifier.sh &
 
 # start xob for brightness
-~/.config/bspwm/scripts/brightness-watcher.py | xob &
+#~/.config/bspwm/scripts/brightness-watcher.py &
 
 # start xob for volume
-~/.config/bspwm/scripts/volume-watcher.py | xob &
+~/.config/bspwm/scripts/volume-watcher.py &

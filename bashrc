@@ -32,8 +32,8 @@ alias bc='bc -l'
 alias mpvf='mpv "$(find /home/jerome -not -path "*/.*" -type d | fzf)"'
 alias vid='mpv "$(find /home/jerome/media/video -type d -not -path "*/.*"| fzf)"'
 
-alias zf='zathura --fork "$(find ~/ -type f -path "*.pdf" | fzf)"'
-alias vf='vim "$(find ~/ -type f -not -path "*/.*" | fzf)"'
+alias zf='zathura --fork "$(locate "*.pdf" | fzf)"'
+alias vf='vim "$(locate "*.pdf")"'
 alias cf='cd "$(find ~/ -type d | fzf)"'
 
 alias tmux='tmux -f ~/.config/tmux/tmux.conf'
@@ -54,13 +54,16 @@ alias ptt='putty -load default'
 
 alias cnf='command-not-found'
 
-alias cppng='xclip -selection clipboard -t image/png -i '
-alias cpjpg='xclip -selection clipboard -t image/jpg -i '
-alias cpjpeg='xclip -selection clipboard -t image/jpeg -i '
+#alias wacom='~/.config/bspwm/scripts/wacom.sh'
+
+alias cppng='xclip -selection clipboard -t image/png -o > '
+alias cpjpg='xclip -selection clipboard -t image/jpg -o > '
+alias cpjpeg='xclip -selection clipboard -t image/jpeg -o > '
 
 alias pdb='python -m pdb'
 
 alias cc='cz c'
+alias wol='wol 38:63:bb:3b:32:78'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash > /dev/null
 
@@ -70,5 +73,7 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 export PATH="$PATH:/home/jerome/.local/bin"
+export IDF_PATH=~/esp/ESP8266_RTOS_SDK/
 source "/home/jerome/.pam_environment"
 eval "$(direnv hook bash)"
+

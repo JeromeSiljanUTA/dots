@@ -1,6 +1,6 @@
 # launch alacritty on this combination
 super + shift + Return
-    alacritty
+    kitty
 
 # close windows
 super + shift + c
@@ -19,7 +19,7 @@ super + ctrl + {j,k}
     bspc node --focus {next,prev}.local.!hidden.window.!locked
 
 # toggle floating
-super + shift + space
+super + shift + @space
     bspc node --state ~floating
 
 # launch rofi
@@ -28,7 +28,7 @@ super + n
 
 # select desktops
 super + {a,s,d,f,u,i,o,p}
-    bspc desktop {"Terminal","Xournal++","Misc","Firefox","Comms","IDE","Files","Media"} --focus
+    bspc desktop {"Terminal","Notes","Emacs","Firefox","Comms","IDE","Files","Media"} --focus
 
 # select last desktop
 super + Tab
@@ -39,7 +39,7 @@ Insert
 
 # send node to desktop
 super + shift + {a,s,d,f,u,i,o,p}
-    bspc node focused --to-desktop {"Terminal","Xournal++","Misc","Firefox","Comms","IDE","Files","Media"}
+    bspc node focused --to-desktop {"Terminal","Notes","Emacs","Firefox","Comms","IDE","Files","Media"}
 
 # change mode to monocle, full screen, tiled
 #super + {f}
@@ -60,9 +60,13 @@ Print
 super + {1,2}
     ~/.config/bspwm/scripts/{laptop.sh,ext_mono.sh}
 
+XF86Display
+    ~/.config/bspwm/scripts/monitor
+
 # clear, pop notifications
 super + {0,9}
-    dunstctl {close-all,history-pop}
+      {dunstctl close-all,dunstctl history-pop}
+    #{dunstctl close-all && sudo -u jerome DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus DISPLAY=:0 dunstctl close-all,dunstctl history-pop}
 
 # notification shortcuts
 super + 8
@@ -90,7 +94,7 @@ XF86Audio{LowerVolume,RaiseVolume,Mute}
 
 # brightness control
 XF86MonBrightness{Down,Up}
-    xbacklight -{dec,inc} 5
+    xbacklight -{dec,inc} 4
 
 # reload config
 super + Escape

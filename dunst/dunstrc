@@ -3,8 +3,12 @@
 
     font = "Jost-500-Medium 12"
 
-    background = "#282828"
-    foreground = "#FBF1C7"
+    #background = "#282828"
+    #foreground = "#FBF1C7"
+    background = "#FBF1C7"
+    foreground = "#3C3836"
     highlight = "#458588"
     frame_color = "#458588"
 
+    icon_theme = breeze
+    enable_recursive_icon_lookup = true

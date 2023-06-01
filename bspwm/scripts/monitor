@@ -50,15 +50,15 @@ def update_monitors():
     }
 
 
-def set_eDP():
+def set_local():
     """
-    Finds name of eDP monitor
+    Finds name of local monitor
     Returns:
-    Name of eDP monitor, -1 on failure
+    Name of local monitor, -1 on failure
 
     """
     for monitor in monitors:
-        if "eDP" in monitor:
+        if "eDP" in monitor or 'LVDS' in monitor:
             return monitor
 
     return -1
@@ -66,13 +66,13 @@ def set_eDP():
 
 def set_ext():
     """
-    Finds name of external (non eDP) monitor
+    Finds name of external monitor
     Returns:
     Name of external monitor, -1 on failure
 
     """
     for monitor, properties in monitors.items():
-        if "eDP" not in monitor and properties.get("status") == "connected":
+        if ("eDP" not in monitor and 'LVDS' not in monitor) and properties.get("status") == "connected":
             return monitor
 
     return -1
@@ -89,17 +89,16 @@ def single_monitor(target_monitor):
 
 
 def to_right():
-    if -1 in [eDP, ext]:
+    if -1 in [local, ext]:
         raise Exception("Monitor doesn't exist/isn't plugged in")
-    subprocess.run(["xrandr", "--output", eDP, "--auto"], check=True)
+    subprocess.run(["xrandr", "--output", local, "--auto"], check=True)
     subprocess.run(["xrandr", "--output", ext, "--auto", "--pos", "1920x0"], check=True)
     for monitor in monitors:
-        if monitor not in [eDP, ext]:
+        if monitor not in [local, ext]:
             subprocess.run(["xrandr", "--output", monitor, "--off"], check=True)
 
     move_desktops()
     set_wallpaper()
-
 
 
 def remove_dummy():
@@ -142,14 +141,21 @@ def move_desktops():
 monitors = update_monitors()
 
 # subprocess.run(f"xrandr --output {monitor} --auto".split(), check=True)
-eDP = set_eDP()
+local = set_local()
 ext = set_ext()
 # to_right()
 # single_monitor(eDP)
 
-if sys.argv[1] == "mono":
-    single_monitor(eDP)
-elif sys.argv[1] == "ext":
-    single_monitor(ext)
-elif sys.argv[1] == "right":
-    to_right()
+
+if len(sys.argv) > 1:
+    if sys.argv[1] == "mono":
+        single_monitor(local)
+    elif sys.argv[1] == "ext":
+        single_monitor(ext)
+    elif sys.argv[1] == "right":
+        to_right()
+else:
+    try:
+        single_monitor(ext)
+    except:
+        single_monitor(local)

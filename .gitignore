@@ -1,5 +1,7 @@
 Microsoft/
-Mullvad VPN/
+Mullvad
+*#*#*
+*~
 MusicBrainz/Picard-*
 QtProject.conf
 Recoll.org/
@@ -12,8 +14,29 @@ cmus/command-history
 cmus/lib.pl
 cmus/playlists/
 cmus/search-history
+d VPN/
 dconf/
 discord
+emacs/.cache/
+emacs/.lsp-session-v1
+emacs/ac-comphist.dat
+emacs/auto-save-list/
+emacs/bookmarks
+emacs/bookmarks~
+emacs/codespaces.el/
+emacs/devdocs/
+emacs/eln-cache/
+emacs/elpa/
+emacs/emms/
+emacs/eww-bookmarks
+emacs/image-dired/
+emacs/init.el~
+emacs/network-security.data
+emacs/request/
+emacs/tramp
+emacs/transient/
+emacs/tutorial/
+emacs/url/
 enchant/
 fastfetch/
 flameshot/

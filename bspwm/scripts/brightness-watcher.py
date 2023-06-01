@@ -1,6 +1,11 @@
+"""
+Manges brightness notifications
+"""
+
 #!/usr/bin/env python3
 
 import sys
+import os
 import time
 
 import inotify.adapters
@@ -14,7 +19,7 @@ def scale_value():
         max_val = int(f.read())
     with open(brightness_file, "r") as f:
         curr_val = int(f.read())
-    return int(curr_val / max_val * 100)
+    return round(int(curr_val / max_val * 100) + 0.5)
 
 
 def _main():
@@ -25,8 +30,12 @@ def _main():
     for event in i.event_gen(yield_nones=False):
         (_, type_names, path, filename) = event
         if filename == "brightness" and type_names == ["IN_CLOSE_WRITE"]:
-            print(f"{scale_value()}")
-            sys.stdout.flush()
+            scaled_brightness = scale_value()
+            os.system(
+                f"dunstify -r 4 'Brightness Level' {scaled_brightness}% -h int:value:{scaled_brightness}"
+            )
+            # print(f"{scale_value()}")
+            # sys.stdout.flush()
 
 
 while True:

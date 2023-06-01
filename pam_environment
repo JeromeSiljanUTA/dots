@@ -1,1 +1,2 @@
 EDITOR="vim"
+VDPAU_DRIVER="va_gl"

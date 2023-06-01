@@ -6,7 +6,7 @@
   <property name="pressureMultiplier" value="1.00000000"/>
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Notes"/>
-  <property name="lastSavePath" value=""/>
+  <property name="lastSavePath" value="/home/jerome/learning/school/archive/.EMBEDDED SYSTEMS I CSE3442/labs/lab 03"/>
   <property name="lastOpenPath" value="/home/jerome/learning/school/ELECTRONICS CSE3323/labs/lab 02"/>
   <property name="lastImagePath" value="/home/jerome"/>
   <property name="edgePanSpeed" value="20.00000000"/>
@@ -248,7 +248,7 @@
     <attribute name="count" type="int" value="9"/>
   </data>
   <data name="tools">
-    <attribute name="current" type="string" value="pen"/>
+    <attribute name="current" type="string" value="selectRegion"/>
     <data name="drawArrow">
       <attribute name="drawingType" type="string" value="default"/>
     </data>
@@ -284,7 +284,7 @@
     </data>
     <data name="pen">
       <attribute name="color" type="hex" value="458588"/>
-      <attribute name="drawingType" type="string" value="default"/>
+      <attribute name="drawingType" type="string" value="rectangle"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
       <attribute name="size" type="string" value="BIG"/>
