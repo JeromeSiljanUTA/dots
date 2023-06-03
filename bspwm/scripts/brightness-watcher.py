@@ -1,8 +1,8 @@
+#!/usr/bin/env python3
+
 """
 Manges brightness notifications
 """
-
-#!/usr/bin/env python3
 
 import sys
 import os
