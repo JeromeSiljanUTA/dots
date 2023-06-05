@@ -19,7 +19,7 @@ super + ctrl + {j,k}
     bspc node --focus {next,prev}.local.!hidden.window.!locked
 
 # toggle floating
-super + shift + @space
+super + shift + space
     bspc node --state ~floating
 
 # launch rofi
@@ -58,10 +58,13 @@ Print
 
 # monitor scripts
 super + {1,2}
-    ~/.config/bspwm/scripts/{laptop.sh,ext_mono.sh}
+    ~/.config/bspwm/scripts/monitor {mono,ext}
 
 XF86Display
     ~/.config/bspwm/scripts/monitor
+
+super + 3
+    ~/.config/bspwm/scripts/date
 
 # clear, pop notifications
 super + {0,9}
