@@ -1,15 +1,10 @@
 #!/bin/bash
 
 # start daemons
-#kitty #&
-#emacs --daemon &
-sxhkd &
-dunst &
-#warpd &
-#syncthing --allow-newer-config &
-#/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 picom -b
-#pulseaudio -D
+dunst &
+sxhkd &
+#/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
 # set wallpaper
 ~/.fehbg
