@@ -64,7 +64,8 @@ with Pulse() as pulse:
                             icon = "audio-volume-low-symbolic"
 
                         os.system(
-                            f"dunstify -r 3 Volume {value}% -h int:value:{message} -i {icon}"
+                            # f"dunstify -r 3 Volume {value}% -h int:value:{message} -i {icon}"
+                            f"dunstify -r 3 Volume -h int:value:{message} -i {icon}"
                         )
                     last_value, last_mute = value, mute
                 sys.stdout.flush()

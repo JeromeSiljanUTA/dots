@@ -1,8 +1,8 @@
+#!/usr/bin/env python3
+
 """
 Manges brightness notifications
 """
-
-#!/usr/bin/env python3
 
 import sys
 import os
@@ -31,8 +31,13 @@ def _main():
         (_, type_names, path, filename) = event
         if filename == "brightness" and type_names == ["IN_CLOSE_WRITE"]:
             scaled_brightness = scale_value()
+            if scaled_brightness > 50:
+                icon = "brightness-high"
+            else:
+                icon = "brightness-low"
             os.system(
-                f"dunstify -r 4 'Brightness Level' {scaled_brightness}% -h int:value:{scaled_brightness}"
+                # f"dunstify -r 4 'Brightness Level' {scaled_brightness}% -h int:value:{scaled_brightness}"
+                f"dunstify -r 4 'Brightness' -h int:value:{scaled_brightness} -i {icon}"
             )
             # print(f"{scale_value()}")
             # sys.stdout.flush()
