@@ -13,8 +13,11 @@ sxhkd &
 bspc monitor -d "Terminal" "Notes" "Emacs" "Firefox" "Comms" "IDE" "Files" "Media"
 
 # add gaps
-# bspc config window_gap 20
-bspc config window_gap 0
+bspc config window_gap 15
+# bspc config window_gap 0
+
+# add rounded corners
+bspc config border_radius 15
 
 # selected node border width
 bspc config border_width 2

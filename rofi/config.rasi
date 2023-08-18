@@ -62,6 +62,8 @@
 #window {
     background-color:             @background-color;
     children:                     [mainbox];
+    border-radius: 15;
+
 }
 
 #mainbox {

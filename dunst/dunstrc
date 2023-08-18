@@ -12,3 +12,6 @@
 
     icon_theme = breeze
     enable_recursive_icon_lookup = true
+    corner_radius = 15
+    origin = top-center
+    offset = 10x5
