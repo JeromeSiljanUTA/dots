@@ -4,7 +4,6 @@ import os
 import subprocess
 
 BATTERY_PATH = " /sys/class/power_supply/BAT0/"
-os.environ["DBUS_SESSION_BUS_ADDRESS"] = "unix:path=/run/user/1000/bus"
 os.environ["DISPLAY"] = ":0"
 
 
@@ -69,5 +68,6 @@ battery_level, remaining_time = get_battery_info()
 battery_icon = choose_battery_icon(battery_level)
 
 
-message = f"'Battery Level' '{battery_level}% {remaining_time} \nMode: {power_profile}'k -i {battery_icon}"
+message = f"'Battery Level' '{battery_level}% {remaining_time} \nMode: {power_profile}' -i {battery_icon}"
+
 os.system(f"dunstify -r 2 {message}")

@@ -73,7 +73,7 @@ super + {0,9}
 
 # notification shortcuts
 super + 8
-    ~/.config/bspwm/scripts/notif-battery.sh
+    ~/.config/bspwm/scripts/battery_status
 
 # screenshot
 super + Print
