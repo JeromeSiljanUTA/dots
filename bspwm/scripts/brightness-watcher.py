@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-
+#!/home/jerome/misc/projects/programming/basic_venv/bin/python3
 """
 Manges brightness notifications
 """
@@ -36,7 +35,6 @@ def _main():
             else:
                 icon = "brightness-low"
             os.system(
-                # f"dunstify -r 4 'Brightness Level' {scaled_brightness}% -h int:value:{scaled_brightness}"
                 f"dunstify -r 4 'Brightness' -h int:value:{scaled_brightness} -i {icon}"
             )
             # print(f"{scale_value()}")

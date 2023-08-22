@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/jerome/misc/projects/programming/basic_venv/bin/python3
 import sys
 import os
 
