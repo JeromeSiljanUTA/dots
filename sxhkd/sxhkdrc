@@ -22,6 +22,10 @@ super + ctrl + {j,k}
 super + shift + space
     bspc node --state ~floating
 
+# launch keepmenu
+super + v
+  keepmenu
+
 # launch rofi
 super + n
     rofi -show drun
@@ -74,6 +78,10 @@ super + {0,9}
 # notification shortcuts
 super + 8
     ~/.config/bspwm/scripts/battery_status
+
+# suspend, hibernate, etc.
+super + r
+      loginctl "$(echo -e "reload\npoweroff\nreboot\nsuspend\nhibernate\nhybrid-sleep\nsuspend-then-hibernate\n" | rofi -dmenu)"
 
 # screenshot
 super + Print
