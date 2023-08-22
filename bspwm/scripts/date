@@ -1,5 +1,5 @@
 #!/bin/bash
 
-date_str="$(date '+%A, %B%_d, %Y%n%R:%S')"
+date_str="$(date '+%A, %B %_d, %Y%n%R:%S')"
 
 dunstify -r 2 "$date_str" -i alarm-symbolic
