@@ -1,20 +1,17 @@
-#!/bin/bash
-
-# start daemons
 picom -b
 dunst &
 sxhkd &
-#/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
-# set wallpaper
 ~/.fehbg
+~/.config/bspwm/scripts/desktop-notifier.sh &
+~/.config/bspwm/scripts/brightness-watcher.py &
+~/.config/bspwm/scripts/volume-watcher.py &
 
 # create desktops a, s, d, f, u, i, o, p
 bspc monitor -d "Terminal" "Notes" "Emacs" "Firefox" "Comms" "IDE" "Files" "Media"
 
 # add gaps
 bspc config window_gap 15
-# bspc config window_gap 0
 
 # add rounded corners
 bspc config border_radius 15
@@ -26,19 +23,11 @@ bspc config border_width 2
 bspc config remove_unplugged_monitors true
 bspc config remove_disabled_monitors true
 bspc config merge_overlapping_monitors true
-#bspc config pointer_follows_focus true
 
-# set wacom shortcuts
-xsetwacom --set "Wacom Intuos BT S Pad pad" Button 1 'key +ctrl z'
-xsetwacom --set "Wacom Intuos BT S Pad pad" Button 2 'key +ctrl y'
-xsetwacom --set "Wacom Intuos BT S Pad pad" Button 3 'key +alt tab'
-
-# start desktop notifier
-#bspc subscribe desktop | ~/.config/bspwm/scripts/desktop-notifier &
-~/.config/bspwm/scripts/desktop-notifier.sh &
-
-# start xob for brightness
-#~/.config/bspwm/scripts/brightness-watcher.py &
-
-# start xob for volume
-~/.config/bspwm/scripts/volume-watcher.py &
+# rules
+bspc rule -a firefox desktop="Firefox"
+bspc rule -a Emacs desktop="Emacs"
+bspc rule -a rnote desktop="Notes"
+bspc rule -a thunderbird desktop="Comms"
+bspc rule -a discord desktop="Comms"
+bspc rule -a Signal desktop="Comms"

@@ -1,0 +1,49 @@
+#+TITLE: bspwmrc
+#+PROPERTY: header-args :tangle bspwmrc
+
+* Daemons
+#+BEGIN_SRC bash
+  picom -b
+  dunst &
+  sxhkd &
+#+END_SRC
+
+* Startup scripts
+1. Set wallpaper
+2. Notifications on desktop change
+3. Xob for brightness
+4. Xob for volume
+#+BEGIN_SRC bash
+  ~/.fehbg
+  ~/.config/bspwm/scripts/desktop-notifier.sh &
+  ~/.config/bspwm/scripts/brightness-watcher.py &
+  ~/.config/bspwm/scripts/volume-watcher.py &
+#+END_SRC
+
+* Bspwm Setup
+#+BEGIN_SRC bash
+  # create desktops a, s, d, f, u, i, o, p
+  bspc monitor -d "Terminal" "Notes" "Emacs" "Firefox" "Comms" "IDE" "Files" "Media"
+
+  # add gaps
+  bspc config window_gap 15
+
+  # add rounded corners
+  bspc config border_radius 15
+
+  # selected node border width
+  bspc config border_width 2
+
+  # don't clean up monitor desktops and geometries
+  bspc config remove_unplugged_monitors true
+  bspc config remove_disabled_monitors true
+  bspc config merge_overlapping_monitors true
+
+  # rules
+  bspc rule -a firefox desktop="Firefox"
+  bspc rule -a Emacs desktop="Emacs"
+  bspc rule -a rnote desktop="Notes"
+  bspc rule -a thunderbird desktop="Comms"
+  bspc rule -a discord desktop="Comms"
+  bspc rule -a Signal desktop="Comms"
+#+END_SRC
