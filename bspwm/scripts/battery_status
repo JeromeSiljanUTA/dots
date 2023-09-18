@@ -41,11 +41,6 @@ def get_battery_info():
     return battery_level, remaining_time
 
 
-def get_dbus_addr():
-    paths = os.listdir("/tmp/")
-    return [f"/tmp/{path}" for path in paths if "dbus" in path]
-
-
 def get_power_profile():
     result = subprocess.run("powerprofilesctl", stdout=subprocess.PIPE).stdout.decode(
         "utf-8"
@@ -62,12 +57,15 @@ def get_power_profile():
     return power_profile
 
 
-dbus_addr = get_dbus_addr()
-power_profile = get_power_profile()
-battery_level, remaining_time = get_battery_info()
-battery_icon = choose_battery_icon(battery_level)
+def main():
+    power_profile = get_power_profile()
+    battery_level, remaining_time = get_battery_info()
+    battery_icon = choose_battery_icon(battery_level)
+
+    message = f"'Battery Level' '{battery_level}% {remaining_time} \nMode: {power_profile}' -i {battery_icon}"
+
+    os.system(f"dunstify -r 2 {message}")
 
 
-message = f"'Battery Level' '{battery_level}% {remaining_time} \nMode: {power_profile}' -i {battery_icon}"
-
-os.system(f"dunstify -r 2 {message}")
+if __name__ == "__main__":
+    main()
