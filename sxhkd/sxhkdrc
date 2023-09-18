@@ -81,7 +81,8 @@ super + r
 
 # power profile
 super + e
-      powerprofilesctl set "$(echo -e "performance\npower-saver\nbalanced" | rofi -dmenu)"
+    ~/.config/bspwm/scripts/powerprofiles.py
+
 
 # bluetooth
 super + b

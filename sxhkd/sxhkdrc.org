@@ -100,21 +100,22 @@
 
 * Rofi Shortcuts
 #+BEGIN_SRC bash
-# suspend, hibernate, etc.
-super + r
-      loginctl "$(echo -e "reload\npoweroff\nreboot\nsuspend\nhibernate\nhybrid-sleep\nsuspend-then-hibernate" | rofi -dmenu)"
+  # suspend, hibernate, etc.
+  super + r
+	loginctl "$(echo -e "reload\npoweroff\nreboot\nsuspend\nhibernate\nhybrid-sleep\nsuspend-then-hibernate" | rofi -dmenu)"
 
-# power profile
-super + e
-      powerprofilesctl set "$(echo -e "performance\npower-saver\nbalanced" | rofi -dmenu)"
+  # power profile
+  super + e
+      ~/.config/bspwm/scripts/powerprofiles.py
 
-# bluetooth
-super + b
-    ~/.config/bspwm/scripts/bluetooth_connect.py
 
-# wifi
-super + w
-    ~/.config/bspwm/scripts/wifi_connect.py
+  # bluetooth
+  super + b
+      ~/.config/bspwm/scripts/bluetooth_connect.py
+
+  # wifi
+  super + w
+      ~/.config/bspwm/scripts/wifi_connect.py
 #+END_SRC
 
 * Volume/Brightness
