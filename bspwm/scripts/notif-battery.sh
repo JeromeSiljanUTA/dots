@@ -35,6 +35,7 @@ if [[  "$1" == "" ]]
    then
        bat_icon="$bat_icon-charging"
    fi
+
 # If triggered by udev, don't show battery stats
 else
    if [[ "$1" == "disconnected" ]]
@@ -47,4 +48,4 @@ else
 
 fi
 
-sudo -u jerome DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus DISPLAY=:0 dunstify -r 2 "Battery Level" "$bat%,  $message\nMode: $power_profile\n" -h int:value:$bat -i battery-"$bat_icon"
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus DISPLAY=:0 dunstify -r 2 "Battery Level" "$batf%,%,  $message\nMode: $power_profile\n" -h int:value:$bat -i battery-"$bat_icon"
