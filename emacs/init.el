@@ -131,13 +131,13 @@
 (global-set-key (kbd "C-:") 'avy-goto-char)
 
 ;; https://github.com/naiquevin/sphinx-doc.el
-(use-package sphinx-doc
-  :defines sphinx-doc-include-types
-  :config
-  (setq sphinx-doc-include-types t)
-  :init (add-hook 'python-mode-hook (lambda ()
-				      (require 'sphinx-doc)
-				      (sphinx-doc-mode t))))
+;;(use-package sphinx-doc
+;;  :defines sphinx-doc-include-types
+;;  :config
+;;  (setq sphinx-doc-include-types t)
+;;  :init (add-hook 'python-mode-hook (lambda ()
+;;				      (require 'sphinx-doc)
+;;				      (sphinx-doc-mode t))))
 
 ;; https://github.com/emacs-helm/helm/
 (use-package helm
