@@ -1,12 +1,12 @@
-#
-# ~/.bashrc
-#
+[[ $- != *i* ]] && return
 
-# If not running interactively, don't do anything
 neofetch
 
-
-[[ $- != *i* ]] && return
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
 
 alias ls='ls --color=auto'
 
@@ -54,8 +54,6 @@ alias ptt='putty -load default'
 
 alias cnf='command-not-found'
 
-#alias wacom='~/.config/bspwm/scripts/wacom.sh'
-
 alias cppng='xclip -selection clipboard -t image/png -o > '
 alias cpjpg='xclip -selection clipboard -t image/jpg -o > '
 alias cpjpeg='xclip -selection clipboard -t image/jpeg -o > '
@@ -65,15 +63,9 @@ alias pdb='python -m pdb'
 alias cc='cz c'
 alias wol='wol 38:63:bb:3b:32:78'
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash > /dev/null
-
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
 export PATH="$PATH:/home/jerome/.local/bin"
-export IDF_PATH=~/esp/ESP8266_RTOS_SDK/
 source "/home/jerome/.pam_environment"
-eval "$(direnv hook bash)"
 
+export IDF_PATH=~/esp/ESP8266_RTOS_SDK/
+
+eval "$(direnv hook bash)"
