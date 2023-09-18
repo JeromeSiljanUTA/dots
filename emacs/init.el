@@ -9,10 +9,9 @@
  '(holiday-bahai-holidays nil)
  '(holiday-islamic-holidays nil)
  '(holiday-oriental-holidays nil)
- '(org-agenda-files '("/home/jerome/misc/gtd/main.org"))
  '(org-export-preserve-breaks nil)
  '(package-selected-packages
-   '(arduino-mode docker-cli docker docker-compose-mode docker-tramp debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package tablist reformatter python-mode magit gruvbox-theme expand-region evil emms ein direnv blacken auto-complete)))
+   '(dumb-jump arduino-mode docker-cli docker docker-compose-mode docker-tramp debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package tablist reformatter python-mode magit gruvbox-theme expand-region evil emms ein direnv blacken auto-complete)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -85,7 +84,12 @@
   org-agenda-files
   org-deadline-warning-days
   :config
-  (setq org-agenda-files '("~/misc/gtd/main.org"))
+  (setq org-agenda-files
+	'("~/learning/school/QUANTITATIVE COMPUTER ARCHITECTURE CSE4323/cse4323.org"
+	  "~/learning/school/EMBEDDED SYSTEMS II CSE4342/cse4342.org"
+	  "~/learning/school/SENIOR DESIGN II CSE4317/cse4317.org"
+	  "~/misc/gtd/main.org"))
+
   (setq org-deadline-warning-days 0))
 (setq org-refile-targets
       '(("~/misc/gtd/main.org" :maxlevel . 1)
@@ -152,6 +156,23 @@
 ;;  (codespaces-setup)
 ;;  (setq vc-handled-backends '(Git)))
 
+;; https://github.com/vedang/pdf-tools
+(use-package pdf-tools
+  :defer t
+  :config
+  (pdf-tools-install)
+  (setq-default pdf-view-display-size 'fit-page))
+
+;; https://github.com/Silex/docker.el
+(use-package docker
+  :ensure t
+  :config
+  (setq docker-run-as-root t)
+  :bind ("C-c d" . docker))
+
+;; https://github.com/emacs-pe/docker-tramp.el
+;;(use-package docker-tramp
+;;  :ensure t)
 
 
 (require 'python)
@@ -163,6 +184,11 @@
 (put 'downcase-region 'disabled nil)
 
 (set-frame-font "IBM Plex Mono Medium 12" nil t)
+
+;; active Babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((shell . t)))
 
 (provide 'init)
 ;;; init.el ends here
