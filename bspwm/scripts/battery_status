@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""
+Get battery percentage, charging information, powerprofiles mode and push to
+notification.
+
+"""
 
 import os
 import subprocess
@@ -7,7 +12,10 @@ BATTERY_PATH = " /sys/class/power_supply/BAT0/"
 os.environ["DISPLAY"] = ":0"
 
 
-def choose_battery_icon(battery_level):
+def choose_battery_icon(battery_level: int) -> str:
+    """
+    Choose a battery icon depending on the battery level.
+    """
     if battery_level > 80:
         battery_icon = "full"
     elif battery_level > 50:
@@ -20,9 +28,13 @@ def choose_battery_icon(battery_level):
     return f"battery-{battery_icon}"
 
 
-def get_battery_info():
+def get_battery_info() -> tuple[int, str]:
+    """
+    Parse acpi data for battery level and remaining time until battery runs
+    out.
+    """
     battery_info = (
-        subprocess.run(["acpi", "b"], stdout=subprocess.PIPE)
+        subprocess.run(["acpi", "b"], stdout=subprocess.PIPE, check=True)
         .stdout.decode("utf-8")
         .split("\n")
     )
@@ -41,10 +53,13 @@ def get_battery_info():
     return battery_level, remaining_time
 
 
-def get_power_profile():
-    result = subprocess.run("powerprofilesctl", stdout=subprocess.PIPE).stdout.decode(
-        "utf-8"
-    )
+def get_power_profile() -> str:
+    """
+    Parse powerprofiles for power mode.
+    """
+    result = subprocess.run(
+        "powerprofilesctl", stdout=subprocess.PIPE, check=True
+    ).stdout.decode("utf-8")
     profile_line = result.split("*")[-1].split("\n")[0]
 
     if "power-saver" in profile_line:
@@ -58,14 +73,21 @@ def get_power_profile():
 
 
 def main():
+    """
+    Gather battery data and push to notification.
+    """
     power_profile = get_power_profile()
     battery_level, remaining_time = get_battery_info()
     battery_icon = choose_battery_icon(battery_level)
 
-    message = f"'Battery Level' '{battery_level}% {remaining_time} \nMode: {power_profile}' -i {battery_icon}"
+    message = (
+        f"'Battery Level' '{battery_level}% {remaining_time} \n"
+        f"Mode: {power_profile}' -i {battery_icon}"
+    )
 
     os.system(f"dunstify -r 2 {message}")
 
 
 if __name__ == "__main__":
+    # This will only be run when the module is called directly.
     main()
