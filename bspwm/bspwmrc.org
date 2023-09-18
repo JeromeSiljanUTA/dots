@@ -1,23 +1,11 @@
 #+TITLE: bspwmrc
-#+PROPERTY: header-args :tangle bspwmrc
+#+PROPERTY: header-args :shebang "#!/bin/bash" :tangle bspwmrc 
 
 * Daemons
 #+BEGIN_SRC bash
   picom -b
   dunst &
   sxhkd &
-#+END_SRC
-
-* Startup scripts
-1. Set wallpaper
-2. Notifications on desktop change
-3. Xob for brightness
-4. Xob for volume
-#+BEGIN_SRC bash
-  ~/.fehbg
-  ~/.config/bspwm/scripts/desktop-notifier.sh &
-  ~/.config/bspwm/scripts/brightness-watcher.py &
-  ~/.config/bspwm/scripts/volume-watcher.py &
 #+END_SRC
 
 * Bspwm Setup
@@ -47,3 +35,16 @@
   bspc rule -a discord desktop="Comms"
   bspc rule -a Signal desktop="Comms"
 #+END_SRC
+
+* Startup scripts
+1. Set wallpaper
+2. Notifications on desktop change
+3. Xob for brightness
+4. Xob for volume
+#+BEGIN_SRC bash
+  ~/.fehbg
+  ~/.config/bspwm/scripts/desktop-notifier.sh &
+  ~/.config/bspwm/scripts/brightness-watcher.py &
+  ~/.config/bspwm/scripts/volume-watcher.py &
+#+END_SRC
+

@@ -1,11 +1,7 @@
+#!/bin/bash
 picom -b
 dunst &
 sxhkd &
-
-~/.fehbg
-~/.config/bspwm/scripts/desktop-notifier.sh &
-~/.config/bspwm/scripts/brightness-watcher.py &
-~/.config/bspwm/scripts/volume-watcher.py &
 
 # create desktops a, s, d, f, u, i, o, p
 bspc monitor -d "Terminal" "Notes" "Emacs" "Firefox" "Comms" "IDE" "Files" "Media"
@@ -31,3 +27,8 @@ bspc rule -a rnote desktop="Notes"
 bspc rule -a thunderbird desktop="Comms"
 bspc rule -a discord desktop="Comms"
 bspc rule -a Signal desktop="Comms"
+
+~/.fehbg
+~/.config/bspwm/scripts/desktop-notifier.sh &
+~/.config/bspwm/scripts/brightness-watcher.py &
+~/.config/bspwm/scripts/volume-watcher.py &
