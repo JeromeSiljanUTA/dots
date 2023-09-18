@@ -1,11 +1,3 @@
-# launch alacritty on this combination
-super + shift + Return
-    kitty
-
-# close windows
-super + shift + c
-    bspc node --close
-
 # focus neighbor nodes
 super + {h,j,k,l}
     bspc node --focus {west,south,north,east}
@@ -18,17 +10,17 @@ super + shift + {h,j,k,l}
 super + ctrl + {j,k}
     bspc node --focus {next,prev}.local.!hidden.window.!locked
 
-# toggle floating
+# toggle node floating
 super + shift + space
     bspc node --state ~floating
 
-# launch keepmenu
-super + v
-  keepmenu
+# send node to desktop
+super + shift + {a,s,d,f,u,i,o,p}
+    bspc node focused --to-desktop {"Terminal","Notes","Emacs","Firefox","Comms","IDE","Files","Media"}
 
-# launch rofi
-super + n
-    rofi -show drun
+# close windows
+super + shift + c
+    bspc node --close
 
 # select desktops
 super + {a,s,d,f,u,i,o,p}
@@ -41,61 +33,63 @@ super + Tab
 Insert
     bspc desktop last --focus
 
-# send node to desktop
-super + shift + {a,s,d,f,u,i,o,p}
-    bspc node focused --to-desktop {"Terminal","Notes","Emacs","Firefox","Comms","IDE","Files","Media"}
-
-# change mode to monocle, full screen, tiled
-#super + {f}
-    #bspc node --state ~fullscreen
-
 # switches to "next" mode
 super + {m}
     bspc desktop --layout next
+
+# launch keepmenu
+super + v
+  keepmenu
+
+# launch rofi
+super + n
+    rofi -show drun
 
 # enters warpd normal mode
 Print
     warpd --normal
 
-#ctrl + Return 
-    #warpd --normal
+# Open Putty Tiva C
+super + t
+  putty -load tm4c123ghpm
 
-# monitor scripts
+# screenshot
+super + Print
+  scrot -s
+
 super + {1,2}
     ~/.config/bspwm/scripts/monitor {mono,ext}
 
 XF86Display
     ~/.config/bspwm/scripts/monitor
 
+# clear, pop notifications
+super + {0,9}
+    {dunstctl close-all,dunstctl history-pop}
+
+# show date notification
 super + 3
     ~/.config/bspwm/scripts/date
 
-# clear, pop notifications
-super + {0,9}
-      {dunstctl close-all,dunstctl history-pop}
-    #{dunstctl close-all && sudo -u jerome DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus DISPLAY=:0 dunstctl close-all,dunstctl history-pop}
-
-# notification shortcuts
+# show date notification
 super + 8
     ~/.config/bspwm/scripts/battery_status
 
 # suspend, hibernate, etc.
 super + r
-      loginctl "$(echo -e "reload\npoweroff\nreboot\nsuspend\nhibernate\nhybrid-sleep\nsuspend-then-hibernate\n" | rofi -dmenu)"
+      loginctl "$(echo -e "reload\npoweroff\nreboot\nsuspend\nhibernate\nhybrid-sleep\nsuspend-then-hibernate" | rofi -dmenu)"
 
-# screenshot
-super + Print
-    flameshot gui
+# power profile
+super + e
+      powerprofilesctl set "$(echo -e "performance\npower-saver\nbalanced" | rofi -dmenu)"
 
-# dump status
-#super + d
-    #~/dump.sh
+# bluetooth
+super + b
+    ~/.config/bspwm/scripts/bluetooth_connect.py
 
-# play/pause media
-XF86AudioPlay
-    playerctl play-pause
-Pause
-    playerctl play-pause
+# wifi
+super + w
+    ~/.config/bspwm/scripts/wifi_connect.py
 
 # volume control
 XF86Audio{LowerVolume,RaiseVolume,Mute}
@@ -107,6 +101,5 @@ XF86Audio{LowerVolume,RaiseVolume,Mute}
 XF86MonBrightness{Down,Up}
     xbacklight -{dec,inc} 4
 
-# reload config
 super + Escape
     pkill -usr1 -x sxhkd

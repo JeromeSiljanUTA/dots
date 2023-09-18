@@ -1,0 +1,137 @@
+#+TITLE: sxhkdrc
+#+PROPERTY: header-args :tangle sxhkdrc
+
+* Bspwm Shortcuts
+** Nodes
+#+BEGIN_SRC bash
+  # focus neighbor nodes
+  super + {h,j,k,l}
+      bspc node --focus {west,south,north,east}
+ 
+  # swap neighbor nodes
+  super + shift + {h,j,k,l}
+      bspc node --swap {west,south,north,east}
+ 
+  # focus neighbor nodes while in monocle mode
+  super + ctrl + {j,k}
+      bspc node --focus {next,prev}.local.!hidden.window.!locked
+ 
+  # toggle node floating
+  super + shift + space
+      bspc node --state ~floating
+
+  # send node to desktop
+  super + shift + {a,s,d,f,u,i,o,p}
+      bspc node focused --to-desktop {"Terminal","Notes","Emacs","Firefox","Comms","IDE","Files","Media"}
+
+#+END_SRC
+
+** Windows
+#+BEGIN_SRC bash
+  # close windows
+  super + shift + c
+      bspc node --close
+#+END_SRC
+
+** Desktops
+#+BEGIN_SRC bash
+  # select desktops
+  super + {a,s,d,f,u,i,o,p}
+      bspc desktop {"Terminal","Notes","Emacs","Firefox","Comms","IDE","Files","Media"} --focus
+
+  # select last desktop
+  super + Tab
+      bspc desktop last --focus
+
+  Insert
+      bspc desktop last --focus
+
+  # switches to "next" mode
+  super + {m}
+      bspc desktop --layout next
+#+END_SRC
+
+* Application Shortcuts
+#+BEGIN_SRC bash
+  # launch keepmenu
+  super + v
+    keepmenu
+
+  # launch rofi
+  super + n
+      rofi -show drun
+
+  # enters warpd normal mode
+  Print
+      warpd --normal
+
+  # Open Putty Tiva C
+  super + t
+    putty -load tm4c123ghpm
+
+  # screenshot
+  super + Print
+    scrot -s
+#+END_SRC
+
+* Monitor Scripts
+#+BEGIN_SRC bash
+  super + {1,2}
+      ~/.config/bspwm/scripts/monitor {mono,ext}
+
+  XF86Display
+      ~/.config/bspwm/scripts/monitor
+#+END_SRC
+
+* Notification Shortcuts
+#+BEGIN_SRC bash
+  # clear, pop notifications
+  super + {0,9}
+      {dunstctl close-all,dunstctl history-pop}
+
+  # show date notification
+  super + 3
+      ~/.config/bspwm/scripts/date
+
+  # show date notification
+  super + 8
+      ~/.config/bspwm/scripts/battery_status
+#+END_SRC
+
+* Rofi Shortcuts
+#+BEGIN_SRC bash
+# suspend, hibernate, etc.
+super + r
+      loginctl "$(echo -e "reload\npoweroff\nreboot\nsuspend\nhibernate\nhybrid-sleep\nsuspend-then-hibernate" | rofi -dmenu)"
+
+# power profile
+super + e
+      powerprofilesctl set "$(echo -e "performance\npower-saver\nbalanced" | rofi -dmenu)"
+
+# bluetooth
+super + b
+    ~/.config/bspwm/scripts/bluetooth_connect.py
+
+# wifi
+super + w
+    ~/.config/bspwm/scripts/wifi_connect.py
+#+END_SRC
+
+* Volume/Brightness
+#+BEGIN_SRC bash
+  # volume control
+  XF86Audio{LowerVolume,RaiseVolume,Mute}
+      pactl set-sink-{volume @DEFAULT_SINK@ -2%,\
+      volume @DEFAULT_SINK@ +2%,\
+      mute @DEFAULT_SINK@ toggle}
+
+  # brightness control
+  XF86MonBrightness{Down,Up}
+      xbacklight -{dec,inc} 4
+#+END_SRC
+
+* Reload Sxhkd
+#+BEGIN_SRC bash
+  super + Escape
+      pkill -usr1 -x sxhkd
+#+END_SRC
