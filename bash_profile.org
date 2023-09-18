@@ -1,0 +1,32 @@
+#+TITLE: bash_profile
+#+PROPERTY: header-args :tangle bash_profile
+
+* Terminal Configuration
+#+BEGIN_SRC bash
+  LESS_TERMCAP_mb=$'\e[1;32m'
+  LESS_TERMCAP_md=$'\e[1;32m'
+  LESS_TERMCAP_me=$'\e[0m'
+  LESS_TERMCAP_se=$'\e[0m'
+  LESS_TERMCAP_so=$'\e[01;33m'
+  LESS_TERMCAP_ue=$'\e[0m'
+  LESS_TERMCAP_us=$'\e[1;4;31m'
+#+END_SRC
+
+* App Specific Configuration
+#+BEGIN_SRC bash
+  FZF_DEFAULT_COMMAND='rg --files --hidden -g "!{.sword/*,.git/*,.cache/*,.local/*,.thunderbird/*,.cargo/*,.mozilla/*,.config/Signal/*,.pki/*,.gitconfig,.dmenu_cache,.wget-hsts,.lesshst,.vim/*,.arduino15/*}"'
+  QT_QPA_PLATFORMTHEME=gtk2
+#+END_SRC
+
+* Source bashrc
+#+BEGIN_SRC bash
+  [[ -f ~/.bashrc ]] && . ~/.bashrc
+#+END_SRC
+
+* Startx
+#+BEGIN_SRC bash
+  if [ -z $DISPLAY ] && [ "$(tty)" == "/dev/tty1" ];
+  then
+      startx
+  fi
+#+END_SRC

@@ -20,3 +20,8 @@ then
     startx
 fi
 
+
+
+
+
+
