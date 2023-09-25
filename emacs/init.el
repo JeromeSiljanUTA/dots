@@ -89,15 +89,14 @@
 	  "~/learning/school/EMBEDDED SYSTEMS II CSE4342/cse4342.org"
 	  "~/learning/school/SENIOR DESIGN II CSE4317/cse4317.org"
 	  "~/misc/gtd/main.org"))
+  (setq org-deadline-warning-days 0)
+  (setq org-refile-targets
+	'(("~/misc/gtd/main.org" :maxlevel . 1)
+          ("~/misc/gtd/phone_in.org" :maxlevel . 1)))
 
-  (setq org-deadline-warning-days 0))
-(setq org-refile-targets
-      '(("~/misc/gtd/main.org" :maxlevel . 1)
-        ("~/misc/gtd/phone_in.org" :maxlevel . 1)))
-
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
+  (global-set-key (kbd "C-c l") 'org-store-link)
+  (global-set-key (kbd "C-c a") 'org-agenda)
+  (global-set-key (kbd "C-c c") 'org-capture))
 
 ;; https://www.gnu.org/software/emms/
 (use-package emms
@@ -149,7 +148,7 @@
 
 
 ;; Commented because I don't think I'll ever use this again
-;;;; https://github.com/patrickt/codespaces.el
+;; https://github.com/patrickt/codespaces.el
 ;;(use-package codespaces
 ;;  :bind ("C-c S" . #'codespaces-connect)
 ;;  :config
@@ -160,8 +159,9 @@
 (use-package pdf-tools
   :defer t
   :config
-  (pdf-tools-install)
   (setq-default pdf-view-display-size 'fit-page))
+
+(pdf-tools-install)
 
 ;; https://github.com/Silex/docker.el
 (use-package docker
@@ -191,5 +191,5 @@
  '((shell . t)))
 
 (provide 'init)
-;;; init.el ends here
 (put 'dired-find-alternate-file 'disabled nil)
+;;; init.el ends here
