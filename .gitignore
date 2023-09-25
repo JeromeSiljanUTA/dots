@@ -1,6 +1,7 @@
 *#*#*
 *__pycache__*
 *~
+/util_ninja/build/
 Microsoft/
 Mullvad
 MusicBrainz/Picard-*
