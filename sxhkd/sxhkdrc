@@ -73,7 +73,7 @@ super + 3
 
 # show date notification
 super + 8
-    ~/.config/bspwm/scripts/battery_status
+    python ~/.config/util_ninja/src/__main__.py -a battery
 
 # suspend, hibernate, etc.
 super + r
