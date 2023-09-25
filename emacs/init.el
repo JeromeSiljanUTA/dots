@@ -11,7 +11,7 @@
  '(holiday-oriental-holidays nil)
  '(org-export-preserve-breaks nil)
  '(package-selected-packages
-   '(dumb-jump arduino-mode docker-cli docker docker-compose-mode docker-tramp debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package tablist reformatter python-mode magit gruvbox-theme expand-region evil emms ein direnv blacken auto-complete)))
+   '(package pandoc-mode dumb-jump arduino-mode docker-cli docker docker-compose-mode docker-tramp debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package tablist reformatter python-mode magit expand-region evil emms ein direnv blacken auto-complete)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -26,9 +26,12 @@
 ;; :ensure makes sure packages are correctly installed
 ;; :hook run this when in that mode (that . this)
 
+;; Same as putting :ensure t on all packages
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+
 ;; First change the theme so I'm not blinded on startup
 ;; https://github.com/greduan/emacs-theme-gruvbox
-
 (use-package gruvbox-theme
   :config (load-theme 'gruvbox-light-medium))
 
@@ -41,10 +44,6 @@
 (package-refresh-contents)
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
-
-;; Same as putting :ensure t on all packages
-(eval-and-compile
-  (setq use-package-always-ensure t))
 
 ;; Define package repos, initialize
 (use-package package)
@@ -115,28 +114,16 @@
 
 ;; https://www.flycheck.org/en/latest/
 (use-package flycheck
-  :ensure t
   :init (global-flycheck-mode))
 
 ;; https://github.com/lassik/emacs-format-all-the-code
-(use-package format-all
-  :ensure t)
+(use-package format-all)
 (add-hook 'prog-mode-hook 'format-all-mode)
 (add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
 
 ;; https://github.com/abo-abo/avy
-(use-package avy
-  :ensure t)
+(use-package avy)
 (global-set-key (kbd "C-:") 'avy-goto-char)
-
-;; https://github.com/naiquevin/sphinx-doc.el
-;;(use-package sphinx-doc
-;;  :defines sphinx-doc-include-types
-;;  :config
-;;  (setq sphinx-doc-include-types t)
-;;  :init (add-hook 'python-mode-hook (lambda ()
-;;				      (require 'sphinx-doc)
-;;				      (sphinx-doc-mode t))))
 
 ;; https://github.com/emacs-helm/helm/
 (use-package helm
@@ -145,15 +132,6 @@
   (setq helm-locate-fuzzy-match t))
 
 (global-set-key (kbd "M-x") 'helm-M-x)
-
-
-;; Commented because I don't think I'll ever use this again
-;; https://github.com/patrickt/codespaces.el
-;;(use-package codespaces
-;;  :bind ("C-c S" . #'codespaces-connect)
-;;  :config
-;;  (codespaces-setup)
-;;  (setq vc-handled-backends '(Git)))
 
 ;; https://github.com/vedang/pdf-tools
 (use-package pdf-tools
@@ -165,15 +143,9 @@
 
 ;; https://github.com/Silex/docker.el
 (use-package docker
-  :ensure t
   :config
   (setq docker-run-as-root t)
   :bind ("C-c d" . docker))
-
-;; https://github.com/emacs-pe/docker-tramp.el
-;;(use-package docker-tramp
-;;  :ensure t)
-
 
 (require 'python)
 ;; C-c C-c respects __init__
