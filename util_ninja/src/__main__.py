@@ -3,6 +3,7 @@
 """
 from argparse import ArgumentParser
 from battery import send_battery_notification
+from bluetooth import activate_bluetooth_rofi
 
 parser = ArgumentParser(
     prog="util_ninja",
@@ -19,6 +20,9 @@ def main():
         case "battery":
             # Gather battery data and push to notification.
             send_battery_notification()
+        case "bluetooth":
+            # Display and handle rofi for bluetooth
+            activate_bluetooth_rofi()
 
 
 if __name__ == "__main__":
