@@ -11,7 +11,7 @@
  '(holiday-oriental-holidays nil)
  '(org-export-preserve-breaks nil)
  '(package-selected-packages
-   '(package pandoc-mode dumb-jump arduino-mode docker-cli docker docker-compose-mode docker-tramp debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package reformatter python-mode magit expand-region evil emms ein direnv blacken auto-complete)))
+   '(olivetti package pandoc-mode dumb-jump arduino-mode docker-cli docker docker-compose-mode docker-tramp debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package reformatter python-mode magit expand-region evil emms ein direnv blacken auto-complete)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -149,6 +149,9 @@
   :config
   (setq docker-run-as-root t)
   :bind ("C-c d" . docker))
+
+;; https://github.com/rnkn/olivetti
+(use-package olivetti)
 
 (require 'python)
 ;; C-c C-c respects __init__
