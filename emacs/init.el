@@ -11,7 +11,7 @@
  '(holiday-oriental-holidays nil)
  '(org-export-preserve-breaks nil)
  '(package-selected-packages
-   '(package pandoc-mode dumb-jump arduino-mode docker-cli docker docker-compose-mode docker-tramp debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package tablist reformatter python-mode magit expand-region evil emms ein direnv blacken auto-complete)))
+   '(package pandoc-mode dumb-jump arduino-mode docker-cli docker docker-compose-mode docker-tramp debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package reformatter python-mode magit expand-region evil emms ein direnv blacken auto-complete)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -53,6 +53,9 @@
 (use-package direnv
   :config
   (direnv-mode))
+
+;; https://github.com/magit/magit
+(use-package magit)
 
 ;; https://github.com/magnars/expand-region.el
 (use-package expand-region
@@ -150,7 +153,7 @@
 (require 'python)
 ;; C-c C-c respects __init__
 (define-key python-mode-map (kbd "C-c C-c")
-  (lambda () (interactive) (python-shell-send-buffer t)))
+	    (lambda () (interactive) (python-shell-send-buffer t)))
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
