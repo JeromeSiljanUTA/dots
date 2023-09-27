@@ -63,4 +63,4 @@ def handle_rofi_selection(selected_device_id: str):
 
 def activate_bluetooth_rofi():
     # Pulls all the functions together.
-    handle_rofi_selection(show_rofi_menu(get_paired_devices()))
+    handle_rofi_selection(show_rofi_menu(get_devices()))

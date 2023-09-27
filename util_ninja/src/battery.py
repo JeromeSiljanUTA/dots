@@ -36,9 +36,10 @@ def get_battery_info() -> tuple[int, str]:
         .split("\n")
     )
 
+    # Pick last battery listed by acpi. The last element of battery_info is newline so ignore that.
     main_battery = [
         battery for battery in battery_info if "unavailable" not in battery
-    ][0]
+    ][-2]
 
     battery_level = int(main_battery.split(",")[1].split("%")[0])
 
