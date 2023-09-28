@@ -7,7 +7,7 @@ import subprocess
 
 
 def get_devices(device_type: str) -> dict:
-    # Get paired devices by parsing bluetoothctl. Device type is either currently_connected or previous
+    # Get paired devices by parsing bluetoothctl. Device type is 'devices'.
 
     try:
         command = ["bluetoothctl", device_type]
@@ -16,13 +16,13 @@ def get_devices(device_type: str) -> dict:
             .stdout[:-1]
             .split("\n")
         )
+        device_list = [device.split(" ", 2)[1:] for device in device_list]
+        device_dict = {device[1]: device[0] for device in device_list}
+        device_dict["Disconnect"] = "Disconnect"
+        return device_dict
+
     except subprocess.CalledProcessError:
         print(f"Running command '{command}' failed")
-
-    device_list = [device.split(" ", 2)[1:] for device in device_list]
-    device_dict = {device[1]: device[0] for device in device_list}
-    device_dict["Disconnect"] = "Disconnect"
-    return device_dict
 
 
 def show_rofi_menu(device_dict: dict) -> str:
@@ -40,10 +40,7 @@ def show_rofi_menu(device_dict: dict) -> str:
             check=True,
         )
 
-    try:
-        return device_dict[rofi_proc.stdout[:-1]]
-    except KeyError:
-        print("No rofi selection made")
+    return device_dict[rofi_proc.stdout[:-1]]
 
 
 def handle_rofi_selection(selected_device_id: str):
@@ -63,4 +60,4 @@ def handle_rofi_selection(selected_device_id: str):
 
 def activate_bluetooth_rofi():
     # Pulls all the functions together.
-    handle_rofi_selection(show_rofi_menu(get_devices()))
+    handle_rofi_selection(show_rofi_menu(get_devices("devices")))
