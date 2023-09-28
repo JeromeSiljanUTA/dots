@@ -4,6 +4,7 @@
 from argparse import ArgumentParser
 from battery import send_battery_notification
 from bluetooth import activate_bluetooth_rofi
+from brightness_watcher import start
 
 parser = ArgumentParser(
     prog="util_ninja",
@@ -12,6 +13,7 @@ parser = ArgumentParser(
 
 
 parser.add_argument("-a", "--action", required=True)
+parser.add_argument("-d", "--start-daemons", required=True)
 args = parser.parse_args()
 
 
@@ -23,6 +25,8 @@ def main():
         case "bluetooth":
             # Display and handle rofi for bluetooth
             activate_bluetooth_rofi()
+        case _:
+            pass
 
 
 if __name__ == "__main__":
