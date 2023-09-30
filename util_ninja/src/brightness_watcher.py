@@ -1,6 +1,5 @@
 #!/home/jerome/misc/projects/programming/basic_venv/bin/python3
-"""
-Manges brightness notifications
+"""Manages brightness notifications
 """
 
 import os
