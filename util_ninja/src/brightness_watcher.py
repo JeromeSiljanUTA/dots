@@ -6,11 +6,13 @@ import os
 
 import inotify.adapters
 
-brightness_file = "/sys/class/backlight/intel_backlight/brightness"
-max_brightness_file = "/sys/class/backlight/intel_backlight/max_brightness"
+backlight_directory = "/sys/class/backlight/intel_backlight/"
+brightness_file = f"{backlight_directory}brightness"
+max_brightness_file = f"{backlight_directory}max_brightness"
 
 
 def scale_value() -> int:
+    # Read brightness value from file and scale from 0-100
     with open(max_brightness_file, "r", encoding="UTF-8") as f:
         max_val = int(f.read())
     with open(brightness_file, "r", encoding="UTF-8") as f:
@@ -19,9 +21,10 @@ def scale_value() -> int:
 
 
 def start():
+    # Monitor backlight file for changes
     i = inotify.adapters.Inotify()
 
-    i.add_watch("/sys/class/backlight/intel_backlight")
+    i.add_watch(backlight_directory)
 
     for event in i.event_gen(yield_nones=False):
         (_, type_names, _, filename) = event
