@@ -132,6 +132,13 @@
       xbacklight -{dec,inc} 4
 #+END_SRC
 
+* Media
+#+BEGIN_SRC bash
+  # media button controls
+  XF86Audio{Play,Next,Prev}
+      playerctl {play-pause,next,previous}
+#+END_SRC
+
 * Reload Sxhkd
 #+BEGIN_SRC bash
   super + Escape

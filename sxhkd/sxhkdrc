@@ -102,5 +102,9 @@ XF86Audio{LowerVolume,RaiseVolume,Mute}
 XF86MonBrightness{Down,Up}
     xbacklight -{dec,inc} 4
 
+# media button controls
+XF86Audio{Play,Next,Prev}
+    playerctl {play-pause,next,previous}
+
 super + Escape
     pkill -usr1 -x sxhkd
