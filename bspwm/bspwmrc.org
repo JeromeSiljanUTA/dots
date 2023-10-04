@@ -7,6 +7,7 @@
   dunst &
   sxhkd &
   xscreensaver -no-splash &
+  playerctld
 #+END_SRC
 
 * Bspwm Setup
