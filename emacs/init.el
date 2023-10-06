@@ -20,7 +20,9 @@
        (tags-todo "@anywhere"
 		  ((org-agenda-overriding-header "Tasks @anywhere")))
        (tags-todo "@home"
-		  ((org-agenda-overriding-header "Tasks @home"))))
+		  ((org-agenda-overriding-header "Tasks @home")))
+       (tags-todo "@waiting"
+		  ((org-agenda-overriding-header "Tasks @waiting"))))
       nil nil)))
  '(org-edit-src-content-indentation 0)
  '(org-export-preserve-breaks nil)
