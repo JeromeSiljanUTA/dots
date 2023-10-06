@@ -57,6 +57,7 @@ kitty/
 libreoffice/
 menus/
 mimeapps.list
+mpv/scripts/mpris.so
 mpv/watch_later
 nemo
 nicotine
@@ -79,4 +80,3 @@ xournalpp/metadata
 xournalpp/settings.xml
 zoom.conf
 zoomus.conf
-mpv/scripts/mpris.so
