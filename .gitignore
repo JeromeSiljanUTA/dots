@@ -79,3 +79,4 @@ xournalpp/metadata
 xournalpp/settings.xml
 zoom.conf
 zoomus.conf
+mpv/scripts/mpris.so
