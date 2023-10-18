@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Python application to deal with monitor events so I don't have to
+Python application to deal with monitor events so I don't have to.
 """
 
 import subprocess
@@ -8,36 +8,29 @@ import sys
 
 
 def set_wallpaper():
-    """
-    sets wallpaper using fehbg script
-    """
+    # Set wallpaper using fehbg script.
     try:
         proc_state = subprocess.run(
             ["/home/jerome/.fehbg"], shell=True, check=True, capture_output=True
         )
     except:
-        raise Exception("No fehbg script found")
+        raise Exception("No fehbg script found.")
 
 
-def update_monitors():
-    """
-    Parses output of xrandr -q for monitors
-    Running `xrandr -q` makes the parsing more obvious
-    Returns:
-    Monitor dictionary
+def update_monitors() -> dict:
+    # Parses output of `xrandr -q` for monitors.
 
-    """
     proc_state = subprocess.run(
         ["xrandr", "-q"], shell=True, check=True, capture_output=True
     )
 
-    # clean output and set lines to be iterated over
+    # Clean output and set lines to be iterated over.
     proc_out = proc_state.stdout.decode("UTF-8").splitlines()
 
     return {
         line.split()[0]: {
             "status": line.split()[1],
-            "resolution": (  # add resolution if next line shows it
+            "resolution": (  # Add resolution if next line shows it.
                 proc_out[index + 1].split()[0]
                 if index + 1 in range(len(proc_out))
                 and "+" in proc_out[index + 1]
@@ -50,37 +43,30 @@ def update_monitors():
     }
 
 
-def set_local():
-    """
-    Finds name of local monitor
-    Returns:
-    Name of local monitor, -1 on failure
-
-    """
+def set_local() -> str:
+    # Find name of local (built-in) monitor.
     for monitor in monitors:
-        if "eDP" in monitor or 'LVDS' in monitor:
+        if "eDP" in monitor or "LVDS" in monitor:
             return monitor
 
-    return -1
+    raise Exception("Could not find build in monitor.")
 
 
-def set_ext():
-    """
-    Finds name of external monitor
-    Returns:
-    Name of external monitor, -1 on failure
-
-    """
+def set_ext() -> list:
+    # Find names of external monitors
+    monitor_list = []
     for monitor, properties in monitors.items():
-        if ("eDP" not in monitor and 'LVDS' not in monitor) and properties.get("status") == "connected":
-            return monitor
+        if ("eDP" not in monitor and "LVDS" not in monitor) and properties.get(
+            "status"
+        ) == "connected":
+            monitor_list.append(monitor)
 
-    return -1
+    if not monitor_list:
+        raise Exception("Could not find external monitor.")
 
 
-def single_monitor(target_monitor):
-    if -1 == target_monitor:
-        raise Exception("Monitor doesn't exist/isn't plugged in")
+def single_monitor(target_monitor: str):
+    # Disables all monitors but target_monitor and sets wallpaper.
     subprocess.run(["xrandr", "--output", target_monitor, "--auto"], check=True)
     for monitor in monitors:
         if monitor != target_monitor:
@@ -89,8 +75,7 @@ def single_monitor(target_monitor):
 
 
 def to_right():
-    if -1 in [local, ext]:
-        raise Exception("Monitor doesn't exist/isn't plugged in")
+    # Sets external monitor to the right of built-in monitor and sets wallpaper.
     subprocess.run(["xrandr", "--output", local, "--auto"], check=True)
     subprocess.run(["xrandr", "--output", ext, "--auto", "--pos", "1920x0"], check=True)
     for monitor in monitors:
@@ -102,24 +87,20 @@ def to_right():
 
 
 def remove_dummy():
-    """
-    Removes dummy desktops named "Desktop"
-    Returns:
-    -1 on failure
+    # Remove dummy desktops named "Desktop".
 
-    """
-    while True:
-        try:
-            subprocess.run(
-                ["bspc", "desktop", "Desktop", "--remove"],
-                check=True,
-                capture_output=True,
-            )
-        except subprocess.CalledProcessError:
-            return -1
+    try:
+        subprocess.run(
+            ["bspc", "desktop", "Desktop", "--remove"],
+            check=True,
+            capture_output=True,
+        )
+    except subprocess.CalledProcessError:
+        print(f"Failed to remove any desktops named 'Desktop', maybe they don't exist?")
 
 
-def set_desktops():
+def set_desktops() -> list:
+    # Create list of desktops.
     remove_dummy()
     proc_state = subprocess.run(
         ["bspc", "query", "--desktops", "--names"], check=True, capture_output=True
@@ -129,6 +110,7 @@ def set_desktops():
 
 
 def move_desktops():
+    # Move desktops to monitors based on
     print("reply 'y' to move desktop to external monitor")
 
     for desktop in set_desktops():
@@ -140,12 +122,8 @@ def move_desktops():
 
 monitors = update_monitors()
 
-# subprocess.run(f"xrandr --output {monitor} --auto".split(), check=True)
 local = set_local()
 ext = set_ext()
-# to_right()
-# single_monitor(eDP)
-
 
 if len(sys.argv) > 1:
     if sys.argv[1] == "mono":
@@ -154,8 +132,11 @@ if len(sys.argv) > 1:
         single_monitor(ext)
     elif sys.argv[1] == "right":
         to_right()
+    elif sys.argv[1] == "dual":
+        dual()
 else:
     try:
+        pass
         single_monitor(ext)
     except:
         single_monitor(local)
