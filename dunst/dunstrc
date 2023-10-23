@@ -15,3 +15,5 @@
     corner_radius = 15
     origin = top-center
     offset = 10x5
+
+    follow=keyboard
