@@ -61,12 +61,15 @@ def set_ext() -> list:
         ) == "connected":
             monitor_list.append(monitor)
 
+    return monitor_list
+
     if not monitor_list:
         raise Exception("Could not find external monitor.")
 
 
 def single_monitor(target_monitor: str):
     # Disables all monitors but target_monitor and sets wallpaper.
+
     subprocess.run(["xrandr", "--output", target_monitor, "--auto"], check=True)
     for monitor in monitors:
         if monitor != target_monitor:
@@ -109,15 +112,64 @@ def set_desktops() -> list:
     return proc_state.stdout.decode("UTF-8").splitlines()
 
 
-def move_desktops():
+def move_desktops(target_monitor: str):
     # Move desktops to monitors based on
     print("reply 'y' to move desktop to external monitor")
 
     for desktop in set_desktops():
-        if input(f"Move {desktop} to {ext}? ").lower() == "y":
+        if input(f"Move {desktop} to {target_monitor}? ").lower() == "y":
             subprocess.run(
-                ["bspc", "desktop", desktop, "--to-monitor", ext], check=True
+                ["bspc", "desktop", desktop, "--to-monitor", target_monitor], check=True
             )
+
+
+def dual(ext: list, local: str):
+    # Set up dual external monitors
+    if "VGA" in ext[0]:
+        left = ext[0]
+        right = ext[1]
+    else:
+        left = ext[1]
+        right = ext[0]
+
+    subprocess.run(
+        [
+            "xrandr",
+            "--output",
+            left,
+            "--primary",
+            "--mode",
+            "1280x1024",
+            "--pos",
+            "0x450",
+            "--rotate",
+            "normal",
+        ],
+        check=True,
+    )
+    subprocess.run(["xrandr", "--output", local, "--off"], check=True)
+
+    subprocess.run(
+        [
+            "xrandr",
+            "--output",
+            right,
+            "--mode",
+            "1920x1080",
+            "--pos",
+            "1280x0",
+            "--rotate",
+            "normal",
+        ],
+        check=True,
+    )
+
+    for monitor in monitors:
+        if monitor not in [local] + ext:
+            subprocess.run(["xrandr", "--output", monitor, "--off"], check=True)
+
+    set_wallpaper()
+    move_desktops(right)
 
 
 monitors = update_monitors()
@@ -129,11 +181,11 @@ if len(sys.argv) > 1:
     if sys.argv[1] == "mono":
         single_monitor(local)
     elif sys.argv[1] == "ext":
-        single_monitor(ext)
+        single_monitor(ext[0])
     elif sys.argv[1] == "right":
         to_right()
     elif sys.argv[1] == "dual":
-        dual()
+        dual(ext, local)
 else:
     try:
         pass
