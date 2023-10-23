@@ -1,0 +1,27 @@
+#+TITLE: package.use
+#+PROPERTY: header-args :tangle /sudo::/etc/portage/package.use/package.use
+
+* package.use
+** app-editors/emacs
+#+BEGIN_SRC bash
+app-editors/emacs imagemagick jit libxml2 sqlite xwidgets
+#+END_SRC
+| imagemagick | File type conversion                                    |
+| jit         | Allows emacs packages to be compiled for faster loading |
+|             | Also set sys-devel/gcc to have jit                      |
+| libxml2     | Eww needs this                                          |
+| sqlite      | sqlite mode                                             |
+| xwidgets    | Allows xwidget browser                                  |
+
+** sys-firmware/intel-microcode
+#+BEGIN_SRC bash
+sys-firmware/intel-microcode initramfs
+#+END_SRC
++ Helpful
+
+** sys-devel/gcc
+#+BEGIN_SRC bash
+sys-devel/gcc jit
+#+END_SRC
+| jit | Allows emacs packages to be compiled for faster loading |
+|     | Also set app-editors/emacs to have jit                  |
