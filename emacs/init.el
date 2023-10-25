@@ -190,6 +190,9 @@
 ;; eshell colors
 (add-hook 'eshell-mode-hook (lambda () (setenv "TERM" "xterm-256color")))
 
+;; Emacs daemon
+(server-start)
+
 (provide 'init)
 (put 'dired-find-alternate-file 'disabled nil)
 ;;; init.el ends here
