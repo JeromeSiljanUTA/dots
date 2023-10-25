@@ -30,10 +30,15 @@ def _main():
         (_, type_names, path, filename) = event
         if filename == "brightness" and type_names == ["IN_CLOSE_WRITE"]:
             scaled_brightness = scale_value()
-            if scaled_brightness > 50:
-                icon = "brightness-high"
+            if scaled_brightness > 70:
+                icon = "display-brightness-high-symbolic"
+            elif scaled_brightness > 40:
+                icon = "display-brightness-medium-symbolic"
+            elif scaled_brightness > 15:
+                icon = "display-brightness-low-symbolic"
             else:
-                icon = "brightness-low"
+                icon = "display-brightness-off-symbolic"
+
             os.system(
                 f"dunstify -r 4 'Brightness' -h int:value:{scaled_brightness} -i {icon}"
             )
