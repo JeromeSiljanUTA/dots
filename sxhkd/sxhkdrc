@@ -83,10 +83,9 @@ super + r
 super + e
     ~/.config/bspwm/scripts/powerprofiles.py
 
-
 # bluetooth
 super + b
-    ~/.config/bspwm/scripts/bluetooth_connect.py
+    python ~/.config/util_ninja/src/__main__.py -a bluetooth
 
 # wifi
 super + w
