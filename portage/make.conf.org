@@ -25,39 +25,40 @@ PORTAGE_SCHEDULING_POLICY="idle"
 #+END_SRC
 
 ** Use Flags
-| Flag      | Use                                                  |
-|-----------+------------------------------------------------------|
-| X         | Xorg                                                 |
-| acpi      | Power stuff                                          |
-| alsa      | Sound                                                |
-| bluetooth |                                                      |
-| dbus      | Allows programs to talk to each other                |
-| elogind   | Needed so that permissions work fine                 |
-| emacs     | Can enable cool features                             |
-| flac      | Useful filetype                                      |
-| gif       | Useful filetype                                      |
-| gtk       | Enable GTK by default                                |
-| gui       | Enable Gui by default                                |
-| jpeg      | Useful filetype                                      |
-| libnotify | Notifications                                        |
-| mp3       | Useful filetype                                      |
-| mp4       | Useful filetype                                      |
-| ogg       | Useful filetype                                      |
-| opengl    | Graphics help                                        |
-| pdf       | Useful filetype                                      |
-| png       | Useful filetype                                      |
-| svg       | Useful filetype                                      |
-| udev      | Helps with permissions, devices                      |
-| udisks    | Mount those drives                                   |
-| unicode   | Hopefully better fonts                               |
-| vaapi     | Critical for hardware acceleration                   |
-| xinerama  | Multiple monitor support                             |
-| xft       | Fonts                                                |
-| xml       | Allow better xml parsing, helpful for websites, etc. |
-| webp      | Useful filetype                                      |
+| Flag       | Use                                                  |
+|------------+------------------------------------------------------|
+| X          | Xorg                                                 |
+| acpi       | Power stuff                                          |
+| alsa       | Sound                                                |
+| bluetooth  |                                                      |
+| dbus       | Allows programs to talk to each other                |
+| elogind    | Needed so that permissions work fine                 |
+| emacs      | Can enable cool features                             |
+| flac       | Useful filetype                                      |
+| gif        | Useful filetype                                      |
+| gtk        | Enable GTK by default                                |
+| gui        | Enable Gui by default                                |
+| jpeg       | Useful filetype                                      |
+| libnotify  | Notifications                                        |
+| mp3        | Useful filetype                                      |
+| mp4        | Useful filetype                                      |
+| ogg        | Useful filetype                                      |
+| opengl     | Graphics help                                        |
+| pdf        | Useful filetype                                      |
+| png        | Useful filetype                                      |
+| pulseaudio | Every app has pulseaudio support                     |
+| svg        | Useful filetype                                      |
+| udev       | Helps with permissions, devices                      |
+| udisks     | Mount those drives                                   |
+| unicode    | Hopefully better fonts                               |
+| vaapi      | Critical for hardware acceleration                   |
+| xinerama   | Multiple monitor support                             |
+| xft        | Fonts                                                |
+| xml        | Allow better xml parsing, helpful for websites, etc. |
+| webp       | Useful filetype                                      |
 
 #+BEGIN_SRC bash
-USE="X acpi alsa bluetooth dbus elogind emacs flac gif gtk gui jpeg libnotify mp3 mp4 ogg opengl pdf png svg udev udisks unicode vaapi xinerama xft xml webp"
+USE="X acpi alsa bluetooth dbus elogind emacs flac gif gtk gui jpeg libnotify mp3 mp4 ogg opengl pdf png pulseaudio svg udev udisks unicode vaapi xinerama xft xml webp"
 #+END_SRC
 
 ** Extras
