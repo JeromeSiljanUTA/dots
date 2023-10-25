@@ -53,10 +53,10 @@ with Pulse() as pulse:
                     message = str(value)
                     if mute:
                         os.system(
-                            f"dunstify -r 3 'Volume Muted' [{value}%] -h int:value:0"
+                            f"dunstify -r 3 'Volume Muted' [{value}%] -h int:value:0 -i audio-volume-muted-symbolic"
                         )
                     else:
-                        if value > 80:
+                        if value > 60:
                             icon = "audio-volume-high-symbolic"
                         elif value > 30:
                             icon = "audio-volume-medium-symbolic"
