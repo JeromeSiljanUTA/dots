@@ -2,12 +2,20 @@
     highlight: bold italic;
     scrollbar: true;
 
+    /*
     palette-bg0:     #282828;
     palette-bg1:     #3C3836;
     palette-bg2:     #504945;
     palette-fg0:     #FBF1C7;
     palette-fg1:     #EBDBB2;
+    */
 
+    palette-bg0:     #FBF1C7;
+    palette-bg1:     #EBDBB2;
+    palette-bg2:     #D5C4A1;
+    palette-fg0:     #282828;
+    palette-fg1:     #3C3836;
+    
     palette-red:     #CC241D;
     palette-green:   #98971A;
     palette-yellow:  #D79921;
