@@ -187,6 +187,9 @@
  'org-babel-load-languages
  '((shell . t)))
 
+;; eshell colors
+(add-hook 'eshell-mode-hook (lambda () (setenv "TERM" "xterm-256color")))
+
 (provide 'init)
 (put 'dired-find-alternate-file 'disabled nil)
 ;;; init.el ends here
