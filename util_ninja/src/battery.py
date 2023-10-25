@@ -22,7 +22,7 @@ def choose_battery_icon(battery_level: int) -> str:
     else:
         battery_icon = "caution"
 
-    return f"battery-{battery_icon}"
+    return f"battery-{battery_icon}-symbolic"
 
 
 def get_battery_info() -> tuple[int, str]:
