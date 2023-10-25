@@ -1,11 +1,12 @@
 #!/bin/bash
-emacs &
-
-picom -b
 dunst &
+emacs --daemon &
+emacsclient -c -a emacs &
+picom -b
+playerctld &
 sxhkd &
 xscreensaver -no-splash &
-playerctld &
+xsettingsd &
 
 # create desktops a, s, d, f, u, i, o, p
 bspc monitor -d "Terminal" "Notes" "Emacs" "Firefox" "Comms" "IDE" "Files" "Media"
