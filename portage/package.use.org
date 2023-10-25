@@ -6,12 +6,13 @@
 #+BEGIN_SRC bash
 app-editors/emacs imagemagick jit libxml2 sqlite xwidgets
 #+END_SRC
-| imagemagick | File type conversion                                    |
-| jit         | Allows emacs packages to be compiled for faster loading |
-|             | Also set sys-devel/gcc to have jit                      |
-| libxml2     | Eww needs this                                          |
-| sqlite      | sqlite mode                                             |
-| xwidgets    | Allows xwidget browser                                  |
+| imagemagick | File type conversion                                                                  |
+| jit         | Allows emacs packages to be compiled for faster loading                               |
+| -X          | Compile for PGTK (Pure GTK) mode, makes it more resilient and compatible with Wayland |
+|             | Also set sys-devel/gcc to have jit                                                    |
+| libxml2     | Eww needs this                                                                        |
+| sqlite      | sqlite mode                                                                           |
+| xwidgets    | Allows xwidget browser                                                                |
 
 ** sys-firmware/intel-microcode
 #+BEGIN_SRC bash
