@@ -4,6 +4,7 @@
 from argparse import ArgumentParser
 from battery import send_battery_notification
 from bluetooth import activate_bluetooth_rofi
+from theme_switch import update_dunst, update_xsettingsd, replace_rofi_config
 
 parser = ArgumentParser(
     prog="util_ninja",
@@ -12,6 +13,7 @@ parser = ArgumentParser(
 
 
 parser.add_argument("-a", "--action", required=True)
+parser.add_argument("-t", "--theme", required=False)
 args = parser.parse_args()
 
 
@@ -23,6 +25,10 @@ def main():
         case "bluetooth":
             # Display and handle rofi for bluetooth
             activate_bluetooth_rofi()
+        case "theme":
+            update_dunst(args.theme)
+            update_xsettingsd(args.theme)
+            replace_rofi_config(args.theme)
 
 
 if __name__ == "__main__":
