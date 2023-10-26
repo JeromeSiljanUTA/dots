@@ -29,7 +29,7 @@
  '(org-export-preserve-breaks nil)
  '(org-tags-column -50)
  '(package-selected-packages
-   '(olivetti package pandoc-mode dumb-jump arduino-mode docker-cli docker docker-compose-mode debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package reformatter python-mode magit expand-region evil emms ein direnv blacken auto-complete)))
+   '(wttrin olivetti package pandoc-mode dumb-jump arduino-mode docker-cli docker docker-compose-mode debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package reformatter python-mode magit expand-region evil emms ein direnv blacken auto-complete)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -172,6 +172,12 @@
 ;; https://github.com/rnkn/olivetti
 (use-package olivetti)
 
+;; https://github.com/bcbcarl/emacs-wttrin
+(use-package wttrin
+  :config
+  (setq wttrin-default-cities '("Irving" "USA")))
+
+
 (require 'python)
 ;; C-c C-c respects __init__
 (define-key python-mode-map (kbd "C-c C-c")
@@ -189,9 +195,6 @@
 
 ;; eshell colors
 (add-hook 'eshell-mode-hook (lambda () (setenv "TERM" "xterm-256color")))
-
-;; Emacs daemon
-(server-start)
 
 (provide 'init)
 (put 'dired-find-alternate-file 'disabled nil)
