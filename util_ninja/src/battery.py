@@ -10,7 +10,7 @@ BATTERY_PATH = " /sys/class/power_supply/BAT0/"
 os.environ["DISPLAY"] = ":0"
 
 
-def choose_battery_icon(battery_level: int) -> str:
+def choose_battery_icon(battery_level: int, charging: bool) -> str:
     # Choose a battery icon depending on the battery level.
 
     if battery_level > 80:
@@ -22,12 +22,15 @@ def choose_battery_icon(battery_level: int) -> str:
     else:
         battery_icon = "caution"
 
+    if charging:
+        return f"battery-{battery_icon}-charging-symbolic"
+
     return f"battery-{battery_icon}-symbolic"
 
 
-def get_battery_info() -> tuple[int, str]:
-    """Parse acpi data for battery level and remaining time until battery
-    runs out.
+def get_battery_info() -> tuple[int, str, bool]:
+    """Parse acpi data for battery level, remaining time until battery
+    runs out, and chargin status.
 
     """
     battery_info = (
@@ -43,12 +46,14 @@ def get_battery_info() -> tuple[int, str]:
 
     battery_level = int(main_battery.split(",")[1].split("%")[0])
 
+    charging = "Discharging" not in main_battery
+
     try:
         remaining_time = f", {main_battery.split(',')[2].strip()}"
     except IndexError:
         remaining_time = ""
 
-    return battery_level, remaining_time
+    return battery_level, remaining_time, charging
 
 
 def get_power_profile() -> str:
@@ -71,9 +76,9 @@ def get_power_profile() -> str:
 
 def send_battery_notification():
     # Sends battery notification.
-    battery_level, remaining_time = get_battery_info()
+    battery_level, remaining_time, charging = get_battery_info()
     power_profile = get_power_profile()
-    battery_icon = choose_battery_icon(battery_level)
+    battery_icon = choose_battery_icon(battery_level, charging)
 
     message = (
         f"'Battery Level' '{battery_level}% {remaining_time} \n"
