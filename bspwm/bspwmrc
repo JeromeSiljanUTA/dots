@@ -1,7 +1,6 @@
 #!/bin/bash
 dunst &
 emacs --daemon &
-emacsclient -c -a emacs &
 picom -b
 playerctld &
 sxhkd &
@@ -34,6 +33,6 @@ bspc rule -a discord desktop="Comms"
 bspc rule -a Signal desktop="Comms"
 
 ~/.fehbg
-~/.config/bspwm/scripts/desktop-notifier.sh &
-~/.config/bspwm/scripts/brightness-watcher.py &
+~/.config/util_ninja/src/__main__.py -a desktop
+~/.config/util_ninja/src/__main__.py -a brightness
 ~/.config/bspwm/scripts/volume-watcher.py &
