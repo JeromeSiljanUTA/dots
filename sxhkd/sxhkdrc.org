@@ -95,7 +95,7 @@
 
   # show date notification
   super + 8
-      python ~/.config/util_ninja/src/__main__.py -a battery
+      ~/.config/util_ninja/src/__main__.py -a battery
       
 #+END_SRC
 
@@ -111,7 +111,7 @@ super + e
 
 # bluetooth
 super + b
-    python ~/.config/util_ninja/src/__main__.py -a bluetooth
+    ~/.config/util_ninja/src/__main__.py -a bluetooth
 
 # wifi
 super + w
