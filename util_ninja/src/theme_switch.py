@@ -9,13 +9,16 @@ import shutil
 LIGHT_FG = '"#3C3836"'
 LIGHT_BG = '"#FBF1C7"'
 LIGHT_ICONS = "Gruvbox-Light"
+LIGHT_GTK3_THEME_NAME = "Adwaita"
 DARK_FG = '"#EBDBB2"'
 DARK_BG = '"#282828"'
 DARK_ICONS = "Gruvbox-Dark"
+DARK_GTK3_THEME_NAME = "Adwaita-Dark"
 
 DUNST_CONFIG_PATH = "~/.config/dunst/dunstrc"
 XSETTINGSD_CONFIG_PATH = "~/.config/xsettingsd/xsettingsd.conf"
 ROFI_CONFIG_PATH = "~/.config/rofi/"
+GTK3_CONFIG_PATH = "~/.config/gtk-3.0/settings.ini"
 
 
 def restart_ps(ps: str):
@@ -80,3 +83,19 @@ def replace_rofi_config(theme: str):
     print(conf_path)
     print(target_path)
     shutil.copyfile(target_path, conf_path)
+
+
+def replace_gtk3_config(theme: str):
+    # Replace gtk3 config based on theme.
+    config = configparser.ConfigParser()
+    conf_path = os.path.expanduser(GTK3_CONFIG_PATH)
+
+    config.read(conf_path)
+
+    if theme == "dark":
+        config.set("Settings", "gtk-theme-name", DARK_GTK3_THEME_NAME)
+    else:
+        config.set("Settings", "gtk-theme-name", LIGHT_GTK3_THEME_NAME)
+
+    with open(conf_path, "w") as conf_file:
+        config.write(conf_file)
