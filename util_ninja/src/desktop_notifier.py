@@ -50,5 +50,5 @@ def send_desktop_notification(report: str):
                 icon = "preferences-desktop-display"
 
         subprocess.run(
-            f"dunstify -r 1 '{focused_desktop}' -i {icon}".split(" "), shell=False
+            f"dunstify -r 1 {focused_desktop} -i {icon}".split(" "), shell=False
         )
