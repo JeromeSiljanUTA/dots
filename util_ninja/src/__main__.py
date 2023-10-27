@@ -7,7 +7,12 @@ from battery import send_battery_notification
 from bluetooth import activate_bluetooth_rofi
 from brightness_watcher import brightness_watcher_loop
 from desktop_notifier import desktop_subscribe_loop
-from theme_switch import update_dunst, update_xsettingsd, replace_rofi_config
+from theme_switch import (
+    update_dunst,
+    update_xsettingsd,
+    replace_rofi_config,
+    replace_gtk3_config,
+)
 
 parser = ArgumentParser(
     prog="util_ninja",
@@ -38,6 +43,7 @@ def main():
             update_dunst(args.theme)
             update_xsettingsd(args.theme)
             replace_rofi_config(args.theme)
+            replace_gtk3_config(args.theme)
 
 
 if __name__ == "__main__":
