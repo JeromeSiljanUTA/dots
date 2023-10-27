@@ -56,9 +56,9 @@ with Pulse() as pulse:
                             f"dunstify -r 3 'Volume Muted' [{value}%] -h int:value:0 -i audio-volume-muted-symbolic"
                         )
                     else:
-                        if value > 60:
+                        if value > 66:
                             icon = "audio-volume-high-symbolic"
-                        elif value > 30:
+                        elif value > 33:
                             icon = "audio-volume-medium-symbolic"
                         else:
                             icon = "audio-volume-low-symbolic"
