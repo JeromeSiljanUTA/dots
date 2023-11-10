@@ -19,6 +19,7 @@ DUNST_CONFIG_PATH = "~/.config/dunst/dunstrc"
 XSETTINGSD_CONFIG_PATH = "~/.config/xsettingsd/xsettingsd.conf"
 ROFI_CONFIG_PATH = "~/.config/rofi/"
 GTK3_CONFIG_PATH = "~/.config/gtk-3.0/settings.ini"
+EMACSCLIENT_CONFIG_PATH = "~/.config/emacs/client_scripts/"
 
 
 def restart_ps(ps: str):
@@ -99,3 +100,16 @@ def replace_gtk3_config(theme: str):
 
     with open(conf_path, "w") as conf_file:
         config.write(conf_file)
+
+
+def update_emacsclient(theme: str):
+    # Replace emacsclient config based on theme.
+
+    subprocess.run(
+        ["emacsclient", "-e", f'(load "{EMACSCLIENT_CONFIG_PATH}{theme}_theme.el")']
+    )
+
+
+def check_theme(theme: str):
+    # Ensure theme name is acceptable
+    return theme in ("dark", "light")

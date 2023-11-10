@@ -12,6 +12,8 @@ from theme_switch import (
     update_xsettingsd,
     replace_rofi_config,
     replace_gtk3_config,
+    update_emacsclient,
+    check_theme,
 )
 
 parser = ArgumentParser(
@@ -40,10 +42,14 @@ def main():
             desktop_subscribe_loop()
         case "theme":
             # Change dunst, xsettings, and rofi config based on theme.
-            update_dunst(args.theme)
-            update_xsettingsd(args.theme)
-            replace_rofi_config(args.theme)
-            replace_gtk3_config(args.theme)
+            if check_theme(args.theme):
+                update_dunst(args.theme)
+                update_xsettingsd(args.theme)
+                replace_rofi_config(args.theme)
+                replace_gtk3_config(args.theme)
+                update_emacsclient(args.theme)
+            else:
+                raise ValueError('Theme must be either "dark" or "light".')
 
 
 if __name__ == "__main__":
