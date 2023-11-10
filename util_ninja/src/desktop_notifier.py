@@ -4,7 +4,8 @@
 import subprocess
 import os
 
-DESKTOP_SUBSCRIBE_CMD = "bspc subscribe report desktop_focus"
+DESKTOP_SUBSCRIBE_CMD = "bspc subscribe desktop_focus"
+CURRENT_DESKTOP_CMD = "bspc query -D -d --names"
 os.environ["DISPLAY"] = ":0"
 
 
@@ -17,38 +18,34 @@ def desktop_subscribe_loop():
         report = desktop_subscribe.stdout.readline()
         if not report and desktop_subscribe.poll() is not None:
             break
-        send_desktop_notification(report.decode())
+        send_desktop_notification()
 
 
-def send_desktop_notification(report: str):
-    """Takes output of desktop subscribe command and sends the corresponding
+def send_desktop_notification():
+    """Gets currently focused desktop and sends the corresponding
     notification."""
 
-    if "desktop_focus" not in report:
-        focused_desktop = next(
-            desktop for desktop in report.split(":") if desktop[0] in ("O", "F")
-        )[1:]
+    focused_desktop = subprocess.run(
+        CURRENT_DESKTOP_CMD.split(" "), check=True, capture_output=True
+    ).stdout.decode()[:-1]
+    match focused_desktop:
+        case "Terminal":
+            icon = "terminal-symbolic"
+        case "Notes":
+            icon = "notes-symbolic"
+        case "Emacs":
+            icon = "emacs-symbolic"
+        case "Firefox":
+            icon = "firefox-symbolic"
+        case "Comms":
+            icon = "messengerfordesktop-symbolic"
+        case "IDE":
+            icon = "programming-symbolic"
+        case "Files":
+            icon = "file-manager-symbolic"
+        case "Media":
+            icon = "library-music-symbolic"
+        case _:
+            icon = "preferences-desktop-display"
 
-        match focused_desktop:
-            case "Terminal":
-                icon = "terminal-symbolic"
-            case "Notes":
-                icon = "notes-symbolic"
-            case "Emacs":
-                icon = "emacs-symbolic"
-            case "Firefox":
-                icon = "firefox-symbolic"
-            case "Comms":
-                icon = "messengerfordesktop-symbolic"
-            case "IDE":
-                icon = "programming-symbolic"
-            case "Files":
-                icon = "file-manager-symbolic"
-            case "Media":
-                icon = "library-music-symbolic"
-            case _:
-                icon = "preferences-desktop-display"
-
-        subprocess.run(
-            f"dunstify -r 1 {focused_desktop} -i {icon}".split(" "), shell=False
-        )
+    subprocess.run(f"dunstify -r 1 {focused_desktop} -i {icon}".split(" "), shell=False)
