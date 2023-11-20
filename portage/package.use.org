@@ -13,6 +13,11 @@ app-editors/emacs imagemagick jit libxml2 sqlite xwidgets
 | libxml2     | Eww needs this                                                                        |
 | sqlite      | sqlite mode                                                                           |
 | xwidgets    | Allows xwidget browser                                                                |
+** net-mail/isync
+#+BEGIN_SRC bash
+net-mail/isync sasl
+#+END_SRC
+| sasl | Allows for SASL support |
 
 ** sys-firmware/intel-microcode
 #+BEGIN_SRC bash
@@ -26,3 +31,12 @@ sys-devel/gcc jit
 #+END_SRC
 | jit | Allows emacs packages to be compiled for faster loading |
 |     | Also set app-editors/emacs to have jit                  |
+
+* automatically added
+#+BEGIN_SRC bash
+# required by dev-texlive/texlive-xetex-2021-r1::gentoo
+# required by dev-texlive/texlive-formatsextra-2021::gentoo
+# required by app-text/texlive-2021-r1::gentoo[xml,-extra]
+# required by texlive (argument)
+>=app-text/texlive-core-2021-r7 xetex
+#+END_SRC

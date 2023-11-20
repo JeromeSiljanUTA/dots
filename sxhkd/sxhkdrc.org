@@ -53,25 +53,28 @@
 
 * Application Shortcuts
 #+BEGIN_SRC bash
-  # launch keepmenu
-  super + v
-    keepmenu
+# launch keepmenu
+super + v
+  keepmenu
 
-  # launch rofi
-  super + n
-      rofi -show drun
+# launch rofi
+super + n
+    rofi -show drun
 
-  # enters warpd normal mode
-  Print
-      warpd --normal
+# enters warpd normal mode
+Print
+    warpd --normal
 
-  # Open Putty Tiva C
-  super + t
-    putty -load tm4c123ghpm
+# Open Putty Tiva C
+super + 4
+    putty -load tm4c123ghpm_dark
 
-  # screenshot
-  super + Print
-    scrot -s
+super + 5
+    putty -load tm4c123ghpm_light
+
+# screenshot
+super + Print
+  scrot -s
 #+END_SRC
 
 * Monitor Scripts
@@ -116,6 +119,10 @@ super + b
 # wifi
 super + w
     ~/.config/bspwm/scripts/wifi_connect.py
+
+# theme
+super + t
+      ~/.config/util_ninja/src/__main__.py -a theme -t "$(echo -e "light\ndark" | rofi -dmenu)"   
 #+END_SRC
 
 * Volume/Brightness

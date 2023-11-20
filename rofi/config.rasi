@@ -1,4 +1,5 @@
 * {
+    font: "Jost 12";
     highlight: bold italic;
     scrollbar: true;
 

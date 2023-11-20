@@ -15,7 +15,7 @@ LC_MESSAGES=C.utf8
 ACCEPT_LICENSE="*"
 GRUB_PLATFORMS="efi-64"
 
-MAKEOPTS="-j12"
+MAKEOPTS="-j8"
 #+END_SRC
 
 ** Portage
@@ -48,6 +48,7 @@ PORTAGE_SCHEDULING_POLICY="idle"
 | png        | Useful filetype                                      |
 | pulseaudio | Every app has pulseaudio support                     |
 | svg        | Useful filetype                                      |
+| -systemd   | Eliminates conflicts with elogind                    |
 | udev       | Helps with permissions, devices                      |
 | udisks     | Mount those drives                                   |
 | unicode    | Hopefully better fonts                               |
@@ -59,6 +60,22 @@ PORTAGE_SCHEDULING_POLICY="idle"
 
 #+BEGIN_SRC bash
 USE="X acpi alsa bluetooth dbus elogind emacs flac gif gtk gui jpeg libnotify mp3 mp4 ogg opengl pdf png pulseaudio svg udev udisks unicode vaapi xinerama xft xml webp"
+#+END_SRC
+
+** Use Expand
+*** Additional Information
++ https://wiki.gentoo.org/wiki//etc/portage/make.conf#USE_EXPAND
++ https://wiki.gentoo.org/wiki/Localization/Guide#L10N
+
+| Flag  | Use                          |
+|-------+------------------------------|
+| en    | English localization support |
+| en-US | Freedom support              |
+| es    | Spanish localization support |
+| es-MX | Mexican Spanish support      |
+
+#+BEGIN_SRC bash
+L10N="en en-US es es-MX"
 #+END_SRC
 
 ** Extras
