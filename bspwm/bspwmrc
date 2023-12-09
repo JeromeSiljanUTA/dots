@@ -1,6 +1,6 @@
 #!/bin/bash
 dunst &
-emacs --daemon &
+emacs &
 picom -b
 playerctld &
 sxhkd &
