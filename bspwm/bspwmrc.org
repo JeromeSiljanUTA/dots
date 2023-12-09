@@ -47,8 +47,8 @@ bspc rule -a Signal desktop="Comms"
 4. Xob for volume
 #+BEGIN_SRC bash
 ~/.fehbg
-~/.config/util_ninja/src/__main__.py -a desktop
-~/.config/util_ninja/src/__main__.py -a brightness
+~/.config/util_ninja/src/__main__.py -a desktop &
+~/.config/util_ninja/src/__main__.py -a brightness &
 ~/.config/bspwm/scripts/volume-watcher.py &
 #+END_SRC
 
