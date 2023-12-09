@@ -34,7 +34,6 @@
  '(org-babel-load-languages '((shell . t) (C . t)))
  '(org-edit-src-content-indentation 0)
  '(org-export-preserve-breaks nil)
- '(org-tags-column -50)
  '(package-selected-packages
    '(org-roam wttrin olivetti package pandoc-mode dumb-jump arduino-mode docker-cli docker docker-compose-mode debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package reformatter python-mode magit expand-region evil emms ein direnv blacken auto-complete)))
 (custom-set-faces
