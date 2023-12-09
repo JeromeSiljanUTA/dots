@@ -186,6 +186,9 @@
 ;; https://github.com/org-roam/org-roam
 (use-package org-roam)
 
+;; https://github.com/joostkremers/writeroom-mode
+(use-package writeroom-mode)
+
 ;; https://github.com/s-kostyaev/ellama
 (use-package ellama
   :init
