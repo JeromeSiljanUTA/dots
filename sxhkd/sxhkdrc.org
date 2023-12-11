@@ -4,51 +4,51 @@
 * Bspwm Shortcuts
 ** Nodes
 #+BEGIN_SRC bash
-  # focus neighbor nodes
-  super + {h,j,k,l}
-      bspc node --focus {west,south,north,east}
- 
-  # swap neighbor nodes
-  super + shift + {h,j,k,l}
-      bspc node --swap {west,south,north,east}
- 
-  # focus neighbor nodes while in monocle mode
-  super + ctrl + {j,k}
-      bspc node --focus {next,prev}.local.!hidden.window.!locked
- 
-  # toggle node floating
-  super + shift + space
-      bspc node --state ~floating
+# focus neighbor nodes
+super + {h,j,k,l}
+    bspc node --focus {west,south,north,east}
 
-  # send node to desktop
-  super + shift + {a,s,d,f,u,i,o,p}
-      bspc node focused --to-desktop {"Terminal","Notes","Emacs","Firefox","Comms","IDE","Files","Media"}
+# swap neighbor nodes
+super + shift + {h,j,k,l}
+    bspc node --swap {west,south,north,east}
+
+# focus neighbor nodes while in monocle mode
+super + ctrl + {j,k}
+    bspc node --focus {next,prev}.local.!hidden.window.!locked
+
+# toggle node floating
+super + shift + space
+    bspc node --state ~floating
+
+# send node to desktop
+super + shift + {a,s,d,f,u,i,o,p}
+    bspc node focused --to-desktop {"Terminal","Notes","Emacs","Firefox","Comms","IDE","Files","Media"}
 
 #+END_SRC
 
 ** Windows
 #+BEGIN_SRC bash
-  # close windows
-  super + shift + c
-      bspc node --close
+# close windows
+super + shift + c
+    bspc node --close
 #+END_SRC
 
 ** Desktops
 #+BEGIN_SRC bash
-  # select desktops
-  super + {a,s,d,f,u,i,o,p}
-      bspc desktop {"Terminal","Notes","Emacs","Firefox","Comms","IDE","Files","Media"} --focus
+# select desktops
+super + {a,s,d,f,u,i,o,p}
+    bspc desktop {"Terminal","Notes","Emacs","Firefox","Comms","IDE","Files","Media"} --focus
 
-  # select last desktop
-  super + Tab
-      bspc desktop last --focus
+# select last desktop
+super + Tab
+    bspc desktop last --focus
 
-  Insert
-      bspc desktop last --focus
+Insert
+    bspc desktop last --focus
 
-  # switches to "next" mode
-  super + {m}
-      bspc desktop --layout next
+# switches to "next" mode
+super + {m}
+    bspc desktop --layout next
 #+END_SRC
 
 * Application Shortcuts
@@ -79,27 +79,28 @@ super + Print
 
 * Monitor Scripts
 #+BEGIN_SRC bash
-  super + {1,2}
-      ~/.config/bspwm/scripts/monitor {mono,ext}
 
-  XF86Display
-      ~/.config/bspwm/scripts/monitor
+super + {1,2}
+    ~/.config/bspwm/scripts/monitor {mono,ext}
+
+XF86Display
+    ~/.config/bspwm/scripts/monitor
 #+END_SRC
 
 * Notification Shortcuts
 #+BEGIN_SRC bash
-  # clear, pop notifications
-  super + {0,9}
-      {dunstctl close-all,dunstctl history-pop}
+# clear, pop notifications
+super + {0,9}
+    {dunstctl close-all,dunstctl history-pop}
 
-  # show date notification
-  super + 3
-      ~/.config/bspwm/scripts/date
+# show date notification
+super + 3
+    ~/.config/bspwm/scripts/date
 
-  # show date notification
-  super + 8
-      ~/.config/util_ninja/src/__main__.py -a battery
-      
+# show date notification
+super + 8
+    ~/.config/util_ninja/src/__main__.py -a battery
+
 #+END_SRC
 
 * Rofi Shortcuts
@@ -127,26 +128,26 @@ super + t
 
 * Volume/Brightness
 #+BEGIN_SRC bash
-  # volume control
-  XF86Audio{LowerVolume,RaiseVolume,Mute}
-      pactl set-sink-{volume @DEFAULT_SINK@ -2%,\
-      volume @DEFAULT_SINK@ +2%,\
-      mute @DEFAULT_SINK@ toggle}
+# volume control
+XF86Audio{LowerVolume,RaiseVolume,Mute}
+    pactl set-sink-{volume @DEFAULT_SINK@ -2%,\
+    volume @DEFAULT_SINK@ +2%,\
+    mute @DEFAULT_SINK@ toggle}
 
-  # brightness control
-  XF86MonBrightness{Down,Up}
-      xbacklight -{dec,inc} 4
+# brightness control
+XF86MonBrightness{Down,Up}
+    xbacklight -{dec,inc} 4
 #+END_SRC
 
 * Media
 #+BEGIN_SRC bash
-  # media button controls
-  XF86Audio{Play,Next,Prev}
-      playerctl {play-pause,next,previous}
+# media button controls
+XF86Audio{Play,Next,Prev}
+    playerctl {play-pause,next,previous}
 #+END_SRC
 
 * Reload Sxhkd
 #+BEGIN_SRC bash
-  super + Escape
-      pkill -usr1 -x sxhkd
+super + Escape
+    pkill -usr1 -x sxhkd
 #+END_SRC
