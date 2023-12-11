@@ -218,6 +218,7 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; Eshell sudo caching, use eshell/sudo
+(require 'esh-module)
 (setq password-cache t) ; enable password caching
 (setq password-cache-expiry 3600) ; for one hour (time in secs)
 
