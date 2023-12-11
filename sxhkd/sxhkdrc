@@ -18,6 +18,10 @@ super + shift + space
 super + shift + {a,s,d,f,u,i,o,p}
     bspc node focused --to-desktop {"Terminal","Notes","Emacs","Firefox","Comms","IDE","Files","Media"}
 
+# toggle node sticky
+super + ctrl + {s}
+    bspc node --flag sticky
+
 # close windows
 super + shift + c
     bspc node --close
