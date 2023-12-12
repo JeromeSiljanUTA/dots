@@ -14,6 +14,7 @@ from theme_switch import (
     replace_gtk3_config,
     update_emacsclient,
     check_theme,
+    set_state,
 )
 
 parser = ArgumentParser(
@@ -48,6 +49,7 @@ def main():
                 replace_rofi_config(args.theme)
                 replace_gtk3_config(args.theme)
                 update_emacsclient(args.theme)
+                set_state(args.theme)
             else:
                 raise ValueError('Theme must be either "dark" or "light".')
 

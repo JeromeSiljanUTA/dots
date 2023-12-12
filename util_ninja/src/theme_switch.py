@@ -20,6 +20,7 @@ XSETTINGSD_CONFIG_PATH = "~/.config/xsettingsd/xsettingsd.conf"
 ROFI_CONFIG_PATH = "~/.config/rofi/"
 GTK3_CONFIG_PATH = "~/.config/gtk-3.0/settings.ini"
 EMACSCLIENT_CONFIG_PATH = "~/.config/emacs/client_scripts/"
+STATE_FILE_PATH = "~/.config/util_ninja/state"
 
 
 def restart_ps(ps: str):
@@ -108,6 +109,13 @@ def update_emacsclient(theme: str):
     subprocess.run(
         ["emacsclient", "-e", f'(load "{EMACSCLIENT_CONFIG_PATH}{theme}_theme.el")']
     )
+
+
+def set_state(theme: str):
+    # Set state file based on theme.
+    file_path = os.path.expanduser(STATE_FILE_PATH)
+    with open(file_path, "w") as f:
+        f.write(theme)
 
 
 def check_theme(theme: str):
