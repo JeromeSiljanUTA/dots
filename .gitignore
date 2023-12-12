@@ -75,10 +75,11 @@ transmission/dht.dat
 transmission/resume
 transmission/stats.json
 transmission/torrents
+util_ninja/state
 xournalpp/autosave
 xournalpp/emergencysave.xopp
 xournalpp/metadata
 xournalpp/settings.xml
+xsettingsd/
 zoom.conf
 zoomus.conf
-xsettingsd/
