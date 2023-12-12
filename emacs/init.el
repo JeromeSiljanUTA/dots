@@ -54,10 +54,12 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
-;; First change the theme so I'm not blinded on startup
 ;; https://github.com/greduan/emacs-theme-gruvbox
-(use-package gruvbox-theme
-  :config (load-theme 'gruvbox-light-medium))
+(use-package gruvbox-theme)
+
+;; Start theme
+(eval-and-compile(load "~/.config/emacs/client_scripts/theme-switcher.el"))
+(theme-swticher-init-theme)
 
 ;; Hide scroll bar, menu bar, tool bar
 (scroll-bar-mode -1)

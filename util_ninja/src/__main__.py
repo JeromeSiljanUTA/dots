@@ -44,12 +44,12 @@ def main():
         case "theme":
             # Change dunst, xsettings, and rofi config based on theme.
             if check_theme(args.theme):
+                set_state(args.theme)
                 update_dunst(args.theme)
                 update_xsettingsd(args.theme)
                 replace_rofi_config(args.theme)
                 replace_gtk3_config(args.theme)
                 update_emacsclient(args.theme)
-                set_state(args.theme)
             else:
                 raise ValueError('Theme must be either "dark" or "light".')
 

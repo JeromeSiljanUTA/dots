@@ -19,7 +19,7 @@ DUNST_CONFIG_PATH = "~/.config/dunst/dunstrc"
 XSETTINGSD_CONFIG_PATH = "~/.config/xsettingsd/xsettingsd.conf"
 ROFI_CONFIG_PATH = "~/.config/rofi/"
 GTK3_CONFIG_PATH = "~/.config/gtk-3.0/settings.ini"
-EMACSCLIENT_CONFIG_PATH = "~/.config/emacs/client_scripts/"
+EMACSCLIENT_CONFIG_PATH = "~/.config/emacs/client_scripts/theme-switcher.el"
 STATE_FILE_PATH = "~/.config/util_ninja/state"
 
 
@@ -105,10 +105,9 @@ def replace_gtk3_config(theme: str):
 
 def update_emacsclient(theme: str):
     # Replace emacsclient config based on theme.
-
-    subprocess.run(
-        ["emacsclient", "-e", f'(load "{EMACSCLIENT_CONFIG_PATH}{theme}_theme.el")']
-    )
+    load_file = f'(eval-and-compile(load "{EMACSCLIENT_CONFIG_PATH}"))'
+    load_theme = f"({theme})"
+    subprocess.run(["emacsclient", "-e", load_file, load_theme])
 
 
 def set_state(theme: str):
