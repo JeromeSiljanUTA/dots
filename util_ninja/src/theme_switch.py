@@ -106,7 +106,7 @@ def replace_gtk3_config(theme: str):
 def update_emacsclient(theme: str):
     # Replace emacsclient config based on theme.
     load_file = f'(eval-and-compile(load "{EMACSCLIENT_CONFIG_PATH}"))'
-    load_theme = f"({theme})"
+    load_theme = f"(theme-switcher-{theme})"
     subprocess.run(["emacsclient", "-e", load_file, load_theme])
 
 
