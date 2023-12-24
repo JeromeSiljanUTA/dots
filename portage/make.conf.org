@@ -38,6 +38,7 @@ PORTAGE_SCHEDULING_POLICY="idle"
 | gif        | Useful filetype                                      |
 | gtk        | Enable GTK by default                                |
 | gui        | Enable Gui by default                                |
+| heif       | HEIF/HEIC support, helpful for Apple images          |
 | jpeg       | Useful filetype                                      |
 | libnotify  | Notifications                                        |
 | mp3        | Useful filetype                                      |
@@ -59,7 +60,7 @@ PORTAGE_SCHEDULING_POLICY="idle"
 | webp       | Useful filetype                                      |
 
 #+BEGIN_SRC bash
-USE="X acpi alsa bluetooth dbus elogind emacs flac gif gtk gui jpeg libnotify mp3 mp4 ogg opengl pdf png pulseaudio svg udev udisks unicode vaapi xinerama xft xml webp"
+USE="X acpi alsa bluetooth dbus elogind emacs flac gif gtk gui jpeg heif libnotify mp3 mp4 ogg opengl pdf png pulseaudio svg udev udisks unicode vaapi xinerama xft xml webp"
 #+END_SRC
 
 ** Use Expand
