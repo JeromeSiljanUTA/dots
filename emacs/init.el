@@ -28,14 +28,13 @@
        (tags-todo "@waiting"
 		  ((org-agenda-overriding-header "Tasks @waiting"))))
       nil nil)))
- '(org-agenda-files
-   '("~/learning/school/QUANTITATIVE COMPUTER ARCHITECTURE CSE4323/cse4323.org" "~/learning/school/EMBEDDED SYSTEMS II CSE4342/cse4342.org" "~/learning/school/SENIOR DESIGN II CSE4317/cse4317.org" "~/misc/gtd/main.org"))
+ '(org-agenda-files '("/home/jerome/misc/gtd/main.org"))
  '(org-agenda-loop-over-headlines-in-active-region nil)
- '(org-babel-load-languages '((shell . t) (C . t)))
+ '(org-babel-load-languages '((shell . t) (C . t) (R . t)))
  '(org-edit-src-content-indentation 0)
  '(org-export-preserve-breaks nil)
  '(package-selected-packages
-   '(ellama em-tramp org-roam wttrin olivetti package pandoc-mode dumb-jump arduino-mode docker-cli docker-compose-mode debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package reformatter python-mode magit expand-region evil emms ein direnv blacken auto-complete)))
+   '(ess multiple-cursors ellama em-tramp org-roam wttrin olivetti package pandoc-mode dumb-jump arduino-mode docker-cli docker-compose-mode debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package reformatter python-mode magit expand-region evil emms ein direnv blacken auto-complete)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -167,9 +166,8 @@
 (use-package pdf-tools
   :defer t
   :config
-  (setq-default pdf-view-display-size 'fit-page))
-
-(pdf-tools-install)
+  (setq-default pdf-view-display-size 'fit-page)
+  (pdf-tools-install))
 
 ;; ;; https://github.com/Silex/docker.el
 ;; (use-package docker
@@ -199,6 +197,9 @@
   (setopt ellama-provider
 	  (make-llm-ollama
 	   :chat-model "codellama" :embedding-model "codellama")))
+
+;; docker-compose-mode
+(use-package docker-compose-mode)
 
 (require 'python)
 ;; C-c C-c respects __init__
