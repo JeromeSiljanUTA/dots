@@ -38,6 +38,8 @@ bspc rule -a rnote desktop="Notes"
 bspc rule -a thunderbird desktop="Comms"
 bspc rule -a discord desktop="Comms"
 bspc rule -a Signal desktop="Comms"
+bspc rule -a "Jellyfin Media Player" desktop="Media"
+bspc rule -a Pavucontrol desktop="Media"
 #+END_SRC
 
 * Startup scripts
