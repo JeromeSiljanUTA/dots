@@ -112,10 +112,7 @@
   org-deadline-warning-days
   :config
   (setq org-agenda-files
-	'("~/learning/school/QUANTITATIVE COMPUTER ARCHITECTURE CSE4323/cse4323.org"
-	  "~/learning/school/EMBEDDED SYSTEMS II CSE4342/cse4342.org"
-	  "~/learning/school/SENIOR DESIGN II CSE4317/cse4317.org"
-	  "~/misc/gtd/main.org"))
+	'("~/misc/gtd/main.org"))
   (setq org-deadline-warning-days 0)
   (setq org-refile-targets
 	'(("~/misc/gtd/main.org" :maxlevel . 1)
@@ -125,6 +122,9 @@
   (global-set-key (kbd "C-c l") 'org-store-link)
   (global-set-key (kbd "C-c a") 'org-agenda)
   (global-set-key (kbd "C-c c") 'org-capture))
+
+(eval-and-compile(load "~/.config/emacs/client_scripts/org-setup-buffer.el"))
+(add-hook 'org-mode-hook 'org-setup-buffer)
 
 ;; https://www.gnu.org/software/emms/
 (use-package emms
