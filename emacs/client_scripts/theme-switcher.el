@@ -7,12 +7,14 @@
 ;;; Code:
 (defun theme-switcher-light()
   "Switch to light theme."
+  (interactive)
   (disable-theme 'gruvbox-dark-medium)
   (disable-theme 'gruvbox-light-medium)
   (load-theme 'gruvbox-light-medium))
 
 (defun theme-switcher-dark()
   "Switch to dark theme."
+  (interactive)
   (disable-theme 'gruvbox-light-medium)
   (disable-theme 'gruvbox-dark-medium)
   (load-theme 'gruvbox-dark-medium))
