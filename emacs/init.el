@@ -30,7 +30,7 @@
       nil nil)))
  '(org-agenda-files '("/home/jerome/misc/gtd/main.org"))
  '(org-agenda-loop-over-headlines-in-active-region nil)
- '(org-babel-load-languages '((shell . t) (C . t) (R . t)))
+ '(org-babel-load-languages '((shell . t) (C . t) (R . t) (python . t)))
  '(org-edit-src-content-indentation 0)
  '(org-export-preserve-breaks nil)
  '(package-selected-packages
@@ -58,7 +58,7 @@
 
 ;; Start theme
 (eval-and-compile(load "~/.config/emacs/client_scripts/theme-switcher.el"))
-(theme-swticher-init-theme)
+(theme-switcher-init-theme)
 
 ;; Hide scroll bar, menu bar, tool bar
 (scroll-bar-mode -1)

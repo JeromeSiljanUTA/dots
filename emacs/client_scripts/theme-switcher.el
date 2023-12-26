@@ -1,4 +1,4 @@
-;;; theme-switcher.el --- Emacs theme swtiching functions.
+;;; theme-switcher.el --- Emacs theme switching functions.
 
 ;;; Commentary:
 ;; Functions to switch the theme to light and dark.
@@ -17,7 +17,7 @@
   (disable-theme 'gruvbox-dark-medium)
   (load-theme 'gruvbox-dark-medium))
 
-(defun theme-swticher-init-theme()
+(defun theme-switcher-init-theme()
   "Read current theme value and set theme accordingly."
   (defvar theme-val)
   (setq theme-val (with-temp-buffer
