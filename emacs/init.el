@@ -170,6 +170,9 @@
   (setq-default pdf-view-display-size 'fit-page)
   (pdf-tools-install))
 
+(eval-and-compile(load "~/.config/emacs/client_scripts/PDFView-setup-buffer.el"))
+(add-hook 'pdf-view-mode-hook 'pdf-view-setup-buffer)
+
 ;; ;; https://github.com/Silex/docker.el
 ;; (use-package docker
 ;;   :config
