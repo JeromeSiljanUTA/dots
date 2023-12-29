@@ -7,6 +7,7 @@
 (defun org-setup-buffer()
   "Set up org buffer."
   (writeroom-mode)
-  (flyspell-mode))
+  (flyspell-mode)
+  (visual-line-mode))
 
 ;;; org-setup-buffer.el ends here
