@@ -33,8 +33,10 @@
  '(org-babel-load-languages '((shell . t) (C . t) (R . t) (python . t)))
  '(org-edit-src-content-indentation 0)
  '(org-export-preserve-breaks nil)
+ '(org-noter-always-create-frame nil)
  '(package-selected-packages
-   '(ess multiple-cursors ellama em-tramp org-roam wttrin olivetti package pandoc-mode dumb-jump arduino-mode docker-cli docker-compose-mode debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package reformatter python-mode magit expand-region evil emms ein direnv blacken auto-complete))
+   '(nov org-noter ess multiple-cursors ellama em-tramp org-roam wttrin olivetti package pandoc-mode dumb-jump arduino-mode docker-cli docker-compose-mode debian-el dockerfile-mode bluetooth pylint lua-mode pdf-tools eat jupyter codespaces ayu-theme nano-theme writeroom-mode helm numpydoc sphinx-doc avy flycheck format-all company yasnippet use-package reformatter python-mode magit expand-region evil emms ein direnv blacken auto-complete))
+ '(writeroom-fullscreen-effect 'maximized)
  '(writeroom-maximize-window nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -204,6 +206,14 @@
 
 ;; docker-compose-mode
 (use-package docker-compose-mode)
+
+;; https://github.com/weirdNox/org-noter
+(use-package org-noter)
+
+;; https://depp.brause.cc/nov.el/
+(use-package nov
+  :config
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
 
 (require 'python)
 ;; C-c C-c respects __init__
