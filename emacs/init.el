@@ -10,18 +10,6 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
-(use-package gruvbox-theme
-  :preface
-  (eval-and-compile(load "~/.config/emacs/client_scripts/theme-switcher.el"))
-  :config
-  (theme-switcher-init-theme)
-)
-
-;; Hide scroll bar, menu bar, tool bar
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-
 ;; Install use-package if not installed
 (package-refresh-contents)
 (unless (package-installed-p 'use-package)
@@ -31,6 +19,15 @@
 (use-package package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
+(use-package gruvbox-theme
+  :preface
+  (eval-and-compile(load "~/.config/emacs/client_scripts/theme-switcher.el"))
+  :config
+  (theme-switcher-init-theme)
+  :custom
+  (custom-safe-themes t)
+)
+
 ;; https://github.com/wbolster/emacs-direnv
 (use-package direnv
   :config
@@ -39,7 +36,6 @@
 ;; https://github.com/magit/magit
 (use-package magit)
 
-;; https://github.com/magnars/expand-region.el
 (use-package expand-region
   :config
   (global-set-key (kbd "C-=") 'er/expand-region))
@@ -195,3 +191,8 @@
 (provide 'init)
 ;;; init.el ends here
 (put 'dired-find-alternate-file 'disabled nil)
+
+;; Hide scroll bar, menu bar, tool bar
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)

@@ -17,8 +17,19 @@
 ;; Same as putting :ensure t on all packages
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
+
+;; Install use-package if not installed
+(package-refresh-contents)
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 #+END_SRC
 
+** melpa
+#+BEGIN_SRC elisp
+;; Define package repos, initialize
+(use-package package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+#+END_SRC
 
 ** [[https://github.com/greduan/emacs-theme-gruvbox][gruvbox-theme]]
 #+BEGIN_SRC elisp
@@ -27,38 +38,34 @@
   (eval-and-compile(load "~/.config/emacs/client_scripts/theme-switcher.el"))
   :config
   (theme-switcher-init-theme)
+  :custom
+  (custom-safe-themes t)
 )
 #+END_SRC
 
-** else
+** [[https://github.com/wbolster/emacs-direnv][direnv]]
 #+BEGIN_SRC elisp
-;; Hide scroll bar, menu bar, tool bar
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-
-;; Install use-package if not installed
-(package-refresh-contents)
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
-;; Define package repos, initialize
-(use-package package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-
 ;; https://github.com/wbolster/emacs-direnv
 (use-package direnv
   :config
   (direnv-mode))
+#+END_SRC
 
+** [[https://github.com/magit/magit][magit]]
+#+BEGIN_SRC elisp
 ;; https://github.com/magit/magit
 (use-package magit)
+#+END_SRC
 
-;; https://github.com/magnars/expand-region.el
+** [[https://github.com/magnars/expand-region.el][expand-region]]
+#+BEGIN_SRC elisp
 (use-package expand-region
   :config
   (global-set-key (kbd "C-=") 'er/expand-region))
+#+END_SRC 
 
+** else
+#+BEGIN_SRC elisp
 ;; https://github.com/joaotavora/yasnippet
 (use-package yasnippet
   :defines
@@ -211,3 +218,11 @@
 ;;; init.el ends here
 (put 'dired-find-alternate-file 'disabled nil)
 #+END_SRC
+
+** aesthetics
+#+BEGIN_SRC elisp
+;; Hide scroll bar, menu bar, tool bar
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+#+END_SRC 
