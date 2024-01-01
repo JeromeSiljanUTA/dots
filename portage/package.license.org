@@ -1,0 +1,8 @@
+#+TITLE: package.license
+#+PROPERTY: header-args :tangle /sudo::/etc/portage/package.license/package.license
+
+* package.license
+** games-util/steam-launcher
+#+BEGIN_SRC bash
+games-util/steam-launcher ValveSteamLicense
+#+END_SRC
