@@ -20,8 +20,10 @@ MAKEOPTS="-j8"
 
 ** Portage
 + Set portage to be less aggressive when I'm doing stuff on the device
++ Use ~elogv~ to view portage package messages
 #+BEGIN_SRC bash
 PORTAGE_SCHEDULING_POLICY="idle"
+PORTAGE_ELOG_SYSTEM="echo save"
 #+END_SRC
 
 ** Use Flags
