@@ -1,0 +1,4 @@
+#+NAME: ${1:NAME}
+#+BEGIN_SRC elisp
+$0
+#+END_SRC
