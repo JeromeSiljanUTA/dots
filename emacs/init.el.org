@@ -215,7 +215,16 @@
 (add-hook 'eshell-mode-hook (lambda () (setenv "TERM" "xterm-256color")))
 #+END_SRC
 
-** aesthetics, extra customization
+** extra customization
+*** calendar
+#+BEGIN_SRC elisp
+(setq calendar-mark-holidays-flag t)
+(setq holiday-bahai-holidays nil)
+(setq holiday-islamic-holidays nil)
+(setq holiday-oriental-holidays nil)
+#+END_SRC
+
+*** misc
 #+BEGIN_SRC elisp
 ;; Hide scroll bar, menu bar, tool bar
 (scroll-bar-mode -1)
@@ -233,7 +242,10 @@
 ;; Use ibuffer instead of BufferMenu
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+(setq global-hl-line-mode t)
+
 (provide 'init)
 ;;; init.el ends here
 (put 'dired-find-alternate-file 'disabled nil)
 #+END_SRC 
+

@@ -146,6 +146,11 @@
 (add-to-list 'eshell-modules-list 'eshell-tramp)
 (add-hook 'eshell-mode-hook (lambda () (setenv "TERM" "xterm-256color")))
 
+(setq calendar-mark-holidays-flag t)
+(setq holiday-bahai-holidays nil)
+(setq holiday-islamic-holidays nil)
+(setq holiday-oriental-holidays nil)
+
 ;; Hide scroll bar, menu bar, tool bar
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -161,6 +166,8 @@
 
 ;; Use ibuffer instead of BufferMenu
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(setq global-hl-line-mode t)
 
 (provide 'init)
 ;;; init.el ends here
