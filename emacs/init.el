@@ -6,15 +6,6 @@
 ;; :ensure makes sure packages are correctly installed
 ;; :hook run this when in that mode (that . this)
 
-(use-package gruvbox-theme
-  :preface
-  (eval-and-compile(load "~/.config/emacs/client_scripts/theme-switcher.el"))
-  :config
-  (theme-switcher-init-theme)
-  :custom
-  (custom-safe-themes t)
-)
-
 ;; Same as putting :ensure t on all packages
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
@@ -24,9 +15,19 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
+(use-package gruvbox-theme
+  :preface
+  (eval-and-compile(load "~/.config/emacs/client_scripts/theme-switcher.el"))
+  :config
+  (theme-switcher-init-theme)
+  :custom
+  (custom-safe-themes t)
+)
+
 ;; Define package repos, initialize
-(use-package package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(use-package package
+  :config
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")))
 
 ;; https://github.com/wbolster/emacs-direnv
 (use-package direnv
