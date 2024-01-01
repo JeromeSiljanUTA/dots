@@ -11,23 +11,6 @@
  '(holiday-islamic-holidays nil)
  '(holiday-oriental-holidays nil)
  '(olivetti-body-width 0.85)
- '(org-agenda-custom-commands
-   '(("c" "Tasks by context with Agenda"
-      ((agenda ""
-	       ((org-agenda-span '3)
-		(org-agenda-overriding-header "Agenda")))
-       (tags-todo "@school"
-		  ((org-agenda-overriding-header "Tasks @school")))
-       (tags-todo "@anywhere"
-		  ((org-agenda-overriding-header "Tasks @anywhere")))
-       (tags-todo "@home"
-		  ((org-agenda-overriding-header "Tasks @home")))
-       (tags-todo "@couch"
-		  ((org-agenda-overriding-header "Tasks @couch")))
-       (tags-todo "@waiting"
-		  ((org-agenda-overriding-header "Tasks @waiting"))))
-      nil nil)))
- '(org-agenda-files '("/home/jerome/misc/gtd/main.org"))
  '(org-agenda-loop-over-headlines-in-active-region nil)
  '(org-babel-load-languages '((shell . t) (C . t) (R . t) (python . t)))
  '(org-edit-src-content-indentation 0)

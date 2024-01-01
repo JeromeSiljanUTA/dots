@@ -40,37 +40,43 @@
   :config
   (global-set-key (kbd "C-=") 'er/expand-region))
 
-;; https://github.com/joaotavora/yasnippet
 (use-package yasnippet
-  :defines
-  yas-snippet-dirs
+  :custom
+  (yas-snippet-dirs '("~/.config/emacs/snippets"))
   :config
-  (yas-global-mode 1)
-  (setq yas-snippet-dirs '("~/.config/emacs/snippets")))
+  (yas-global-mode 1))
 
-
-;; https://github.com/millejoh/emacs-ipython-notebook
 (use-package ein
-  :defines
-  ein:output-area-inlined-images
-  :config
-  (setq ein:output-area-inlined-images t))
+  :custom
+  (ein:output-area-inlined-images t))
 
-(global-set-key "\C-cd" 'kill-whole-line)
-
-;; https://orgmode.org/
 (use-package org
   :preface
   (eval-and-compile(load "~/.config/emacs/client_scripts/org-setup-buffer.el"))
-  :defines
-  org-deadline-warning-days
+  :custom
+  (org-agenda-files '("/home/jerome/misc/gtd/main.org"))
+  (org-deadline-warning-days 0)
+  (org-refile-targets
+   '(("~/misc/gtd/main.org" :maxlevel . 1)
+     ("~/misc/gtd/diary.org" :maxlevel . 1)
+     ("~/misc/gtd/phone_in.org" :maxlevel . 1)))
+   (org-agenda-custom-commands
+    '(("c" "Tasks by context with Agenda"
+       ((agenda ""
+		((org-agenda-span '3)
+		 (org-agenda-overriding-header "Agenda")))
+	(tags-todo "@school"
+		   ((org-agenda-overriding-header "Tasks @school")))
+	(tags-todo "@anywhere"
+		   ((org-agenda-overriding-header "Tasks @anywhere")))
+	(tags-todo "@home"
+		   ((org-agenda-overriding-header "Tasks @home")))
+	(tags-todo "@couch"
+		   ((org-agenda-overriding-header "Tasks @couch")))
+	(tags-todo "@waiting"
+		   ((org-agenda-overriding-header "Tasks @waiting"))))
+       nil nil)))
   :config
-  (setq org-deadline-warning-days 0)
-  (setq org-refile-targets
-	'(("~/misc/gtd/main.org" :maxlevel . 1)
-	  ("~/misc/gtd/diary.org" :maxlevel . 1)
-          ("~/misc/gtd/phone_in.org" :maxlevel . 1)))
-
   (global-set-key (kbd "C-c l") 'org-store-link)
   (global-set-key (kbd "C-c a") 'org-agenda)
   (global-set-key (kbd "C-c c") 'org-capture)
