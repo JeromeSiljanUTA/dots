@@ -1,3 +1,8 @@
+#+TITLE: init.el
+#+PROPERTY: header-args :tangle ~/.config/emacs/init.el
+* init.el
+** custom-file
+#+BEGIN_SRC elisp
 (setq custom-file "~/.config/emacs/custom-file.el")
 (load custom-file)
 ;; use-package refresher:
@@ -5,18 +10,28 @@
 ;; :mode does before
 ;; :ensure makes sure packages are correctly installed
 ;; :hook run this when in that mode (that . this)
+#+END_SRC
 
+** use-package
+#+BEGIN_SRC elisp
 ;; Same as putting :ensure t on all packages
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
+#+END_SRC
 
+
+** [[https://github.com/greduan/emacs-theme-gruvbox][gruvbox-theme]]
+#+BEGIN_SRC elisp
 (use-package gruvbox-theme
   :preface
   (eval-and-compile(load "~/.config/emacs/client_scripts/theme-switcher.el"))
   :config
   (theme-switcher-init-theme)
 )
+#+END_SRC
 
+** else
+#+BEGIN_SRC elisp
 ;; Hide scroll bar, menu bar, tool bar
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -195,3 +210,4 @@
 (provide 'init)
 ;;; init.el ends here
 (put 'dired-find-alternate-file 'disabled nil)
+#+END_SRC
