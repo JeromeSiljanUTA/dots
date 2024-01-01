@@ -32,6 +32,48 @@ sys-devel/gcc jit
 #+END_SRC
 | jit | Allows emacs packages to be compiled for faster loading |
 |     | Also set app-editors/emacs to have jit                  |
+** steam
+#+NAME: NAME
+#+BEGIN_SRC bash
+app-arch/bzip2 abi_x86_32
+app-arch/zstd abi_x86_32
+dev-lang/rust-bin abi_x86_32
+dev-libs/elfutils abi_x86_32
+dev-libs/expat abi_x86_32
+dev-libs/icu abi_x86_32
+dev-libs/libevdev abi_x86_32
+dev-libs/libffi abi_x86_32
+dev-libs/libxml2 abi_x86_32
+dev-libs/nspr abi_x86_32
+dev-libs/nss abi_x86_32
+dev-libs/wayland abi_x86_32
+media-libs/libglvnd abi_x86_32
+media-libs/libva abi_x86_32
+media-libs/mesa abi_x86_32
+net-libs/libndp abi_x86_32
+net-misc/networkmanager abi_x86_32
+sys-devel/clang abi_x86_32
+sys-devel/llvm abi_x86_32
+sys-libs/gpm abi_x86_32
+sys-libs/ncurses abi_x86_32
+sys-libs/zlib abi_x86_32
+virtual/libelf abi_x86_32
+virtual/opengl abi_x86_32
+virtual/rust abi_x86_32
+x11-libs/extest abi_x86_32
+x11-libs/libX11 abi_x86_32
+x11-libs/libXau abi_x86_32
+x11-libs/libXdmcp abi_x86_32
+x11-libs/libXext abi_x86_32
+x11-libs/libXfixes abi_x86_32
+x11-libs/libXrandr abi_x86_32
+x11-libs/libXrender abi_x86_32
+x11-libs/libXxf86vm abi_x86_32
+x11-libs/libdrm abi_x86_32
+x11-libs/libpciaccess abi_x86_32
+x11-libs/libxcb abi_x86_32
+x11-libs/libxshmfence abi_x86_32
+#+END_SRC
 
 * automatically added
 #+BEGIN_SRC bash
