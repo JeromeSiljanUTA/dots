@@ -11,9 +11,6 @@
  '(holiday-islamic-holidays nil)
  '(holiday-oriental-holidays nil)
  '(olivetti-body-width 0.85)
- '(org-agenda-loop-over-headlines-in-active-region nil)
- '(org-babel-load-languages '((shell . t) (C . t) (R . t) (python . t)))
- '(org-edit-src-content-indentation 0)
  '(org-export-preserve-breaks nil)
  '(org-noter-always-create-frame nil)
  '(package-selected-packages

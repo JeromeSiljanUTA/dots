@@ -54,9 +54,13 @@
   :preface
   (eval-and-compile(load "~/.config/emacs/client_scripts/org-setup-buffer.el"))
   :custom
-  (org-agenda-files '("/home/jerome/misc/gtd/main.org"))
+  ;; When selecting a region, commands apply to the whole region
+  (org-agenda-loop-over-headlines-in-active-region nil)
+  (org-babel-load-languages '((shell . t) (C . t) (R . t) (python . t)))
+  (org-edit-src-content-indentation 0)
   (org-deadline-warning-days 0)
-  (org-refile-targets
+  (org-agenda-files '("/home/jerome/misc/gtd/main.org"))
+    (org-refile-targets
    '(("~/misc/gtd/main.org" :maxlevel . 1)
      ("~/misc/gtd/diary.org" :maxlevel . 1)
      ("~/misc/gtd/phone_in.org" :maxlevel . 1)))
@@ -82,29 +86,15 @@
   (global-set-key (kbd "C-c c") 'org-capture)
   :hook (org-mode . org-setup-buffer))
 
-;; https://www.gnu.org/software/emms/
-(use-package emms
-  :defines
-  emms-browser-covers
-  emms-player-list
-  emms-player-mpv
-  emms-source-file-directory-tree-function
-  emms-source-file-default-directory
-  :config
-  (setq emms-source-file-default-directory "~/media/music/")
-  (emms-all)
-  (setq emms-player-list (list emms-player-mpv)
-        emms-source-file-directory-tree-function 'emms-sourpce-file-directory-tree-find
-        emms-browser-covers 'emms-browser-cache-thumbnail))
-
-;; https://www.flycheck.org/en/latest/
 (use-package flycheck
   :init (global-flycheck-mode))
 
-;; https://github.com/lassik/emacs-format-all-the-code
-(use-package format-all)
-(add-hook 'prog-mode-hook 'format-all-mode)
-(add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
+(use-package format-all
+  :hook
+  (prog-mode . format-all-mode)
+  (format-all-mode . format-all-ensure-formatter))
+;;(add-hook 'prog-mode-hook 'format-all-mode)
+;;(add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
 
 ;; https://github.com/abo-abo/avy
 (use-package avy)
