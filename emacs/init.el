@@ -6,6 +6,15 @@
 ;; :ensure makes sure packages are correctly installed
 ;; :hook run this when in that mode (that . this)
 
+(use-package gruvbox-theme
+  :preface
+  (eval-and-compile(load "~/.config/emacs/client_scripts/theme-switcher.el"))
+  :config
+  (theme-switcher-init-theme)
+  :custom
+  (custom-safe-themes t)
+)
+
 ;; Same as putting :ensure t on all packages
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
@@ -18,15 +27,6 @@
 ;; Define package repos, initialize
 (use-package package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-
-(use-package gruvbox-theme
-  :preface
-  (eval-and-compile(load "~/.config/emacs/client_scripts/theme-switcher.el"))
-  :config
-  (theme-switcher-init-theme)
-  :custom
-  (custom-safe-themes t)
-)
 
 ;; https://github.com/wbolster/emacs-direnv
 (use-package direnv
@@ -96,80 +96,65 @@
 ;;(add-hook 'prog-mode-hook 'format-all-mode)
 ;;(add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
 
-;; https://github.com/abo-abo/avy
-(use-package avy)
-(global-set-key (kbd "C-:") 'avy-goto-char)
+(use-package avy
+  :config
+  (global-set-key (kbd "C-:") 'avy-goto-char))
 
-;; https://github.com/emacs-helm/helm/
 (use-package helm
-  :defines helm-locate-fuzzy-match
+  :custom
+  (helm-locate-fuzzy-match t)
+  (helm-move-to-line-cycle-in-source nil)
   :config
-  (setq helm-locate-fuzzy-match t))
+  (global-set-key (kbd "M-x") 'helm-M-x))
 
-(global-set-key (kbd "M-x") 'helm-M-x)
-
-;; https://github.com/vedang/pdf-tools
 (use-package pdf-tools
+  :preface
+  (eval-and-compile(load "~/.config/emacs/client_scripts/PDFView-setup-buffer.el"))  
   :defer t
+  :custom
+  (pdf-view-display-size 'fit-page)
+  :hook
+  (pdf-view-mode . pdf-view-setup-buffer)
   :config
-  (setq-default pdf-view-display-size 'fit-page)
   (pdf-tools-install))
 
-(eval-and-compile(load "~/.config/emacs/client_scripts/PDFView-setup-buffer.el"))
-(add-hook 'pdf-view-mode-hook 'pdf-view-setup-buffer)
-
-;; ;; https://github.com/Silex/docker.el
-;; (use-package docker
-;;   :config
-;;   (setq docker-run-as-root t)
-;;   :bind ("C-c d" . docker))
-
-;; https://github.com/rnkn/olivetti
-(use-package olivetti)
-
-;; https://github.com/bcbcarl/emacs-wttrin
-(use-package wttrin
-  :config
-  (setq wttrin-default-cities '("Irving" "USA")))
-
-;; https://github.com/org-roam/org-roam
 (use-package org-roam)
 
-;; https://github.com/joostkremers/writeroom-mode
-(use-package writeroom-mode)
+(use-package writeroom-mode
+  :custom
+  (writeroom-fullscreen-effect 'maximized)
+  (writeroom-maximize-window nil))
 
-;; https://github.com/s-kostyaev/ellama
-(use-package ellama
-  :init
-  (setopt ellama-language "English")
-  (require 'llm-ollama)
-  (setopt ellama-provider
-	  (make-llm-ollama
-	   :chat-model "codellama" :embedding-model "codellama")))
-
-;; docker-compose-mode
 (use-package docker-compose-mode)
 
-;; https://github.com/weirdNox/org-noter
-(use-package org-noter)
+(use-package org-noter
+  :custom
+  (org-noter-always-create-frame nil))
 
-;; https://depp.brause.cc/nov.el/
 (use-package nov
-  :config
-  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
+  :mode ("\\.epub\\'" . nov-mode))
 
-(require 'python)
-;; C-c C-c respects __init__
-(define-key python-mode-map (kbd "C-c C-c")
-	    (lambda () (interactive) (python-shell-send-buffer t)))
+(use-package python
+  :init
+  ;; C-c C-c respects __init__
+  (define-key python-mode-map (kbd "C-c C-c")
+	      (lambda () (interactive) (python-shell-send-buffer t))))
+
+(require 'esh-module)
+(setq password-cache t)
+(setq password-cache-expiry 3600)
+(add-to-list 'eshell-modules-list 'eshell-tramp)
+(add-hook 'eshell-mode-hook (lambda () (setenv "TERM" "xterm-256color")))
+
+;; Hide scroll bar, menu bar, tool bar
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
 (set-frame-font "IBM Plex Mono 12" t)
-
-;; eshell colors
-(add-hook 'eshell-mode-hook (lambda () (setenv "TERM" "xterm-256color")))
 
 ;; Start emacs daemon
 (server-start)
@@ -177,18 +162,6 @@
 ;; Use ibuffer instead of BufferMenu
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-;; Eshell sudo caching, use eshell/sudo
-(require 'esh-module)
-(setq password-cache t) ; enable password caching
-(setq password-cache-expiry 3600) ; for one hour (time in secs)
-
-(add-to-list 'eshell-modules-list 'eshell-tramp)
-
 (provide 'init)
 ;;; init.el ends here
 (put 'dired-find-alternate-file 'disabled nil)
-
-;; Hide scroll bar, menu bar, tool bar
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
