@@ -1,0 +1,8 @@
+* Package Use
+** steam
+#+NAME: NAME
+#+PROPERTY: header-args :tangle /sudo::/etc/portage/package.accept_keywords/steam
+#+BEGIN_SRC bash
+*/*::steam-overlay
+games-util/game-device-udev-rules
+#+END_SRC
