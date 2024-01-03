@@ -57,8 +57,12 @@
   :custom
   ;; When selecting a region, commands apply to the whole region
   (org-agenda-loop-over-headlines-in-active-region nil)
-  (org-babel-load-languages '((shell . t) (C . t) (R . t) (python . t)))
+  (org-babel-load-languages '((shell . t) (C . t) (R . t) (python . t) (plantuml . t)))
+  (org-format-latex-options
+  '(:foreground default :background default :scale 2.0 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-edit-src-content-indentation 0)
+  (org-plantuml-jar-path "/usr/share/plantuml/lib/plantuml.jar")
   (org-deadline-warning-days 0)
   (org-agenda-files '("/home/jerome/misc/gtd/main.org"))
     (org-refile-targets
@@ -135,6 +139,10 @@
 (use-package nov
   :mode ("\\.epub\\'" . nov-mode))
 
+(use-package ledger-mode)
+
+(use-package ess)
+
 (use-package python
   :init
   ;; C-c C-c respects __init__
@@ -167,6 +175,7 @@
 
 ;; Use ibuffer instead of BufferMenu
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
 
 (setq global-hl-line-mode t)
 
