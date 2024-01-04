@@ -4,12 +4,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-file "~/.config/emacs/custom-file.el")
- '(ledger-reports
-   '(("all" "ledger bal")
-     ("bal" "%(binary) -f %(ledger-file) bal")
-     ("reg" "%(binary) -f %(ledger-file) reg")
-     ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
-     ("account" "%(binary) -f %(ledger-file) reg %(account)")))
  '(olivetti-body-width 0.85)
  '(org-export-preserve-breaks nil)
  '(package-selected-packages

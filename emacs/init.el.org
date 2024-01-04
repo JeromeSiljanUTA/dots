@@ -204,7 +204,13 @@
 
 ** [[https://github.com/ledger/ledger-mode][ledger-mode]]
 #+BEGIN_SRC elisp
-(use-package ledger-mode)
+(use-package ledger-mode
+  :config
+   (setq ledger-reports
+    '(("bal" "%(binary) -f %(ledger-file) bal")
+      ("reg" "%(binary) -f %(ledger-file) reg")
+      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
+      ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
 #+END_SRC
 
 ** ess

@@ -139,7 +139,13 @@
 (use-package nov
   :mode ("\\.epub\\'" . nov-mode))
 
-(use-package ledger-mode)
+(use-package ledger-mode
+  :config
+   (setq ledger-reports
+    '(("bal" "%(binary) -f %(ledger-file) bal")
+      ("reg" "%(binary) -f %(ledger-file) reg")
+      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
+      ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
 
 (use-package ess)
 
