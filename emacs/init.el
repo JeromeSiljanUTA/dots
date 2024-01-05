@@ -128,7 +128,11 @@
 (use-package writeroom-mode
   :custom
   (writeroom-fullscreen-effect 'maximized)
-  (writeroom-maximize-window nil))
+  (writeroom-maximize-window nil)
+  :config
+  (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
+  (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
+  (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width))
 
 (use-package docker-compose-mode)
 
