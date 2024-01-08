@@ -1,11 +1,13 @@
 * package.use
+
 ** app-editors/emacs
 #+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.use/emacs
-app-editors/emacs cairo imagemagick jit libxml2 sqlite xwidgets
+app-editors/emacs cairo imagemagick jit json libxml2 sqlite xwidgets
 #+END_SRC
 | cairo       | Add cairo graphics, useful for R plots with Babel                                     |
 | imagemagick | File type conversion                                                                  |
 | jit         | Allows emacs packages to be compiled for faster loading                               |
+| json        | Allows json support, specifically useful for hass                                     |
 | -X          | Compile for PGTK (Pure GTK) mode, makes it more resilient and compatible with Wayland |
 |             | Also set sys-devel/gcc to have jit                                                    |
 | libxml2     | Eww needs this                                                                        |
