@@ -1,6 +1,15 @@
 #+TITLE: init.el
 #+PROPERTY: header-args :tangle ~/.config/emacs/init.el
 * init.el
+** style comments
+#+BEGIN_SRC elisp
+;;; init.el --- Emacs startup.
+
+;;; Commentary:
+;;; Everything I expect to be run when I launch Emacs.
+
+;;; Code:
+#+END_SRC
 ** custom-file
 #+BEGIN_SRC elisp
 (setq custom-file "~/.config/emacs/custom-file.el")
@@ -95,7 +104,7 @@
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-edit-src-content-indentation 0)
   (org-plantuml-jar-path "/usr/share/plantuml/lib/plantuml.jar")
-  (org-deadline-warning-days 0)
+  (org-deadline-warning-days 3)
   (org-agenda-files '("/home/jerome/misc/gtd/main.org"))
     (org-refile-targets
    '(("~/misc/gtd/main.org" :maxlevel . 1)
@@ -182,10 +191,10 @@
   :custom
   (writeroom-fullscreen-effect 'maximized)
   (writeroom-maximize-window nil)
-  :config
-  (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
-  (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
-  (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width))
+  :bind
+  ("C-M-<" . writeroom-decrease-width)
+  ("C-M->". writeroom-increase-width)
+  ("C-M-=". writeroom-adjust-width))
 #+END_SRC
 
 ** [[https://github.com/meqif/docker-compose-mode][docker-compose-mode]]
@@ -217,6 +226,33 @@
       ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
 #+END_SRC
 
+** [[https://github.com/purplg/hass][hass]]
+#+BEGIN_SRC elisp
+(use-package hass
+  :custom
+  (hass-port 8123)
+  (hass-host "192.168.2.96")
+  (hass-insecure t)
+  :init
+  (setq hass-apikey (lambda () (auth-source-pick-first-password :host "emacs-hass" :user "jerome")))
+  (setq hass-dash-layouts
+	'((default .
+		   ((hass-dash-group
+		     :title "Home Assistant"
+		     :format "%t\n\n%v"
+		     (hass-dash-group
+		      :title "Bedroom"
+		      :title-face outline-2
+		      (hass-dash-toggle
+		       :entity-id "light.curve_lamp_light_2"
+		       :label "Curve Lamp"
+		       :icon "💡")
+		      (hass-dash-toggle
+		       :entity-id "light.desk_lamp_light"
+		       :label "Desk Lamp"
+		       :icon "💡"))))))))
+#+END_SRC
+
 ** ess
 #+BEGIN_SRC elisp
 (use-package ess)
@@ -225,10 +261,9 @@
 ** python
 #+BEGIN_SRC elisp
 (use-package python
-  :init
+  :bind
   ;; C-c C-c respects __init__
-  (define-key python-mode-map (kbd "C-c C-c")
-	      (lambda () (interactive) (python-shell-send-buffer t))))
+  ("C-c C-c" . (lambda () (interactive) (python-shell-send-buffer t))))
 #+END_SRC
 
 ** eshell
@@ -238,6 +273,12 @@
 (setq password-cache-expiry 3600)
 (add-to-list 'eshell-modules-list 'eshell-tramp)
 (add-hook 'eshell-mode-hook (lambda () (setenv "TERM" "xterm-256color")))
+#+END_SRC
+
+** auth
+#+BEGIN_SRC elisp
+(setq auth-sources '("~/.authinfo.json.gpg"))
+(setq epg-pinentry-mode 'loopback)
 #+END_SRC
 
 ** extra customization
@@ -269,6 +310,7 @@
 
 
 (setq global-hl-line-mode t)
+(global-hl-line-mode)
 
 (provide 'init)
 ;;; init.el ends here

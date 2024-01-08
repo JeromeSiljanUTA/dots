@@ -1,3 +1,10 @@
+;;; init.el --- Emacs startup.
+
+;;; Commentary:
+;;; Everything I expect to be run when I launch Emacs.
+
+;;; Code:
+
 (setq custom-file "~/.config/emacs/custom-file.el")
 (load custom-file)
 ;; use-package refresher:
@@ -63,7 +70,7 @@
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-edit-src-content-indentation 0)
   (org-plantuml-jar-path "/usr/share/plantuml/lib/plantuml.jar")
-  (org-deadline-warning-days 0)
+  (org-deadline-warning-days 3)
   (org-agenda-files '("/home/jerome/misc/gtd/main.org"))
     (org-refile-targets
    '(("~/misc/gtd/main.org" :maxlevel . 1)
@@ -129,10 +136,10 @@
   :custom
   (writeroom-fullscreen-effect 'maximized)
   (writeroom-maximize-window nil)
-  :config
-  (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
-  (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
-  (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width))
+  :bind
+  ("C-M-<" . writeroom-decrease-width)
+  ("C-M->". writeroom-increase-width)
+  ("C-M-=". writeroom-adjust-width))
 
 (use-package docker-compose-mode)
 
@@ -151,19 +158,45 @@
       ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
       ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
 
+(use-package hass
+  :custom
+  (hass-port 8123)
+  (hass-host "192.168.2.96")
+  (hass-insecure t)
+  :init
+  (setq hass-apikey (lambda () (auth-source-pick-first-password :host "emacs-hass" :user "jerome")))
+  (setq hass-dash-layouts
+	'((default .
+		   ((hass-dash-group
+		     :title "Home Assistant"
+		     :format "%t\n\n%v"
+		     (hass-dash-group
+		      :title "Bedroom"
+		      :title-face outline-2
+		      (hass-dash-toggle
+		       :entity-id "light.curve_lamp_light_2"
+		       :label "Curve Lamp"
+		       :icon "💡")
+		      (hass-dash-toggle
+		       :entity-id "light.desk_lamp_light"
+		       :label "Desk Lamp"
+		       :icon "💡"))))))))
+
 (use-package ess)
 
 (use-package python
-  :init
+  :bind
   ;; C-c C-c respects __init__
-  (define-key python-mode-map (kbd "C-c C-c")
-	      (lambda () (interactive) (python-shell-send-buffer t))))
+  ("C-c C-c" . (lambda () (interactive) (python-shell-send-buffer t))))
 
 (require 'esh-module)
 (setq password-cache t)
 (setq password-cache-expiry 3600)
 (add-to-list 'eshell-modules-list 'eshell-tramp)
 (add-hook 'eshell-mode-hook (lambda () (setenv "TERM" "xterm-256color")))
+
+(setq auth-sources '("~/.authinfo.json.gpg"))
+(setq epg-pinentry-mode 'loopback)
 
 (setq calendar-mark-holidays-flag t)
 (setq holiday-bahai-holidays nil)
@@ -188,6 +221,7 @@
 
 
 (setq global-hl-line-mode t)
+(global-hl-line-mode)
 
 (provide 'init)
 ;;; init.el ends here
