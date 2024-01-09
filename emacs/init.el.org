@@ -320,6 +320,10 @@
 (setq global-hl-line-mode t)
 (global-hl-line-mode)
 
+;; Customize tab bar
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-show 1)
+
 (provide 'init)
 ;;; init.el ends here
 (put 'dired-find-alternate-file 'disabled nil)
