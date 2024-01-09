@@ -64,6 +64,8 @@
   :custom
   ;; When selecting a region, commands apply to the whole region
   (org-agenda-loop-over-headlines-in-active-region nil)
+  ;; Change agenda deadline to purple
+  (org-warning ((t (:foreground "#d3869b" :underline nil :weight bold))))
   (org-babel-load-languages '((shell . t) (C . t) (R . t) (python . t) (plantuml . t)))
   (org-format-latex-options
   '(:foreground default :background default :scale 2.0 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
@@ -180,7 +182,9 @@
 		      (hass-dash-toggle
 		       :entity-id "light.desk_lamp_light"
 		       :label "Desk Lamp"
-		       :icon "💡"))))))))
+		       :icon "💡")))))))
+  :hook
+  (hass-dash-mode . hass-setup-buffer))
 
 (use-package ess)
 
