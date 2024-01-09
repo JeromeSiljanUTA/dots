@@ -72,7 +72,7 @@
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-edit-src-content-indentation 0)
   (org-plantuml-jar-path "/usr/share/plantuml/lib/plantuml.jar")
-  (org-deadline-warning-days 3)
+  (org-deadline-warning-days 0)
   (org-agenda-files '("/home/jerome/misc/gtd/main.org"))
     (org-refile-targets
    '(("~/misc/gtd/main.org" :maxlevel . 1)
@@ -81,7 +81,7 @@
    (org-agenda-custom-commands
     '(("c" "Tasks by context with Agenda"
        ((agenda ""
-		((org-agenda-span '3)
+		((org-agenda-span '7)
 		 (org-agenda-overriding-header "Agenda")))
 	(tags-todo "@school"
 		   ((org-agenda-overriding-header "Tasks @school")))
@@ -161,6 +161,8 @@
       ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
 
 (use-package hass
+  :preface
+  (eval-and-compile(load "~/.config/emacs/client_scripts/hass-setup-buffer.el"))
   :custom
   (hass-port 8123)
   (hass-host "192.168.2.96")
@@ -222,6 +224,8 @@
 
 ;; Use ibuffer instead of BufferMenu
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(save-place-mode 1)
 
 
 (setq global-hl-line-mode t)
