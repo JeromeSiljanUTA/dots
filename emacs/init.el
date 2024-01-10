@@ -72,6 +72,7 @@
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-edit-src-content-indentation 0)
   (org-plantuml-jar-path "/usr/share/plantuml/lib/plantuml.jar")
+  (org-agenda-start-on-weekday nil)
   (org-deadline-warning-days 0)
   (org-agenda-files '("/home/jerome/misc/gtd/main.org"))
     (org-refile-targets
