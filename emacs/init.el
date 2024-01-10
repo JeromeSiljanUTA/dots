@@ -66,14 +66,20 @@
   (org-agenda-loop-over-headlines-in-active-region nil)
   ;; Change agenda deadline to purple
   (org-warning ((t (:foreground "#d3869b" :underline nil :weight bold))))
-  (org-babel-load-languages '((shell . t) (C . t) (R . t) (python . t) (plantuml . t)))
+  (org-babel-load-languages
+   '((shell . t)
+     (C . t)
+     (R . t)
+     (python . t)
+     (plantuml . t)
+     (emacs-listp . t)))
   (org-format-latex-options
   '(:foreground default :background default :scale 2.0 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-edit-src-content-indentation 0)
   (org-plantuml-jar-path "/usr/share/plantuml/lib/plantuml.jar")
-  (org-agenda-start-on-weekday nil)
   (org-deadline-warning-days 0)
+  (org-agenda-start-on-weekday nil)
   (org-agenda-files '("/home/jerome/misc/gtd/main.org"))
     (org-refile-targets
    '(("~/misc/gtd/main.org" :maxlevel . 1)
@@ -189,6 +195,13 @@
   :hook
   (hass-dash-mode . hass-setup-buffer))
 
+(use-package empv
+  :custom
+  (empv-invidious-instance "https://vid.puffyan.us/api/v1")
+  (empv-youtube-use-tabulated-results t)
+  (empv-mpv-args
+   '("--save-position-on-quit" "--ytdl-format=best" "--no-video" "--no-terminal" "--idle" "--input-ipc-server=/tmp/empv-socket")))
+
 (use-package ess)
 
 (use-package python
@@ -231,10 +244,6 @@
 
 (setq global-hl-line-mode t)
 (global-hl-line-mode)
-
-;; Customize tab bar
-(setq tab-bar-close-button-show nil)
-(setq tab-bar-show 1)
 
 (provide 'init)
 ;;; init.el ends here
