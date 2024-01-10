@@ -1,4 +1,4 @@
 #+NAME: ${1:NAME}
-#+BEGIN_SRC Python
+#+BEGIN_SRC python
 $0
 #+END_SRC
