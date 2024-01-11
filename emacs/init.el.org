@@ -277,6 +277,38 @@
    '("--save-position-on-quit" "--ytdl-format=best" "--no-video" "--no-terminal" "--idle" "--input-ipc-server=/tmp/empv-socket")))
 #+END_SRC
 
+** [[https://github.com/emacsmirror/mu4e][mu4e]]
+#+BEGIN_SRC elisp
+(use-package mu4e
+  :ensure nil
+  :load-path "/usr/share/emacs/site-lisp/mu4e/"
+  :config
+  
+  ;; This is set to 't' to avoid mail syncing issues when using mbsync
+  (setq mu4e-change-filenames-when-moving t)
+
+  ;; Refresh mail using isync every 10 minutes
+  (setq mu4e-update-interval (* 10 60))
+  (setq mu4e-get-mail-command "mbsync -a")
+  (setq mu4e-maildir "~/.mail")
+
+  (setq mu4e-contexts
+        (list
+         ;; Work account
+         (make-mu4e-context
+          :name "nightfoxcoc73"
+          :match-func
+          (lambda (msg)
+            (when msg
+              (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address . "nightfoxcoc73@gmail.com")
+                  (user-full-name    . "Jerome")
+                  (mu4e-drafts-folder  . "/Gmail/[Gmail]/Drafts")
+                  (mu4e-sent-folder  . "/Gmail/[Gmail]/Sent Mail")
+                  (mu4e-refile-folder  . "/Gmail/[Gmail]/All Mail")
+                  (mu4e-trash-folder  . "/Gmail/[Gmail]/Trash"))))))
+#+END_SRC
+
 ** ess
 #+BEGIN_SRC elisp
 (use-package ess)
