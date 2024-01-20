@@ -50,13 +50,3 @@ def brightness_watcher():
 def brightness_watcher_loop():
     # Sets brightness watcher to go in a loop forever.
     brightness_watcher()
-
-
-"""
-    while True:
-        try:
-            brightness_watcher()
-        except:
-            pass
-
-"""
