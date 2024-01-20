@@ -1,0 +1,18 @@
+directory: ~/media/music
+
+plugins:
+  lyrics fetchart playlist
+
+import:
+  move: yes
+
+fetchart:
+  auto: yes
+  high_resolution: true
+  sources:
+    - itunes
+
+playlist:
+  auto: yes
+  relative_to: ~/media/music
+  forward_slash: no
