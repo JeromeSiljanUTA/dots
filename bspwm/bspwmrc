@@ -6,6 +6,7 @@ playerctld &
 sxhkd &
 xscreensaver -no-splash &
 xsettingsd &
+gammastep &
 
 # create desktops a, s, d, f, u, i, o, p
 bspc monitor -d "Terminal" "Notes" "Emacs" "Firefox" "Comms" "IDE" "Files" "Media"

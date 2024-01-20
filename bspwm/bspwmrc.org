@@ -9,7 +9,8 @@ picom -b
 playerctld &
 sxhkd &
 xscreensaver -no-splash &
-xsettingsd & 
+xsettingsd &
+gammastep &
 #+END_SRC
 
 * Bspwm Setup
