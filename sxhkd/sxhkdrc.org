@@ -77,7 +77,7 @@ super + 5
 
 # screenshot
 super + Print
-  scrot -s
+  maim -su ~/$(date -Iseconds)
 #+END_SRC
 
 * Monitor Scripts

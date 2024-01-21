@@ -62,7 +62,7 @@ super + 5
 
 # screenshot
 super + Print
-  scrot -s
+  maim -su ~/$(date -Iseconds)
 
 super + {1,2}
     ~/.config/bspwm/scripts/monitor {mono,ext}
