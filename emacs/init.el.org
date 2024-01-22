@@ -97,14 +97,15 @@
   :preface
   (eval-and-compile(load "~/.config/emacs/client_scripts/org-setup-buffer.el"))
   :custom
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((C . t)
-     (R . t)
-     (cpp . t)
-     (emacs-lisp . t)
-     (plantuml . t)
-     (python . t)))
+  (org-babel-load-languages '((emacs-lisp . t) (R . t)))
+  ;; (org-babel-do-load-languages
+  ;;  'org-babel-load-languages
+  ;;  '((C . t)
+  ;;    (R . t)
+  ;;    (cpp . t)
+  ;;    (emacs-lisp . t)
+  ;;    (plantuml . t)
+  ;;    (python . t)))
   ;; When selecting a region, commands apply to the whole region
   (org-agenda-loop-over-headlines-in-active-region nil)
   ;; Change agenda deadline to purple
@@ -281,33 +282,20 @@
 ** [[https://github.com/emacsmirror/mu4e][mu4e]]
 #+BEGIN_SRC elisp
 (use-package mu4e
+  :preface
+  (eval-and-compile(load "~/.config/emacs/client_scripts/mu4e-context-setup.el"))
   :ensure nil
   :load-path "/usr/share/emacs/site-lisp/mu4e/"
+  :custom
+  (mu4e-search-results-limit -1)
   :config
-  
   ;; This is set to 't' to avoid mail syncing issues when using mbsync
   (setq mu4e-change-filenames-when-moving t)
-
   ;; Refresh mail using isync every 10 minutes
   (setq mu4e-update-interval (* 10 60))
-  (setq mu4e-get-mail-command "mbsync -a")
+  (setq mu4e-get-mail-command "mbsync -c ~/.config/mbsync/mbsyncrc -a")
   (setq mu4e-maildir "~/.mail")
-
-  (setq mu4e-contexts
-        (list
-         ;; Work account
-         (make-mu4e-context
-          :name "nightfoxcoc73"
-          :match-func
-          (lambda (msg)
-            (when msg
-              (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
-          :vars '((user-mail-address . "nightfoxcoc73@gmail.com")
-                  (user-full-name    . "Jerome")
-                  (mu4e-drafts-folder  . "/Gmail/[Gmail]/Drafts")
-                  (mu4e-sent-folder  . "/Gmail/[Gmail]/Sent Mail")
-                  (mu4e-refile-folder  . "/Gmail/[Gmail]/All Mail")
-                  (mu4e-trash-folder  . "/Gmail/[Gmail]/Trash"))))))
+  (mu4e-context-setup))
 #+END_SRC
 
 ** ess
@@ -334,8 +322,20 @@
 
 ** auth
 #+BEGIN_SRC elisp
-(setq auth-sources '("~/.authinfo.json.gpg"))
+;;(setq auth-sources '("~/.authinfo.gpg"))
 (setq epg-pinentry-mode 'loopback)
+#+END_SRC
+
+** Bible
+#+BEGIN_SRC elisp
+(eval-and-compile(load "~/.config/emacs/client_scripts/Bible-setup-buffer.el"))
+(defun file-name-mode ()
+  (when (and (stringp buffer-file-name)
+             (string-match "\\New American Standard Bible - NASB 1995.epub\\'" buffer-file-name))
+    (insert "OK")
+    (Bible-setup-buffer)))
+
+(add-hook 'find-file-hook 'file-name-mode)
 #+END_SRC
 
 ** extra customization
@@ -367,6 +367,8 @@
 
 (save-place-mode 1)
 
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-show 1)
 
 (setq global-hl-line-mode t)
 (global-hl-line-mode)

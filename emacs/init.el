@@ -204,33 +204,23 @@
    '("--save-position-on-quit" "--ytdl-format=best" "--no-video" "--no-terminal" "--idle" "--input-ipc-server=/tmp/empv-socket")))
 
 (use-package mu4e
+  :preface
+  (eval-and-compile(load "~/.config/emacs/client_scripts/mu4e-context-setup.el"))
   :ensure nil
   :load-path "/usr/share/emacs/site-lisp/mu4e/"
+  :custom
+  (mu4e-search-results-limit -1)
   :config
-  
   ;; This is set to 't' to avoid mail syncing issues when using mbsync
   (setq mu4e-change-filenames-when-moving t)
-
   ;; Refresh mail using isync every 10 minutes
   (setq mu4e-update-interval (* 10 60))
-  (setq mu4e-get-mail-command "mbsync -a")
+  (setq mu4e-get-mail-command "mbsync -c ~/.config/mbsync/mbsyncrc -a")
   (setq mu4e-maildir "~/.mail")
-
-  (setq mu4e-contexts
-        (list
-         ;; Work account
-         (make-mu4e-context
-          :name "nightfoxcoc73"
-          :match-func
-          (lambda (msg)
-            (when msg
-              (string-prefix-p "/Gmail" (mu4e-message-field msg :maildir))))
-          :vars '((user-mail-address . "nightfoxcoc73@gmail.com")
-                  (user-full-name    . "Jerome")
-                  (mu4e-drafts-folder  . "/Gmail/[Gmail]/Drafts")
-                  (mu4e-sent-folder  . "/Gmail/[Gmail]/Sent Mail")
-                  (mu4e-refile-folder  . "/Gmail/[Gmail]/All Mail")
-                  (mu4e-trash-folder  . "/Gmail/[Gmail]/Trash"))))))
+;;  (setq mu4e-drafts-folder "/[Gmail].Drafts")
+;;  (setq mu4e-sent-folder "/[Gmail].Sent mail")
+;;  (setq mu4e-trash-folder "/[Gmail].Trash")
+  (mu4e-context-setup))
 
 (use-package ess)
 
@@ -245,7 +235,7 @@
 (add-to-list 'eshell-modules-list 'eshell-tramp)
 (add-hook 'eshell-mode-hook (lambda () (setenv "TERM" "xterm-256color")))
 
-(setq auth-sources '("~/.authinfo.json.gpg"))
+;;(setq auth-sources '("~/.authinfo.gpg"))
 (setq epg-pinentry-mode 'loopback)
 
 (setq calendar-mark-holidays-flag t)
@@ -271,6 +261,8 @@
 
 (save-place-mode 1)
 
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-show 1)
 
 (setq global-hl-line-mode t)
 (global-hl-line-mode)
