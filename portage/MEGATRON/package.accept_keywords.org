@@ -1,8 +1,11 @@
 * Package Use
 ** steam
-#+NAME: NAME
-#+PROPERTY: header-args :tangle /sudo::/etc/portage/package.accept_keywords/steam
-#+BEGIN_SRC bash
+#+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.accept_keywords/steam
 */*::steam-overlay
 games-util/game-device-udev-rules
+#+END_SRC
+
+** games-action/minecraft-launcher
+#+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.accept_keywords/minecraft-launcher
+games-action/minecraft-launcher ~amd64
 #+END_SRC
