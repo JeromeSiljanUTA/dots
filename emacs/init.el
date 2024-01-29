@@ -62,14 +62,15 @@
   :preface
   (eval-and-compile(load "~/.config/emacs/client_scripts/org-setup-buffer.el"))
   :custom
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((C . t)
-     (R . t)
-     (cpp . t)
-     (emacs-lisp . t)
-     (plantuml . t)
-     (python . t)))
+  (org-babel-load-languages '((emacs-lisp . t) (R . t)))
+  ;; (org-babel-do-load-languages
+  ;;  'org-babel-load-languages
+  ;;  '((C . t)
+  ;;    (R . t)
+  ;;    (cpp . t)
+  ;;    (emacs-lisp . t)
+  ;;    (plantuml . t)
+  ;;    (python . t)))
   ;; When selecting a region, commands apply to the whole region
   (org-agenda-loop-over-headlines-in-active-region nil)
   ;; Change agenda deadline to purple
@@ -217,9 +218,6 @@
   (setq mu4e-update-interval (* 10 60))
   (setq mu4e-get-mail-command "mbsync -c ~/.config/mbsync/mbsyncrc -a")
   (setq mu4e-maildir "~/.mail")
-;;  (setq mu4e-drafts-folder "/[Gmail].Drafts")
-;;  (setq mu4e-sent-folder "/[Gmail].Sent mail")
-;;  (setq mu4e-trash-folder "/[Gmail].Trash")
   (mu4e-context-setup))
 
 (use-package ess)
@@ -237,6 +235,15 @@
 
 ;;(setq auth-sources '("~/.authinfo.gpg"))
 (setq epg-pinentry-mode 'loopback)
+
+(eval-and-compile(load "~/.config/emacs/client_scripts/Bible-setup-buffer.el"))
+(defun file-name-mode ()
+  (when (and (stringp buffer-file-name)
+             (string-match "\\New American Standard Bible - NASB 1995.epub\\'" buffer-file-name))
+    (insert "OK")
+    (Bible-setup-buffer)))
+
+(add-hook 'find-file-hook 'file-name-mode)
 
 (setq calendar-mark-holidays-flag t)
 (setq holiday-bahai-holidays nil)
