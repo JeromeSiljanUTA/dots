@@ -56,13 +56,14 @@ PORTAGE_ELOG_SYSTEM="echo save"
 | udisks     | Mount those drives                                   |
 | unicode    | Hopefully better fonts                               |
 | vaapi      | Critical for hardware acceleration                   |
+| vpx        | Allow VP9 support for YouTube                        |
 | xinerama   | Multiple monitor support                             |
 | xft        | Fonts                                                |
 | xml        | Allow better xml parsing, helpful for websites, etc. |
 | webp       | Useful filetype                                      |
 
 #+BEGIN_SRC bash
-USE="X acpi alsa bluetooth dbus elogind emacs flac gif gtk gui jpeg heif libnotify mp3 mp4 ogg opengl pdf png pulseaudio svg udev udisks unicode vaapi xinerama xft xml webp"
+USE="X acpi alsa bluetooth dbus elogind emacs flac gif gtk gui jpeg heif libnotify mp3 mp4 ogg opengl pdf png pulseaudio svg udev udisks unicode vaapi vpx xinerama xft xml webp"
 #+END_SRC
 
 ** Use Expand
