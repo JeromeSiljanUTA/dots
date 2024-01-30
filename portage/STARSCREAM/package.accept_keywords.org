@@ -4,3 +4,8 @@
 */*::steam-overlay
 games-util/game-device-udev-rules
 #+END_SRC
+
+** minecraft-launcher
+#+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.accept_keywords/minecraft-launcher
+games-action/minecraft-launcher ~amd64
+#+END_SRC
