@@ -97,15 +97,16 @@
   :preface
   (eval-and-compile(load "~/.config/emacs/client_scripts/org-setup-buffer.el"))
   :custom
-  (org-babel-load-languages '((emacs-lisp . t) (R . t)))
-  ;; (org-babel-do-load-languages
-  ;;  'org-babel-load-languages
-  ;;  '((C . t)
-  ;;    (R . t)
-  ;;    (cpp . t)
-  ;;    (emacs-lisp . t)
-  ;;    (plantuml . t)
-  ;;    (python . t)))
+  (org-babel-load-languages
+   '(
+     (C . t)
+     (R . t)
+     (R . t)
+     (emacs-lisp . t)
+     (emacs-lisp . t)
+     (plantuml . t)
+     (python . t)))
+
   ;; When selecting a region, commands apply to the whole region
   (org-agenda-loop-over-headlines-in-active-region nil)
   ;; Change agenda deadline to purple
