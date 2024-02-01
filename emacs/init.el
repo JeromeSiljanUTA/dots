@@ -203,7 +203,7 @@
   (empv-invidious-instance "https://vid.puffyan.us/api/v1")
   (empv-youtube-use-tabulated-results t)
   (empv-mpv-args
-   '("--save-position-on-quit" "--ytdl-format=best" "--no-video" "--no-terminal" "--idle" "--input-ipc-server=/tmp/empv-socket")))
+   '("--save-position-on-quit" "--ytdl-format=best" "--slang=en" "--speed=2" "--no-terminal" "--idle" "--input-ipc-server=/tmp/empv-socket")))
 
 (use-package mu4e
   :preface
