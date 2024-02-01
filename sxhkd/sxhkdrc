@@ -14,6 +14,10 @@ super + ctrl + {j,k}
 super + shift + space
     bspc node --state ~floating
 
+# toggle node tiling
+super + shift + t
+    bspc node --state tiled
+
 # send node to desktop
 super + shift + {a,s,d,f,u,i,o,p}
     bspc node focused --to-desktop {"Terminal","Notes","Emacs","Firefox","Comms","IDE","Files","Media"}
