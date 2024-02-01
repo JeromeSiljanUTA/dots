@@ -1,0 +1,7 @@
+* Package Unmask
+** nvidia-cuda-toolkit
+#+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.accept_keywords/nvidia-cuda-toolkit
+dev-util/nvidia-cuda-toolkit ~amd64
+#+END_SRC
+
+
