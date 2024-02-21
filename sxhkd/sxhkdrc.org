@@ -81,7 +81,7 @@ super + 5
 
 # screenshot
 super + Print
-  maim -su ~/$(date -Iseconds)
+    ~/.config/bspwm/scripts/screenshot
 #+END_SRC
 
 * Monitor Scripts
