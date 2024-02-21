@@ -275,6 +275,9 @@
 (setq global-hl-line-mode t)
 (global-hl-line-mode)
 
+(setq dired-listing-switches "-alh")
+
 (provide 'init)
+
 ;;; init.el ends here
 (put 'dired-find-alternate-file 'disabled nil)
