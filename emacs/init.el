@@ -219,7 +219,7 @@
   (setq mu4e-update-interval (* 10 60))
   (setq mu4e-get-mail-command "mbsync -c ~/.config/mbsync/mbsyncrc -a")
   (setq mu4e-maildir "~/.mail")
-  (mu4e-bookmark-setup)
+  (mu4e-bookmarks-setup)
   (mu4e-context-setup))
 
 (use-package ytdl
