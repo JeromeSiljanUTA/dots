@@ -66,7 +66,7 @@ super + 5
 
 # screenshot
 super + Print
-    ~/.config/bspwm/scripts/screenshot
+    ~/.config/bspwm/scripts/screenshot.sh
 
 super + {1,2}
     ~/.config/bspwm/scripts/monitor {mono,ext}

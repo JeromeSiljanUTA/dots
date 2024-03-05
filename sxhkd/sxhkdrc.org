@@ -81,7 +81,7 @@ super + 5
 
 # screenshot
 super + Print
-    ~/.config/bspwm/scripts/screenshot
+    ~/.config/bspwm/scripts/screenshot.sh
 #+END_SRC
 
 * Monitor Scripts
