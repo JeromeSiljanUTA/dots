@@ -207,7 +207,7 @@
 
 (use-package mu4e
   :preface
-  (eval-and-compile(load "~/.config/emacs/client_scripts/mu4e-context-setup.el"))
+  (eval-and-compile(load "~/.config/emacs/client_scripts/mu4e-setup.el"))
   :ensure nil
   :load-path "/usr/share/emacs/site-lisp/mu4e/"
   :custom
@@ -219,7 +219,13 @@
   (setq mu4e-update-interval (* 10 60))
   (setq mu4e-get-mail-command "mbsync -c ~/.config/mbsync/mbsyncrc -a")
   (setq mu4e-maildir "~/.mail")
+  (mu4e-bookmark-setup)
   (mu4e-context-setup))
+
+(use-package ytdl
+  :custom
+  (ytdl-command "yt-dlp")
+  (ytdl-download-folder "/home/jerome/downloads"))
 
 (use-package ess)
 
@@ -238,13 +244,8 @@
 (setq epg-pinentry-mode 'loopback)
 
 (eval-and-compile(load "~/.config/emacs/client_scripts/Bible-setup-buffer.el"))
-(defun file-name-mode ()
-  (when (and (stringp buffer-file-name)
-             (string-match "\\New American Standard Bible - NASB 1995.epub\\'" buffer-file-name))
-    (insert "OK")
-    (Bible-setup-buffer)))
 
-(add-hook 'find-file-hook 'file-name-mode)
+(add-hook 'nov-mode-hook 'Bible-setup-buffer)
 
 (setq calendar-mark-holidays-flag t)
 (setq holiday-bahai-holidays nil)
