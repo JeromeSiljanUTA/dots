@@ -7,7 +7,9 @@
 (defun Bible-setup-buffer()
   "Set up Bible buffer."
   (interactive)
+  (text-scale-increase 2)
   (writeroom-mode)
-  (text-scale-increase 2))
+  (writeroom-adjust-width -40)
+  (nov-render-document))
 
 ;;; Bible-setup-buffer.el ends here
