@@ -32,7 +32,7 @@ emacs/ac-comphist.dat
 emacs/auto-save-list/
 emacs/bookmarks
 emacs/bookmarks~
-emacs/client_scripts/mu4e-context-setup.el
+emacs/client_scripts/mu4e-setup.el
 emacs/codespaces.el/
 emacs/devdocs/
 emacs/eln-cache/
