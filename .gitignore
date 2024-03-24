@@ -22,6 +22,7 @@ cmus/command-history
 cmus/lib.pl
 cmus/playlists/
 cmus/search-history
+cura/
 d VPN/
 dconf/
 discord
@@ -45,6 +46,7 @@ emacs/image-dired/
 emacs/init.el~
 emacs/network-security.data
 emacs/nov-places
+emacs/org-roam.db
 emacs/places
 emacs/request/
 emacs/straight/
@@ -71,6 +73,7 @@ mbsync/
 menus/
 mimeapps.list
 mpv/scripts/mpris.so
+mpv/scripts/sponsorblock_shared/
 mpv/watch_later
 nemo
 nicotine
