@@ -145,4 +145,7 @@ x11-libs/libxshmfence abi_x86_32
 # required by @selected
 # required by @world (argument)
 >=app-text/texlive-core-2021-r7 xetex
+# required by media-gfx/prusaslicer-2.7.1::gentoo
+# required by prusaslicer (argument)
+>=media-libs/qhull-2020.2-r3 static-libs
 #+END_SRC
