@@ -77,7 +77,7 @@
   ;; Change agenda deadline to purple
   (org-warning ((t (:foreground "#d3869b" :underline nil :weight bold))))
   (org-format-latex-options
-  '(:foreground default :background default :scale 2.0 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+  '(:foreground default :background default :scale 1.5 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-edit-src-content-indentation 0)
   (org-plantuml-jar-path "/usr/share/plantuml/lib/plantuml.jar")
@@ -99,8 +99,8 @@
 		   ((org-agenda-overriding-header "Tasks @anywhere")))
 	(tags-todo "@home"
 		   ((org-agenda-overriding-header "Tasks @home")))
-	(tags-todo "@couch"
-		   ((org-agenda-overriding-header "Tasks @couch")))
+	(tags-todo "@recreation"
+		   ((org-agenda-overriding-header "Tasks @recreation")))
 	(tags-todo "@waiting"
 		   ((org-agenda-overriding-header "Tasks @waiting"))))
        nil nil)))
