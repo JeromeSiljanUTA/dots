@@ -1,0 +1,11 @@
+* package.use
+
+** games-action/minecraft-launcher
+#+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.unmask/minecraft-launcher
+games-action/minecraft-launcher
+#+END_SRC
+
+** dev-util/nvidia-cuda-toolkit
+#+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.unmask/nvidia-cuda-toolkit
+dev-util/nvidia-cuda-toolkit ~amd64
+#+END_SRC
