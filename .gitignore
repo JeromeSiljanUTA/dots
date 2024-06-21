@@ -5,6 +5,7 @@
 Microsoft/
 Mullvad
 MusicBrainz/Picard-*
+PrusaSlicer/cache/*
 QtProject.conf
 Recoll.org/
 Signal/
@@ -59,6 +60,7 @@ fastfetch/
 flameshot/
 forge
 gammastep/
+google-chrome/
 gtk-2.0/
 gtk-3.0/
 ibus
