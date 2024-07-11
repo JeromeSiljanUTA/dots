@@ -4,4 +4,14 @@
 dev-util/nvidia-cuda-toolkit ~amd64
 #+END_SRC
 
+** openscad
+#+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.accept_keywords/openscad
+media-gfx/openscad ~amd64
+#+END_SRC
+
+** pdf-tools
+#+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.accept_keywords/pdf-tools
+app-emacs/pdf-tools ~amd64
+#+END_SRC
+
 

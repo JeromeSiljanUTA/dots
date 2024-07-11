@@ -15,6 +15,11 @@ app-editors/emacs cairo imagemagick jit json libxml2 sqlite xwidgets
 | libxml2     | Eww needs this                                                                        |
 | sqlite      | sqlite mode                                                                           |
 | xwidgets    | Allows xwidget browser                                                                |
+** media-gfx/openscad
+#+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.use/package.use
+media-gfx/openscad experimental -emacs
+#+END_SRC
+
 ** net-mail/isync
 #+BEGIN_SRC bash
 net-mail/isync sasl
@@ -39,6 +44,11 @@ sys-devel/gcc jit
 #+END_SRC
 | jit | Allows emacs packages to be compiled for faster loading |
 |     | Also set app-editors/emacs to have jit                  |
+
+** sci-electronics/kicad
+#+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.use/package.use
+sci-electronics/kicad python_single_target_python3_11
+#+END_SRC
 
 * automatically added
 ** STARSCREAM
@@ -94,4 +104,217 @@ sys-devel/gcc jit
 # required by sci-electronics/kicad-7.0.10::gentoo[python_single_target_python3_11]
 # required by kicad (argument)
 >=x11-libs/wxGTK-3.2.2.1-r3 tiff gstreamer sdl
+# required by x11-misc/xdg-utils-1.2.1-r1::gentoo
+# required by app-office/libreoffice-bin-7.6.4.1::gentoo
+# required by @selected
+# required by @world (argument)
+>=app-text/xmlto-0.0.28-r11 text
+# required by media-libs/mesa-24.0.9::gentoo[X]
+# required by media-libs/gst-plugins-base-1.22.11-r1::gentoo[gles2,opengl]
+# required by media-plugins/gst-plugins-opus-1.22.11::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo[gstreamer]
+# required by app-editors/emacs-29.3-r2::gentoo[X,xwidgets,gtk,gui]
+# required by virtual/editor-0-r7::gentoo
+# required by app-admin/sudo-1.9.15_p5::gentoo
+# required by @selected
+# required by @world (argument)
+>=x11-libs/xcb-util-keysyms-0.4.1 abi_x86_32
+# required by dev-libs/nss-3.90.2-r1::gentoo
+# required by dev-libs/xmlsec-1.3.3-r1::gentoo[nss]
+# required by sys-auth/oath-toolkit-2.6.9::gentoo
+# required by app-admin/pass-otp-1.2.0-r1::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-db/sqlite-3.45.3 abi_x86_32
+# required by sci-electronics/kicad-7.0.10::gentoo[python_single_target_python3_11]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/boost-1.84.0-r3 python_targets_python3_11
+# required by sci-electronics/kicad-7.0.10::gentoo[python_single_target_python3_11]
+# required by @selected
+# required by @world (argument)
+>=dev-python/wxpython-4.2.1-r2 python_targets_python3_11
+# required by dev-python/wxpython-4.2.1-r2::gentoo
+# required by sci-electronics/kicad-7.0.10::gentoo[python_single_target_python3_11]
+# required by @selected
+# required by @world (argument)
+>=dev-python/cython-3.0.10 python_targets_python3_11
+# required by dev-python/cython-3.0.10::gentoo
+# required by dev-python/msgpack-1.0.8::gentoo[-python_targets_python3_11,-python_targets_python3_10,native-extensions,python_targets_python3_12]
+# required by dev-python/cachecontrol-0.14.0::gentoo
+# required by media-gfx/inkscape-1.3.2-r2::gentoo[python_single_target_python3_12]
+# required by @selected
+# required by @world (argument)
+>=dev-python/setuptools-70.0.0 python_targets_python3_11
+# required by dev-python/wxpython-4.2.1-r2::gentoo
+# required by sci-electronics/kicad-7.0.10::gentoo[python_single_target_python3_11]
+# required by @selected
+# required by @world (argument)
+>=dev-python/sip-6.8.3 python_targets_python3_11
+# required by dev-python/wxpython-4.2.1-r2::gentoo
+# required by sci-electronics/kicad-7.0.10::gentoo[python_single_target_python3_11]
+# required by @selected
+# required by @world (argument)
+>=dev-python/six-1.16.0-r1 python_targets_python3_11
+# required by dev-python/six-1.16.0-r1::gentoo
+# required by dev-python/html5lib-1.1-r2::gentoo
+# required by dev-python/beautifulsoup4-4.12.3::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/gpep517-16 python_targets_python3_11
+# required by dev-python/sip-6.8.3::gentoo
+# required by dev-python/wxpython-4.2.1-r2::gentoo
+# required by sci-electronics/kicad-7.0.10::gentoo[python_single_target_python3_11]
+# required by @selected
+# required by @world (argument)
+>=dev-python/packaging-24.0 python_targets_python3_11
+# required by media-gfx/graphviz-9.0.0::gentoo
+# required by media-gfx/plantuml-1.2024.4-r2::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/gd-2.3.3-r4 truetype fontconfig
+# required by dev-python/gpep517-16::gentoo
+# required by dev-python/mako-1.3.5::gentoo
+# required by media-libs/mesa-24.0.9::gentoo
+# required by media-libs/gst-plugins-base-1.22.11-r1::gentoo[opengl,gles2]
+# required by media-plugins/gst-plugins-opus-1.22.11::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo[gstreamer]
+# required by app-editors/emacs-29.3-r2::gentoo[gtk,X,gui,xwidgets]
+# required by virtual/editor-0-r7::gentoo
+# required by app-admin/sudo-1.9.15_p5::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/installer-0.7.0 python_targets_python3_11
+# required by dev-python/setuptools-70.0.0::gentoo
+# required by dev-python/mako-1.3.5::gentoo
+# required by media-libs/mesa-24.0.9::gentoo
+# required by media-libs/gst-plugins-base-1.22.11-r1::gentoo[opengl,gles2]
+# required by media-plugins/gst-plugins-opus-1.22.11::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo[gstreamer]
+# required by app-editors/emacs-29.3-r2::gentoo[gtk,X,gui,xwidgets]
+# required by virtual/editor-0-r7::gentoo
+# required by app-admin/sudo-1.9.15_p5::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/jaraco-text-3.12.0 python_targets_python3_11
+# required by dev-python/setuptools-70.0.0::gentoo
+# required by dev-python/mako-1.3.5::gentoo
+# required by media-libs/mesa-24.0.9::gentoo
+# required by media-libs/gst-plugins-base-1.22.11-r1::gentoo[opengl,gles2]
+# required by media-plugins/gst-plugins-opus-1.22.11::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo[gstreamer]
+# required by app-editors/emacs-29.3-r2::gentoo[gtk,X,gui,xwidgets]
+# required by virtual/editor-0-r7::gentoo
+# required by app-admin/sudo-1.9.15_p5::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/more-itertools-10.2.0 python_targets_python3_11
+# required by dev-python/setuptools-70.0.0::gentoo
+# required by dev-python/mako-1.3.5::gentoo
+# required by media-libs/mesa-24.0.9::gentoo
+# required by media-libs/gst-plugins-base-1.22.11-r1::gentoo[opengl,gles2]
+# required by media-plugins/gst-plugins-opus-1.22.11::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo[gstreamer]
+# required by app-editors/emacs-29.3-r2::gentoo[gtk,X,gui,xwidgets]
+# required by virtual/editor-0-r7::gentoo
+# required by app-admin/sudo-1.9.15_p5::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/ordered-set-4.1.0 python_targets_python3_11
+# required by dev-python/setuptools-70.0.0::gentoo
+# required by dev-python/mako-1.3.5::gentoo
+# required by media-libs/mesa-24.0.9::gentoo
+# required by media-libs/gst-plugins-base-1.22.11-r1::gentoo[opengl,gles2]
+# required by media-plugins/gst-plugins-opus-1.22.11::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo[gstreamer]
+# required by app-editors/emacs-29.3-r2::gentoo[gtk,X,gui,xwidgets]
+# required by virtual/editor-0-r7::gentoo
+# required by app-admin/sudo-1.9.15_p5::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/platformdirs-4.2.2 python_targets_python3_11
+# required by dev-python/setuptools-70.0.0::gentoo
+# required by dev-python/mako-1.3.5::gentoo
+# required by media-libs/mesa-24.0.9::gentoo
+# required by media-libs/gst-plugins-base-1.22.11-r1::gentoo[opengl,gles2]
+# required by media-plugins/gst-plugins-opus-1.22.11::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo[gstreamer]
+# required by app-editors/emacs-29.3-r2::gentoo[gtk,X,gui,xwidgets]
+# required by virtual/editor-0-r7::gentoo
+# required by app-admin/sudo-1.9.15_p5::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/wheel-0.43.0 python_targets_python3_11
+# required by dev-python/setuptools-70.0.0::gentoo
+# required by dev-python/mako-1.3.5::gentoo
+# required by media-libs/mesa-24.0.9::gentoo
+# required by media-libs/gst-plugins-base-1.22.11-r1::gentoo[opengl,gles2]
+# required by media-plugins/gst-plugins-opus-1.22.11::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo[gstreamer]
+# required by app-editors/emacs-29.3-r2::gentoo[gtk,X,gui,xwidgets]
+# required by virtual/editor-0-r7::gentoo
+# required by app-admin/sudo-1.9.15_p5::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/setuptools-scm-8.1.0 python_targets_python3_11
+# required by dev-python/more-itertools-10.2.0::gentoo
+# required by dev-python/jaraco-functools-4.0.1::gentoo
+# required by dev-python/jaraco-text-3.12.0::gentoo
+# required by dev-python/setuptools-70.0.0::gentoo
+# required by dev-python/mako-1.3.5::gentoo
+# required by media-libs/mesa-24.0.9::gentoo
+# required by media-libs/gst-plugins-base-1.22.11-r1::gentoo[opengl,gles2]
+# required by media-plugins/gst-plugins-opus-1.22.11::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo[gstreamer]
+# required by app-editors/emacs-29.3-r2::gentoo[gtk,X,gui,xwidgets]
+# required by virtual/editor-0-r7::gentoo
+# required by app-admin/sudo-1.9.15_p5::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/flit-core-3.9.0 python_targets_python3_11
+# required by dev-python/jaraco-text-3.12.0::gentoo
+# required by dev-python/setuptools-70.0.0::gentoo
+# required by dev-python/mako-1.3.5::gentoo
+# required by media-libs/mesa-24.0.9::gentoo
+# required by media-libs/gst-plugins-base-1.22.11-r1::gentoo[opengl,gles2]
+# required by media-plugins/gst-plugins-opus-1.22.11::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo[gstreamer]
+# required by app-editors/emacs-29.3-r2::gentoo[gtk,X,gui,xwidgets]
+# required by virtual/editor-0-r7::gentoo
+# required by app-admin/sudo-1.9.15_p5::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/jaraco-context-5.3.0 python_targets_python3_11
+# required by dev-python/jaraco-text-3.12.0::gentoo
+# required by dev-python/setuptools-70.0.0::gentoo
+# required by dev-python/mako-1.3.5::gentoo
+# required by media-libs/mesa-24.0.9::gentoo
+# required by media-libs/gst-plugins-base-1.22.11-r1::gentoo[opengl,gles2]
+# required by media-plugins/gst-plugins-opus-1.22.11::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo[gstreamer]
+# required by app-editors/emacs-29.3-r2::gentoo[gtk,X,gui,xwidgets]
+# required by virtual/editor-0-r7::gentoo
+# required by app-admin/sudo-1.9.15_p5::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/jaraco-functools-4.0.1 python_targets_python3_11
+# required by dev-python/jaraco-context-5.3.0::gentoo[-python_targets_python3_10,python_targets_python3_11]
+# required by dev-python/jaraco-text-3.12.0::gentoo
+# required by dev-python/setuptools-70.0.0::gentoo
+# required by dev-python/mako-1.3.5::gentoo
+# required by media-libs/mesa-24.0.9::gentoo
+# required by media-libs/gst-plugins-base-1.22.11-r1::gentoo[opengl,gles2]
+# required by media-plugins/gst-plugins-opus-1.22.11::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo[gstreamer]
+# required by app-editors/emacs-29.3-r2::gentoo[gtk,X,gui,xwidgets]
+# required by virtual/editor-0-r7::gentoo
+# required by app-admin/sudo-1.9.15_p5::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-python/backports-tarfile-1.2.0 python_targets_python3_11
+# required by dev-db/sqlite-3.45.3::gentoo[readline]
+# required by app-arch/rpm-4.19.1.1::gentoo[sqlite]
+# required by @selected
+# required by @world (argument)
+>=sys-libs/readline-8.2_p10 abi_x86_32
 #+END_SRC
