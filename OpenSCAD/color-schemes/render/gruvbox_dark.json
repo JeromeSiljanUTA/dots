@@ -1,0 +1,19 @@
+{
+    "name" : "Gruvbox Dark",
+    "index" : 1701,
+    "show-in-gui" : true,
+
+    "colors" : {
+        "background" :         "#282828",
+        "axes-color" :         "#a89984",
+        "opencsg-face-front" : "#d79921",
+        "opencsg-face-back" :  "#b16286",
+        "cgal-face-front" :    "#d79921",
+        "cgal-face-back" :     "#b16286",
+        "cgal-face-2d" :       "#98971a",
+        "cgal-edge-front" :    "#d79921",
+        "cgal-edge-back" :     "#d79921",
+        "cgal-edge-2d" :       "#d79921",
+        "crosshair" :          "#a89984"
+    }
+}
