@@ -308,6 +308,17 @@
   (ytdl-download-folder "/home/jerome/downloads"))
 #+END_SRC
 
+** [[https://github.com/emacsorphanage/god-mode][god-mode]]
+#+BEGIN_SRC elisp
+(use-package god-mode
+  :custom
+  (god-exempt-major-modes nil)
+  (god-exempt-predicates nil)
+  :config
+  (god-mode)
+  :bind(("<escape>" . god-mode-all)))
+#+END_SRC
+
 ** ess
 #+BEGIN_SRC elisp
 (use-package ess)

@@ -227,6 +227,14 @@
   (ytdl-command "yt-dlp")
   (ytdl-download-folder "/home/jerome/downloads"))
 
+(use-package god-mode
+  :custom
+  (god-exempt-major-modes nil)
+  (god-exempt-predicates nil)
+  :config
+  (god-mode)
+  :bind(("<escape>" . god-mode-all)))
+
 (use-package ess)
 
 (use-package python
