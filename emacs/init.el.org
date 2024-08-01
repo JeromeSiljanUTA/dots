@@ -319,6 +319,13 @@
   :bind(("<escape>" . god-mode-all)))
 #+END_SRC
 
+** [[https://github.com/xenodium/ready-player][ready-player]]
+#+BEGIN_SRC elisp
+(use-package ready-player
+  :config
+  (ready-player-mode +1))
+#+END_SRC
+
 ** ess
 #+BEGIN_SRC elisp
 (use-package ess)

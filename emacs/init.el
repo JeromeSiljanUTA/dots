@@ -235,6 +235,10 @@
   (god-mode)
   :bind(("<escape>" . god-mode-all)))
 
+(use-package ready-player
+  :config
+  (ready-player-mode +1))
+
 (use-package ess)
 
 (use-package python
