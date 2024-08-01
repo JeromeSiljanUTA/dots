@@ -4,7 +4,8 @@ status="$(awk -F '=' '/ONLINE/ {print $2}' /sys/class/power_supply/AC/uevent)"
 
 if [[ "$status" == "0" ]]
 then
-    powerprofilesctl set power-saver
+    # powerprofilesctl set power-saver
+    powerprofilesctl set balanced
     status="disconnected"
 else
     powerprofilesctl set performance
