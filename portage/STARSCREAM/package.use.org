@@ -317,4 +317,68 @@ sci-electronics/kicad python_single_target_python3_11
 # required by @selected
 # required by @world (argument)
 >=sys-libs/readline-8.2_p10 abi_x86_32
+# required by sys-apps/systemd-utils-254.13::gentoo[udev]
+# required by virtual/libudev-251-r2::gentoo[-systemd]
+# required by net-misc/networkmanager-1.46.0-r1::gentoo
+# required by net-libs/libnma-1.10.6-r1::gentoo
+# required by gnome-extra/nm-applet-1.36.0::gentoo
+# required by nm-applet (argument)
+>=sys-apps/util-linux-2.39.3-r7 abi_x86_32
+# required by net-misc/networkmanager-1.46.0-r1::gentoo
+# required by net-libs/libnma-1.10.6-r1::gentoo
+# required by gnome-extra/nm-applet-1.36.0::gentoo
+# required by nm-applet (argument)
+>=sys-apps/dbus-1.15.8 abi_x86_32
+# required by net-misc/networkmanager-1.46.0-r1::gentoo
+# required by net-libs/libnma-1.10.6-r1::gentoo
+# required by gnome-extra/nm-applet-1.36.0::gentoo
+# required by nm-applet (argument)
+>=dev-libs/glib-2.78.6 abi_x86_32
+# required by dev-libs/glib-2.78.6::gentoo
+# required by net-misc/modemmanager-1.20.6::gentoo
+# required by net-misc/networkmanager-1.46.0-r1::gentoo[modemmanager]
+# required by net-libs/libnma-1.10.6-r1::gentoo
+# required by gnome-extra/nm-applet-1.36.0::gentoo
+# required by nm-applet (argument)
+>=dev-libs/libpcre2-10.43 abi_x86_32
+# required by dev-libs/glib-2.78.6::gentoo
+# required by net-misc/modemmanager-1.20.6::gentoo
+# required by net-misc/networkmanager-1.46.0-r1::gentoo[modemmanager]
+# required by net-libs/libnma-1.10.6-r1::gentoo
+# required by gnome-extra/nm-applet-1.36.0::gentoo
+# required by nm-applet (argument)
+>=virtual/libintl-0-r2 abi_x86_32
+# required by dev-libs/glib-2.78.6::gentoo
+# required by net-misc/modemmanager-1.20.6::gentoo
+# required by net-misc/networkmanager-1.46.0-r1::gentoo[modemmanager]
+# required by net-libs/libnma-1.10.6-r1::gentoo
+# required by gnome-extra/nm-applet-1.36.0::gentoo
+# required by nm-applet (argument)
+>=virtual/libiconv-0-r2 abi_x86_32
+# required by net-misc/networkmanager-1.46.0-r1::gentoo
+# required by net-libs/libnma-1.10.6-r1::gentoo
+# required by gnome-extra/nm-applet-1.36.0::gentoo
+# required by nm-applet (argument)
+>=virtual/libudev-251-r2 abi_x86_32
+# required by virtual/libudev-251-r2::gentoo[-systemd]
+# required by net-misc/networkmanager-1.46.0-r1::gentoo
+# required by net-libs/libnma-1.10.6-r1::gentoo
+# required by gnome-extra/nm-applet-1.36.0::gentoo
+# required by nm-applet (argument)
+>=sys-apps/systemd-utils-254.13 abi_x86_32
+# required by sys-apps/systemd-utils-254.13::gentoo[udev]
+# required by virtual/libudev-251-r2::gentoo[-systemd]
+# required by net-misc/networkmanager-1.46.0-r1::gentoo
+# required by net-libs/libnma-1.10.6-r1::gentoo
+# required by gnome-extra/nm-applet-1.36.0::gentoo
+# required by nm-applet (argument)
+>=sys-libs/libcap-2.70 abi_x86_32
+# required by sys-libs/libcap-2.70::gentoo[pam]
+# required by sys-apps/systemd-utils-254.13::gentoo[udev]
+# required by virtual/libudev-251-r2::gentoo[-systemd]
+# required by net-misc/networkmanager-1.46.0-r1::gentoo
+# required by net-libs/libnma-1.10.6-r1::gentoo
+# required by gnome-extra/nm-applet-1.36.0::gentoo
+# required by nm-applet (argument)
+>=sys-libs/pam-1.5.3-r1 abi_x86_32
 #+END_SRC
