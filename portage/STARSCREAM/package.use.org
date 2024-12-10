@@ -4,7 +4,7 @@
 #+PROPERTY: header-args :tangle /sudo::/etc/portage/package.use/package.use
 ** app-editors/emacs
 #+BEGIN_SRC bash
-app-editors/emacs cairo imagemagick jit json libxml2 sqlite xwidgets
+app-editors/emacs cairo imagemagick jit json libxml2 sqlite tree-sitter xwidgets
 #+END_SRC
 | cairo       | Add cairo graphics, useful for R plots with Babel                                     |
 | imagemagick | File type conversion                                                                  |
@@ -14,6 +14,7 @@ app-editors/emacs cairo imagemagick jit json libxml2 sqlite xwidgets
 |             | Also set sys-devel/gcc to have jit                                                    |
 | libxml2     | Eww needs this                                                                        |
 | sqlite      | sqlite mode                                                                           |
+| tree-sitter | tree-sitter mode                                                                      |
 | xwidgets    | Allows xwidget browser                                                                |
 ** media-gfx/openscad
 #+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.use/package.use
