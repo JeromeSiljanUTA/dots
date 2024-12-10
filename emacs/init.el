@@ -83,10 +83,15 @@
   (org-plantuml-jar-path "/usr/share/plantuml/lib/plantuml.jar")
   (org-deadline-warning-days 0)
   (org-agenda-start-on-weekday nil)
-  (org-agenda-files '("/home/jerome/misc/gtd/main.org"))
+  (org-icalendar-categories '(local-tags category todo-state))
+  (org-icalendar-include-todo 'all)
+  (org-icalendar-store-UID t)
+  (org-agenda-files
+   '("/home/jerome/misc/gtd/main.org" "/home/jerome/misc/gtd/calendar.org"))
     (org-refile-targets
    '(("~/misc/gtd/main.org" :maxlevel . 1)
      ("~/misc/gtd/diary.org" :maxlevel . 1)
+     ("~/misc/gtd/calendar.org" :maxlevel . 1)
      ("~/misc/gtd/phone_in.org" :maxlevel . 1)))
    (org-agenda-custom-commands
     '(("c" "Tasks by context with Agenda"
@@ -263,6 +268,14 @@
 (setq holiday-bahai-holidays nil)
 (setq holiday-islamic-holidays nil)
 (setq holiday-oriental-holidays nil)
+
+(defun calendar-save-hook ()
+  (defvar target-file-path (expand-file-name "~/misc/gtd/calendar.org"))
+  (message (buffer-file-name))
+  (when (string-equal (buffer-file-name) target-file-path)
+    (org-icalendar-export-to-ics)))
+
+(add-hook 'after-save-hook 'calendar-save-hook)
 
 ;; Hide scroll bar, menu bar, tool bar
 (scroll-bar-mode -1)
