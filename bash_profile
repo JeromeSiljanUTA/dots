@@ -13,15 +13,11 @@ LESS_TERMCAP_ue=$'\e[0m'
 LESS_TERMCAP_us=$'\e[1;4;31m'
 BC_ENV_ARGS=$HOME/.config/bcrc
 
+export PATH=~/.npm-global/bin:$PATH
+
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 if [ -z $DISPLAY ] && [ "$(tty)" == "/dev/tty1" ];
 then
     startx
 fi
-
-
-
-
-
-
