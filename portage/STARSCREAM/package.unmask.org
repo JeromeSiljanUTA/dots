@@ -14,4 +14,8 @@ media-gfx/openscad ~amd64
 app-emacs/pdf-tools ~amd64
 #+END_SRC
 
+** scrcpy
+#+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.accept_keywords/scrcpy
+app-mobilephone/scrcpy ~amd64
+#+END_SRC
 
