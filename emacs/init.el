@@ -18,9 +18,9 @@
 (setq use-package-always-ensure t)
 
 ;; Install use-package if not installed
-(package-refresh-contents)
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+;; (package-refresh-contents)
+;; (unless (package-installed-p 'use-package)
+;;   (package-install 'use-package))
 
 (use-package gruvbox-theme
   :preface
@@ -29,7 +29,7 @@
   (theme-switcher-init-theme)
   :custom
   (custom-safe-themes t)
-)
+  )
 
 ;; Define package repos, initialize
 (use-package package
@@ -44,9 +44,9 @@
 ;; https://github.com/magit/magit
 (use-package magit)
 
-(use-package expand-region
-  :config
-  (global-set-key (kbd "C-=") 'er/expand-region))
+;; (use-package expand-region
+;;   :config
+;;   (global-set-key (kbd "C-=") 'er/expand-region))
 
 (use-package yasnippet
   :custom
@@ -54,9 +54,9 @@
   :config
   (yas-global-mode 1))
 
-(use-package ein
-  :custom
-  (ein:output-area-inlined-images t))
+;; (use-package ein
+;;   :custom
+;;   (ein:output-area-inlined-images t))
 
 (use-package org
   :preface
@@ -77,7 +77,7 @@
   ;; Change agenda deadline to purple
   (org-warning ((t (:foreground "#d3869b" :underline nil :weight bold))))
   (org-format-latex-options
-  '(:foreground default :background default :scale 1.5 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+   '(:foreground default :background default :scale 1.5 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-edit-src-content-indentation 0)
   (org-plantuml-jar-path "/usr/share/plantuml/lib/plantuml.jar")
@@ -88,27 +88,27 @@
   (org-icalendar-store-UID t)
   (org-agenda-files
    '("/home/jerome/misc/gtd/main.org" "/home/jerome/misc/gtd/calendar.org"))
-    (org-refile-targets
+  (org-refile-targets
    '(("~/misc/gtd/main.org" :maxlevel . 1)
      ("~/misc/gtd/diary.org" :maxlevel . 1)
      ("~/misc/gtd/calendar.org" :maxlevel . 1)
      ("~/misc/gtd/phone_in.org" :maxlevel . 1)))
-   (org-agenda-custom-commands
-    '(("c" "Tasks by context with Agenda"
-       ((agenda ""
-		((org-agenda-span '7)
-		 (org-agenda-overriding-header "Agenda")))
-	(tags-todo "@school"
-		   ((org-agenda-overriding-header "Tasks @school")))
-	(tags-todo "@anywhere"
-		   ((org-agenda-overriding-header "Tasks @anywhere")))
-	(tags-todo "@home"
-		   ((org-agenda-overriding-header "Tasks @home")))
-	(tags-todo "@recreation"
-		   ((org-agenda-overriding-header "Tasks @recreation")))
-	(tags-todo "@waiting"
-		   ((org-agenda-overriding-header "Tasks @waiting"))))
-       nil nil)))
+  (org-agenda-custom-commands
+   '(("c" "Tasks by context with Agenda"
+      ((agenda ""
+	       ((org-agenda-span '7)
+		(org-agenda-overriding-header "Agenda")))
+       (tags-todo "@school"
+		  ((org-agenda-overriding-header "Tasks @school")))
+       (tags-todo "@anywhere"
+		  ((org-agenda-overriding-header "Tasks @anywhere")))
+       (tags-todo "@home"
+		  ((org-agenda-overriding-header "Tasks @home")))
+       (tags-todo "@recreation"
+		  ((org-agenda-overriding-header "Tasks @recreation")))
+       (tags-todo "@waiting"
+		  ((org-agenda-overriding-header "Tasks @waiting"))))
+      nil nil)))
   :config
   (global-set-key (kbd "C-c l") 'org-store-link)
   (global-set-key (kbd "C-c a") 'org-agenda)
@@ -125,20 +125,27 @@
 ;;(add-hook 'prog-mode-hook 'format-all-mode)
 ;;(add-hook 'format-all-mode-hook 'format-all-ensure-formatter)
 
-(use-package avy
-  :config
-  (global-set-key (kbd "C-:") 'avy-goto-char))
+;; (use-package avy
+;;   :config
+;;   (global-set-key (kbd "C-:") 'avy-goto-char))
 
-(use-package helm
+;; (use-package helm
+;;   :custom
+;;   (helm-locate-fuzzy-match t)
+;;   (helm-move-to-line-cycle-in-source nil)
+;;   :config
+;;   (global-set-key (kbd "M-x") 'helm-M-x))
+
+(use-package ivy
   :custom
-  (helm-locate-fuzzy-match t)
-  (helm-move-to-line-cycle-in-source nil)
+  (ivy-use-virtual-buffers t)
+  (enable-recursive-minibuffers t)
   :config
-  (global-set-key (kbd "M-x") 'helm-M-x))
+  (ivy-mode))
 
 (use-package pdf-tools
   :preface
-  (eval-and-compile(load "~/.config/emacs/client_scripts/PDFView-setup-buffer.el"))  
+  (eval-and-compile(load "~/.config/emacs/client_scripts/PDFView-setup-buffer.el"))
   :defer t
   :custom
   (pdf-view-display-size 'fit-page)
@@ -147,7 +154,7 @@
   :config
   (pdf-tools-install))
 
-(use-package org-roam)
+;; (use-package org-roam)
 
 (use-package writeroom-mode
   :custom
@@ -158,50 +165,50 @@
   ("C-M->". writeroom-increase-width)
   ("C-M-=". writeroom-adjust-width))
 
-(use-package docker-compose-mode)
+;; (use-package docker-compose-mode)
 
-(use-package org-noter
-  :custom
-  (org-noter-always-create-frame nil))
+;; (use-package org-noter
+;;   :custom
+;;   (org-noter-always-create-frame nil))
 
 (use-package nov
   :mode ("\\.epub\\'" . nov-mode))
 
 (use-package ledger-mode
   :config
-   (setq ledger-reports
-    '(("bal" "%(binary) -f %(ledger-file) bal")
-      ("reg" "%(binary) -f %(ledger-file) reg")
-      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
-      ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
+  (setq ledger-reports
+	'(("bal" "%(binary) -f %(ledger-file) bal")
+	  ("reg" "%(binary) -f %(ledger-file) reg")
+	  ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
+	  ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
 
-(use-package hass
-  :preface
-  (eval-and-compile(load "~/.config/emacs/client_scripts/hass-setup-buffer.el"))
-  :custom
-  (hass-port 8123)
-  (hass-host "192.168.2.96")
-  (hass-insecure t)
-  :init
-  (setq hass-apikey (lambda () (auth-source-pick-first-password :host "emacs-hass" :user "jerome")))
-  (setq hass-dash-layouts
-	'((default .
-		   ((hass-dash-group
-		     :title "Home Assistant"
-		     :format "%t\n\n%v"
-		     (hass-dash-group
-		      :title "Bedroom"
-		      :title-face outline-2
-		      (hass-dash-toggle
-		       :entity-id "light.curve_lamp_light_2"
-		       :label "Curve Lamp"
-		       :icon "💡")
-		      (hass-dash-toggle
-		       :entity-id "light.desk_lamp_light"
-		       :label "Desk Lamp"
-		       :icon "💡")))))))
-  :hook
-  (hass-dash-mode . hass-setup-buffer))
+;; (use-package hass
+;;   :preface
+;;   (eval-and-compile(load "~/.config/emacs/client_scripts/hass-setup-buffer.el"))
+;;   :custom
+;;   (hass-port 8123)
+;;   (hass-host "192.168.2.96")
+;;   (hass-insecure t)
+;;   :init
+;;   (setq hass-apikey (lambda () (auth-source-pick-first-password :host "emacs-hass" :user "jerome")))
+;;   (setq hass-dash-layouts
+;; 	'((default .
+;; 		   ((hass-dash-group
+;; 		     :title "Home Assistant"
+;; 		     :format "%t\n\n%v"
+;; 		     (hass-dash-group
+;; 		      :title "Bedroom"
+;; 		      :title-face outline-2
+;; 		      (hass-dash-toggle
+;; 		       :entity-id "light.curve_lamp_light_2"
+;; 		       :label "Curve Lamp"
+;; 		       :icon "💡")
+;; 		      (hass-dash-toggle
+;; 		       :entity-id "light.desk_lamp_light"
+;; 		       :label "Desk Lamp"
+;; 		       :icon "💡")))))))
+;;   :hook
+;;   (hass-dash-mode . hass-setup-buffer))
 
 (use-package empv
   :custom
@@ -210,39 +217,39 @@
   (empv-mpv-args
    '("--save-position-on-quit" "--ytdl-format=best" "--slang=en" "--speed=2" "--no-terminal" "--idle" "--input-ipc-server=/tmp/empv-socket")))
 
-(use-package mu4e
-  :preface
-  (eval-and-compile(load "~/.config/emacs/client_scripts/mu4e-setup.el"))
-  :ensure nil
-  :load-path "/usr/share/emacs/site-lisp/mu4e/"
-  :custom
-  (mu4e-search-results-limit -1)
-  :config
-  ;; This is set to 't' to avoid mail syncing issues when using mbsync
-  (setq mu4e-change-filenames-when-moving t)
-  ;; Refresh mail using isync every 10 minutes
-  (setq mu4e-update-interval (* 10 60))
-  (setq mu4e-get-mail-command "mbsync -c ~/.config/mbsync/mbsyncrc -a")
-  (setq mu4e-maildir "~/.mail")
-  (mu4e-bookmarks-setup)
-  (mu4e-context-setup))
+;; (use-package mu4e
+;;   :preface
+;;   (eval-and-compile(load "~/.config/emacs/client_scripts/mu4e-setup.el"))
+;;   :ensure nil
+;;   :load-path "/usr/share/emacs/site-lisp/mu4e/"
+;;   :custom
+;;   (mu4e-search-results-limit -1)
+;;   :config
+;;   ;; This is set to 't' to avoid mail syncing issues when using mbsync
+;;   (setq mu4e-change-filenames-when-moving t)
+;;   ;; Refresh mail using isync every 10 minutes
+;;   (setq mu4e-update-interval (* 10 60))
+;;   (setq mu4e-get-mail-command "mbsync -c ~/.config/mbsync/mbsyncrc -a")
+;;   (setq mu4e-maildir "~/.mail")
+;;   (mu4e-bookmarks-setup)
+;;   (mu4e-context-setup))
 
-(use-package ytdl
-  :custom
-  (ytdl-command "yt-dlp")
-  (ytdl-download-folder "/home/jerome/downloads"))
+;; (use-package ytdl
+;;   :custom
+;;   (ytdl-command "yt-dlp")
+;;   (ytdl-download-folder "/home/jerome/downloads"))
 
-(use-package god-mode
-  :custom
-  (god-exempt-major-modes nil)
-  (god-exempt-predicates nil)
-  :config
-  (god-mode)
-  :bind(("<escape>" . god-mode-all)))
+;; (use-package god-mode
+;;   :custom
+;;   (god-exempt-major-modes nil)
+;;   (god-exempt-predicates nil)
+;;   :config
+;;   (god-mode)
+;;   :bind(("<escape>" . god-mode-all)))
 
-(use-package ready-player
-  :config
-  (ready-player-mode +1))
+;; (use-package ready-player
+;;   :config
+;;   (ready-player-mode +1))
 
 (use-package ess)
 
