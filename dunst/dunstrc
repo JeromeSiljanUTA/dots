@@ -8,7 +8,7 @@ frame_color = "#458588"
 icon_theme = Gruvbox-Dark
 enable_recursive_icon_lookup = true
 corner_radius = 15
-origin = top-center
-offset = 10x5
+origin = top-right
+offset = 15x15
 follow = keyboard
 
