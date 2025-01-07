@@ -1,0 +1,2 @@
+KERNEL=="usbtmc[0-9]", MODE="0660",  GROUP="plugdev"
+SUBSYSTEM=="USB", MODE="0660", GROUP="plugdev"
