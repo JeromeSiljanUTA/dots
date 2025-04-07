@@ -133,8 +133,8 @@
        ((agenda ""
 		((org-agenda-span '7)
 		 (org-agenda-overriding-header "Agenda")))
-	(tags-todo "@school"
-		   ((org-agenda-overriding-header "Tasks @school")))
+	(tags-todo "parents"
+		   ((org-agenda-overriding-header "Tasks @parents")))
 	(tags-todo "@anywhere"
 		   ((org-agenda-overriding-header "Tasks @anywhere")))
 	(tags-todo "@home"
