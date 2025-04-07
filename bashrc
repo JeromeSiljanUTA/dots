@@ -68,4 +68,6 @@ source "/home/jerome/.pam_environment"
 
 export IDF_PATH=~/esp/ESP8266_RTOS_SDK/
 
+export PATH="$PATH:/home/jerome/.dotnet/tools"
+
 eval "$(direnv hook bash)"
