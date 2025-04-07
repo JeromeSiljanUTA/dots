@@ -19,3 +19,12 @@ app-emacs/pdf-tools ~amd64
 app-mobilephone/scrcpy ~amd64
 #+END_SRC
 
+** libudev-compat
+#+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.accept_keywords/libudev-compat
+sys-libs/libudev-compat ~amd64
+#+END_SRC
+
+** xboxdrv
+#+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.accept_keywords/xboxdrv
+games-util/xboxdrv ~amd64
+#+END_SRC
