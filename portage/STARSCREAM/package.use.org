@@ -48,7 +48,12 @@ sys-devel/gcc jit
 
 ** sci-electronics/kicad
 #+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.use/package.use
-sci-electronics/kicad python_single_target_python3_11
+sci-electronics/kicad python_single_target_python3_12
+#+END_SRC
+
+** net-libs/nodejs
+#+BEGIN_SRC bash :tangle /sudo::/etc/portage/package.use/package.use
+net-libs/nodejs npm
 #+END_SRC
 
 * automatically added
